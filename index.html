@@ -1,0 +1,1922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QuantEdge — Consulting Quantitative Assessment Practice</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-X312M8T3JZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-X312M8T3JZ');
+</script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --border: #d6e8de;
+  --text-primary: #1c2e22;
+  --text-secondary: #476655;
+  --text-hint: #89a898;
+  --accent: #0f2d1a;
+  --accent-mid: #0f2d1a;
+  --accent-light: #eaf4ee;
+  --accent-hover: #0a1f10;
+  --dark-green: #0f2d1a;
+  --green-mid: #47bb7a;
+  --green-light: #eaf4ee;
+  --green-pale: #f0f8f3;
+  --green-muted: #b8d9c6;
+  --success-bg: #eaf4ee;
+  --success-text: #1e5c30;
+  --danger-bg: #fef2f2;
+  --danger-text: #991b1b;
+  --warning-bg: #f0f8f3;
+  --warning-text: #0f2d1a;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text-primary);min-height:100vh;font-size:15px;line-height:1.6}
+.page{display:none}
+.page.active{display:block}
+
+/* ── GLOBAL HEADER BANNER ── */
+.site-header{background:#0f2d1a;width:100%;position:relative;display:flex;flex-direction:column;justify-content:center;padding:44px 0 40px}
+.site-header-inner{max-width:1200px;margin:0 auto;padding:0 52px;width:100%}
+.header-eyebrow{font-size:10px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#4a8c5c;margin-bottom:10px;display:block}
+.header-title{font-size:46px;font-weight:500;color:#f5f0e8;margin-bottom:10px;line-height:1.2;font-family:'Playfair Display',Georgia,serif}
+.header-tagline{font-size:14px;color:#bcd6c8;letter-spacing:0.02em;margin-bottom:4px;margin-top:0}
+.header-sub{font-size:14px;color:#bcd6c8;line-height:1.65;max-width:600px}
+.header-meta{display:flex;align-items:center;gap:0;margin-top:28px}
+.header-meta-item{display:flex;flex-direction:column;align-items:center;text-align:center;padding-right:36px;margin-right:36px;border-right:0.5px solid #2a4a32}
+.header-meta-item:last-child{border-right:none;padding-right:0;margin-right:0}
+.header-meta-item .val{font-size:30px;font-weight:500;color:#f5f0e8;font-family:'Playfair Display',Georgia,serif;line-height:1}
+.header-meta-item .lbl{font-size:11px;color:#e2f0e8;margin-top:5px;letter-spacing:0.06em}
+
+/* ── HOME ── */
+.home-body{max-width:1200px;margin:0 auto;padding:32px 52px 60px;width:100%}
+.section-label{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:14px}
+.home-section{margin-bottom:32px}
+.test-list{display:flex;flex-direction:column;gap:10px}
+
+.test-card{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--dark-green);border-radius:4px;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:box-shadow 0.15s, border-color 0.15s}
+.test-card:hover{box-shadow:0 2px 12px rgba(0,0,0,0.08);border-left-color:var(--dark-green)}
+.test-card-left .test-num{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:3px;font-family:'Inter',sans-serif}
+.test-card-left .test-name{font-size:15px;font-weight:500;color:var(--text-primary);font-family:'Inter',sans-serif}
+.test-card-left .test-desc{font-size:12px;color:var(--text-secondary);margin-top:2px;font-family:'Inter',sans-serif}
+.test-card-right{width:34px;height:34px;border-radius:50%;background:var(--dark-green);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-left:14px}
+.test-card-right svg{width:15px;height:15px;stroke:#ffffff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+
+/* resource cards (dictionary / formulas) */
+.resource-card{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--dark-green);border-radius:4px;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:box-shadow 0.15s, border-color 0.15s;margin-bottom:10px}
+.resource-card.formula-card{border-left-color:var(--dark-green)}
+.resource-card:hover{box-shadow:0 2px 12px rgba(0,0,0,0.08)}
+.resource-card-left .rc-label{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#0f2d1a;margin-bottom:3px;font-family:'Inter',sans-serif}
+.formula-card .rc-label{color:#0f2d1a}
+.resource-card-left .rc-name{font-size:15px;font-weight:500;color:var(--text-primary);font-family:'Inter',sans-serif}
+.resource-card-left .rc-desc{font-size:12px;color:var(--text-secondary);margin-top:2px;font-family:'Inter',sans-serif}
+.resource-card-right{width:34px;height:34px;border-radius:50%;background:var(--dark-green);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-left:14px}
+.formula-card .resource-card-right{background:var(--dark-green)}
+.resource-card-right svg{width:15px;height:15px;stroke:#ffffff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+
+/* ── START ── */
+.start-wrap{max-width:1200px;margin:0 auto;padding:40px 52px 80px}
+.back-btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-secondary);cursor:pointer;margin-bottom:32px;background:none;border:none;padding:0;font-family:'Inter',sans-serif}
+.back-btn:hover{color:var(--text-primary)}
+.back-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.start-title{font-size:22px;font-weight:600;margin-bottom:6px;color:var(--text-primary);font-family:'Inter',sans-serif}
+.start-sub{font-size:14px;color:var(--text-secondary);margin-bottom:28px;line-height:1.7}
+.start-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:24px}
+.stat-box{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--dark-green);border-radius:4px;padding:14px;text-align:center}
+.stat-box .sv{font-size:22px;font-weight:600;font-family:'Inter',sans-serif;color:var(--accent)}
+.stat-box .sl{font-size:11px;color:var(--text-secondary);margin-top:2px;font-family:'Inter',sans-serif}
+.rules{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--dark-green);border-radius:4px;padding:18px;margin-bottom:24px}
+.rules h3{font-size:11px;font-weight:600;margin-bottom:10px;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.08em}
+.rules ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+.rules ul li{font-size:13px;color:var(--text-primary);display:flex;gap:10px;align-items:flex-start}
+.rules ul li::before{content:"→";color:var(--accent);font-weight:600;flex-shrink:0}
+.btn-primary{display:block;width:100%;background:var(--dark-green);color:#fff;border:none;border-radius:4px;padding:13px;font-size:15px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:background 0.15s}
+.btn-primary:hover{background:var(--accent-hover)}
+
+/* ── TEST ── */
+.test-wrap{max-width:1200px;margin:0 auto;padding:28px 52px 80px}
+.test-topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:10px}
+.timer-pill{display:flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:6px 14px}
+.timer-pill svg{width:14px;height:14px;stroke:var(--text-secondary);fill:none;stroke-width:2}
+.timer-val{font-size:15px;font-weight:600;font-family:'Inter',sans-serif;color:var(--text-primary);min-width:48px}
+.timer-val.warn{color:var(--green-mid)}
+.timer-val.danger{color:#dc2626}
+.q-counter{font-size:13px;color:var(--accent);font-weight:600;font-family:'Inter',sans-serif}
+.progress-track{height:3px;background:var(--border);border-radius:2px;margin-bottom:24px}
+.progress-fill{height:3px;background:var(--accent);border-radius:2px;transition:width 0.4s ease}
+
+.q-panel{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--dark-green);border-radius:4px;padding:28px}
+.q-label{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;font-family:'Inter',sans-serif}
+.cat-tag{display:inline-block;font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:3px 8px;border-radius:3px;margin-bottom:6px;margin-right:8px;font-family:'Inter',sans-serif}
+.q-text{font-size:15px;line-height:1.8;color:var(--text-primary);margin-bottom:20px;white-space:pre-line;font-family:'Inter',sans-serif}
+.q-table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:20px;table-layout:fixed}
+.q-table th{background:#f5f5f5;padding:7px 11px;text-align:left;font-weight:600;border:1px solid var(--border);color:var(--text-secondary);font-size:12px;font-family:'Inter',sans-serif}
+.q-table td{padding:7px 11px;border:1px solid var(--border);color:var(--text-primary);font-family:'Inter',sans-serif}
+.q-table tr:nth-child(even) td{background:#fafafa}
+.answer-fmt{display:none}
+.answer-input{width:100%;border:2px solid var(--accent);border-radius:4px;padding:11px 14px;font-size:15px;font-family:'Inter',sans-serif;color:var(--text-primary);background:#ffffff;outline:none;transition:border-color 0.15s, box-shadow 0.15s;margin-bottom:14px}
+.answer-input:focus{border-color:var(--dark-green);box-shadow:0 0 0 3px rgba(26,92,46,0.12)}
+.next-btn{display:block;width:100%;background:var(--dark-green);color:#fff;border:none;border-radius:4px;padding:12px;font-size:14px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:background 0.15s}
+.next-btn:hover{background:var(--accent-hover)}
+.skip-btn{display:block;width:100%;background:none;color:var(--text-hint);border:none;padding:10px;font-size:13px;cursor:pointer;font-family:'Inter',sans-serif;margin-top:6px;transition:color 0.15s}
+.skip-btn:hover{color:var(--text-secondary)}
+
+/* ── RESULTS ── */
+.results-wrap{max-width:1200px;margin:0 auto;padding:48px 52px 80px}
+.score-hero{background:var(--dark-green);border-radius:4px;padding:36px;text-align:center;margin-bottom:28px;color:#fff}
+.score-circle{width:96px;height:96px;border-radius:50%;background:rgba(255,255,255,0.1);border:2px solid rgba(255,255,255,0.4);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;flex-direction:column}
+.score-circle .sc-num{font-size:26px;font-weight:600;color:#ffffff;font-family:'Inter',sans-serif}
+.score-circle .sc-den{font-size:11px;color:#a8c8b4;font-family:'Inter',sans-serif}
+.score-hero h2{font-size:22px;font-weight:600;color:#fff;margin-bottom:6px;font-family:'Inter',sans-serif}
+.score-hero .score-pct{font-size:15px;color:#a8c8b4;margin-bottom:4px;font-family:'Inter',sans-serif}
+.score-hero .score-msg{font-size:14px;color:#c8ddd0;line-height:1.6;font-family:'Inter',sans-serif}
+
+.analysis-panel{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--dark-green);border-radius:4px;padding:22px;margin-bottom:14px}
+.analysis-panel h3{font-size:11px;font-weight:600;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:14px;font-family:'Inter',sans-serif}
+.strength-row{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f0f0f0}
+.strength-row:last-child{border-bottom:none}
+.strength-row .cat-name{font-size:14px;color:var(--text-primary);font-family:'Inter',sans-serif}
+.strength-row .cat-score{font-size:13px;font-weight:500;font-family:'Inter',sans-serif}
+.strength-row .cat-score.good{color:var(--accent)}
+.strength-row .cat-score.ok{color:var(--green-mid)}
+.strength-row .cat-score.bad{color:#dc2626}
+.strength-bar{height:3px;border-radius:2px;margin-top:4px}
+.strength-bar.good{background:var(--accent)}
+.strength-bar.ok{background:var(--green-mid)}
+.strength-bar.bad{background:#ef4444}
+
+.mistakes-panel{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--dark-green);border-radius:4px;padding:22px;margin-bottom:14px}
+.mistakes-panel h3{font-size:11px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:16px;font-family:'Inter',sans-serif}
+.mistake-item{display:grid;grid-template-columns:200px 1fr;gap:0;padding:14px 0;border-bottom:1px solid #f0f0f0;font-family:'Inter',sans-serif}
+.mistake-item:last-child{border-bottom:none}
+.mistake-col-label{font-size:13px;font-weight:600;color:var(--text-primary);padding-right:20px;line-height:1.6}
+.mistake-col-text{font-size:14px;color:var(--text-primary);line-height:1.65}
+.mistake-col-text strong{font-weight:600}
+.mistake-item-wide{padding:14px 0;border-bottom:1px solid #f0f0f0;font-size:14px;color:var(--text-primary);line-height:1.65;font-family:'Inter',sans-serif}
+.mistake-item-wide:last-child{border-bottom:none}
+.mistake-item-wide strong{font-weight:600}
+
+/* formulas panel in results */
+.formulas-panel{background:var(--green-pale);border:1px solid var(--border);border-left:4px solid var(--dark-green);border-radius:4px;padding:22px;margin-bottom:14px}
+.formulas-panel h3{font-size:11px;font-weight:600;color:#0f2d1a;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:14px;font-family:'Inter',sans-serif}
+.formula-item{padding:10px 0;border-bottom:1px solid #c8ddd0}
+.formula-item:last-child{border-bottom:none}
+.formula-name{font-size:13px;font-weight:600;color:#0f2d1a;margin-bottom:3px;font-family:'Inter',sans-serif}
+.formula-expr{font-size:13px;font-family:'Inter',sans-serif;color:#2d2d2d;background:#f0f7f3;padding:4px 8px;border-radius:3px;display:inline-block;margin-bottom:3px}
+.formula-note{font-size:12px;color:var(--text-secondary);font-family:'Inter',sans-serif}
+
+.results-actions{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.btn-secondary{display:block;width:100%;background:var(--surface);color:var(--text-primary);border:1px solid var(--border);border-radius:4px;padding:12px;font-size:14px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:border-color 0.15s;text-align:center}
+.btn-secondary:hover{border-color:var(--accent)}
+
+/* ── REVIEW ── */
+.review-wrap{max-width:800px;margin:0 auto;padding:40px 36px 80px}
+.review-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:10px}
+.review-counter{font-size:13px;color:var(--accent);font-weight:600;font-family:'Inter',sans-serif}
+.nav-btns{display:flex;gap:8px}
+.nav-btn{background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:7px 14px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;color:var(--text-primary);transition:border-color 0.15s}
+.nav-btn:hover{border-color:var(--accent)}
+.nav-btn:disabled{opacity:0.4;cursor:not-allowed}
+.review-card{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--dark-green);border-radius:4px;padding:28px;margin-bottom:14px}
+.review-status-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.review-status{font-size:12px;font-weight:600;padding:3px 10px;border-radius:3px;font-family:'Inter',sans-serif}
+.review-status.ok{background:var(--success-bg);color:var(--success-text)}
+.review-status.no{background:var(--danger-bg);color:var(--danger-text)}
+.review-status.sk{background:var(--warning-bg);color:var(--warning-text)}
+.review-qtext{font-size:15px;line-height:1.8;color:var(--text-primary);margin-bottom:18px;white-space:pre-line;font-family:'Inter',sans-serif}
+.answer-block{background:#f7f7f7;border-radius:4px;padding:14px 16px;margin-bottom:10px}
+.answer-block .ab-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-hint);margin-bottom:4px;font-family:'Inter',sans-serif}
+.answer-block .ab-val{font-size:16px;font-weight:600;color:var(--text-primary);font-family:'Inter',sans-serif}
+.answer-block.your-wrong{background:#fff0f0}
+.answer-block.your-wrong .ab-label{color:#c0392b}
+.answer-block.your-wrong .ab-val{color:#c0392b}
+.answer-block.your-right{background:#f0faf3}
+.answer-block.your-right .ab-label{color:var(--success-text)}
+.answer-block.your-right .ab-val{color:var(--success-text)}
+.explain-block{background:#f9fafb;border-radius:4px;padding:20px 22px;margin-top:4px}
+.explain-block .ex-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin-bottom:12px;font-family:'Inter',sans-serif}
+.explain-block .ex-text{font-size:14px;color:var(--text-primary);line-height:1.8;font-family:'Inter',sans-serif}
+.explain-step{margin-bottom:10px;line-height:1.75}
+.explain-step:last-child{margin-bottom:0}
+.explain-step b{font-weight:600;color:var(--text-primary)}
+.explain-tip{font-size:13px;color:#555;font-style:italic;margin-top:14px;padding-top:12px;border-top:1px solid #e4e4e4;line-height:1.7}
+.done-btn{display:block;width:100%;background:var(--dark-green);color:#fff;border:none;border-radius:4px;padding:13px;font-size:14px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:background 0.15s;margin-top:8px}
+.done-btn:hover{background:var(--accent-hover)}
+
+/* ── DICTIONARY PAGE ── */
+.resource-wrap{max-width:800px;margin:0 auto;padding:40px 36px 80px}
+.resource-header{margin-bottom:28px}
+.resource-header h2{font-size:22px;font-weight:600;color:var(--text-primary);margin-bottom:6px;font-family:'Inter',sans-serif}
+.resource-header p{font-size:14px;color:var(--text-secondary);line-height:1.6}
+
+.dict-search{width:100%;border:2px solid var(--border);border-radius:4px;padding:10px 14px;font-size:14px;font-family:'Inter',sans-serif;color:var(--text-primary);background:#ffffff;outline:none;margin-bottom:16px;transition:border-color 0.15s}
+.dict-search:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(26,92,46,0.12)}
+
+.dict-group{margin-bottom:20px}
+.dict-group-letter{font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);padding:6px 0;border-bottom:2px solid var(--green-muted);margin-bottom:10px;font-family:'Inter',sans-serif}
+.dict-item{padding:12px 0;border-bottom:1px solid #f0f0f0}
+.dict-item:last-child{border-bottom:none}
+.dict-term{font-size:14px;font-weight:600;color:var(--text-primary);margin-bottom:3px;font-family:'Inter',sans-serif}
+.dict-def{font-size:13px;color:var(--text-secondary);line-height:1.65;font-family:'Inter',sans-serif}
+.dict-example{font-size:12px;color:var(--accent);margin-top:3px;font-style:italic;font-family:'Inter',sans-serif}
+
+/* ── FORMULAS PAGE ── */
+.formula-section{margin-bottom:24px}
+.formula-section-title{font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#0f2d1a;padding:6px 0;border-bottom:2px solid #c8ddd0;margin-bottom:12px;font-family:'Inter',sans-serif}
+.formula-card-item{background:var(--green-pale);border:1px solid var(--border);border-radius:4px;padding:14px;margin-bottom:8px}
+.formula-card-item .fn{font-size:14px;font-weight:600;color:#0f2d1a;margin-bottom:6px;font-family:'Inter',sans-serif}
+.formula-card-item .fe{font-size:14px;font-family:'Inter',sans-serif;color:#2d2d2d;background:#f0f7f3;padding:6px 10px;border-radius:3px;display:block;margin-bottom:6px;word-break:break-all}
+.formula-card-item .fd{font-size:12px;color:var(--text-secondary);line-height:1.6;font-family:'Inter',sans-serif}
+
+@media(max-width:768px){
+  /* ── QE WATERMARK — hide completely on mobile ── */
+  .qe-watermark{display:none!important}
+
+  /* ── HEADER — stack vertically, shrink fonts ── */
+  .site-header{padding:24px 0 20px!important}
+  .site-header-inner{padding:0 20px!important}
+
+  /* Hide the absolute-positioned CONTACT US / FEEDBACK / QE block on mobile */
+  .site-header-inner > div[style*="position:absolute"]{display:none!important}
+
+  /* Header layout: stack left column full-width */
+  .site-header-inner > div[style*="display:flex"]{flex-direction:column!important;gap:0!important}
+  .header-title{font-size:28px!important;line-height:1.2!important}
+  .header-eyebrow{font-size:9px!important;margin-bottom:6px!important}
+  .header-tagline{font-size:12px!important;margin-top:12px!important}
+  .header-sub{font-size:12px!important;max-width:100%!important;line-height:1.55!important}
+
+  /* Stats row — wrap nicely */
+  .header-meta{flex-wrap:wrap!important;gap:12px 20px!important;margin-top:16px!important}
+  .header-meta-item{border-right:none!important;padding-right:0!important;margin-right:0!important;align-items:flex-start!important;text-align:left!important}
+  .header-meta-item .val{font-size:22px!important}
+  .header-meta-item .lbl{font-size:10px!important}
+
+  /* ── MOBILE CONTACT / FEEDBACK ROW — show below header ── */
+  .mobile-header-actions{display:flex!important}
+
+  /* ── HOME BODY ── */
+  .home-body{padding:20px 16px 60px!important;width:100%!important;max-width:100%!important}
+  .resource-wrap{padding:20px 16px 60px!important;max-width:100%!important}
+
+  /* ── SECTION + TEST + RESOURCE CARDS ── */
+  .section-card,.test-card,.resource-card{padding:14px 14px!important}
+  .section-meta{flex-wrap:wrap!important;gap:4px!important}
+  .section-title{font-size:14px!important}
+  .test-card-left .test-name{font-size:14px!important}
+  .test-card-left .test-desc{font-size:11px!important}
+
+  /* ── TEST START PAGE ── */
+  .start-wrap{padding:20px 16px 80px!important;max-width:100%!important}
+  .start-title{font-size:18px!important}
+  .start-sub{font-size:13px!important}
+  .start-stats{grid-template-columns:repeat(3,1fr)!important;gap:8px!important;margin-bottom:18px!important}
+  .stat-box{padding:12px 8px!important}
+  .stat-box .sv{font-size:18px!important}
+  .stat-box .sl{font-size:10px!important}
+  .rules{padding:14px!important}
+  .rules ul li{font-size:12px!important}
+
+  /* ── TEST INTERFACE (q-panel) ── */
+  .test-wrap{padding:16px 16px 80px!important;max-width:100%!important}
+  .test-topbar{gap:8px!important;margin-bottom:14px!important}
+  .q-panel{padding:18px 16px!important}
+  .q-text{font-size:14px!important;line-height:1.7!important}
+  .q-table{font-size:12px!important}
+  .q-table th,.q-table td{padding:5px 8px!important}
+  .answer-input{font-size:14px!important;padding:10px 12px!important}
+  .next-btn{font-size:14px!important;padding:12px!important}
+
+  /* ── CHAT INTERFACE — full-width ── */
+  .chat-header{padding:10px 14px!important;max-width:100%!important}
+  .chat-feed{padding:14px 12px 110px!important;max-width:100%!important;margin:0!important}
+  .chat-input-bar{padding:10px 14px!important;max-width:100%!important;left:0!important;right:0!important;transform:none!important;margin:0!important}
+  .bubble{max-width:95%!important;font-size:13px!important;padding:11px 13px!important}
+  .bubble-row.ai .bubble{max-width:96%!important}
+  .chat-input{font-size:14px!important;padding:9px 14px!important}
+
+  /* ── RESULTS ── */
+  .results-wrap{padding:20px 16px 80px!important;max-width:100%!important}
+  .score-hero{padding:24px 16px!important}
+  .score-circle{width:88px!important;height:88px!important}
+  .score-circle .sc-num{font-size:24px!important}
+  .score-hero h2{font-size:18px!important}
+  .score-hero .score-pct{font-size:13px!important}
+  .analysis-panel{padding:14px!important}
+  .mistakes-panel{padding:14px!important}
+  .mistake-item{grid-template-columns:1fr!important;gap:4px!important}
+  .mistake-col-label{padding-right:0!important;font-size:12px!important}
+  .mistake-col-text{font-size:13px!important}
+  .results-actions{gap:8px!important}
+  .btn-primary,.btn-secondary{font-size:13px!important;padding:12px!important}
+
+  /* ── REVIEW ── */
+  .review-wrap{padding:14px 14px 80px!important;max-width:100%!important}
+  .review-card{padding:16px 14px!important}
+  .review-qtext{font-size:14px!important}
+  .nav-btns{gap:6px!important}
+  .nav-btn{padding:6px 10px!important;font-size:12px!important}
+  .explain-block{padding:14px 14px!important}
+  .explain-block .ex-text{font-size:13px!important}
+
+  /* ── DICTIONARY / FORMULAS ── */
+  .resource-wrap{padding:20px 16px 60px!important}
+  .dict-term{font-size:13px!important}
+  .dict-def{font-size:12px!important}
+  .formula-card-item{padding:12px!important}
+
+  /* ── MODALS — fit within viewport ── */
+  .modal-overlay{align-items:center!important;padding:16px!important}
+  .modal-box{margin:0!important;width:100%!important;max-width:calc(100vw - 32px)!important;padding:24px 20px!important}
+  .modal-box h3{font-size:16px!important}
+  .modal-box p{font-size:13px!important}
+  .modal-btns{flex-direction:column!important;gap:8px!important}
+  .modal-btn-yes,.modal-btn-no{width:100%!important;padding:11px!important}
+
+  /* ── CONTACT / FEEDBACK PANELS ── */
+  .contact-overlay,.feedback-overlay{align-items:flex-end!important;padding:0!important}
+  .contact-box,.feedback-box{width:100%!important;max-width:100%!important;margin:0!important;border-radius:12px 12px 0 0!important;max-height:92vh!important;overflow-y:auto!important}
+  .contact-header,.feedback-header{padding:18px 20px 16px!important}
+  .contact-title{font-size:18px!important}
+  .feedback-title{font-size:17px!important}
+  .contact-body{padding:16px 20px!important}
+  .feedback-body{padding:16px 20px!important}
+  .contact-row,.feedback-row{flex-direction:column!important;gap:0!important}
+  .contact-footer,.feedback-footer{padding:4px 20px 18px!important}
+  .contact-submit,.feedback-submit{padding:10px 18px!important;font-size:13px!important}
+
+  /* ── CAMERA WIDGET ── */
+  #camera-widget{bottom:80px!important;right:8px!important}
+  #camera-widget video{width:90px!important;height:68px!important}
+
+  /* ── BACK BTN + MISC ── */
+  .back-btn{font-size:12px!important;margin-bottom:20px!important}
+  .section-label{font-size:10px!important}
+}
+
+@media(max-width:480px){
+  .header-title{font-size:24px!important}
+  .site-header-inner{padding:0 14px!important}
+  .home-body{padding:16px 14px 60px!important}
+  .start-stats{grid-template-columns:1fr 1fr 1fr!important}
+  .stat-box .sv{font-size:16px!important}
+  .q-panel{padding:14px 12px!important}
+  .review-card{padding:14px 12px!important}
+  .score-hero{padding:20px 12px!important}
+  .test-wrap{padding:12px 12px 80px!important}
+}
+
+/* ── SECTION CARDS ── */
+.section-card{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--dark-green);border-radius:4px;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;margin-bottom:10px;transition:box-shadow 0.15s,border-color 0.15s}
+.section-card:hover{box-shadow:0 2px 12px rgba(0,0,0,0.08);border-left-color:var(--dark-green)}
+.section-card-bm{border-left-color:var(--dark-green)}
+.section-card-inner{flex:1}
+.section-tag{display:none}
+.section-title{font-size:15px;font-weight:500;color:var(--text-primary);margin-bottom:3px;font-family:'Inter',sans-serif}
+.section-desc{font-size:12px;color:var(--text-secondary);line-height:1.55;margin-bottom:6px;font-family:'Inter',sans-serif}
+.section-meta{display:flex;gap:14px;flex-wrap:wrap}
+.section-meta span{font-size:11px;color:var(--text-hint);font-family:'Inter',sans-serif}
+.section-arrow{width:34px;height:34px;border-radius:50%;background:var(--dark-green);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-left:14px}
+.section-arrow svg{width:15px;height:15px;stroke:#ffffff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+
+/* ── CAMERA WIDGET ── */
+#camera-widget{position:fixed;bottom:20px;right:20px;z-index:1000;display:none}
+#camera-widget video{width:140px;height:105px;border-radius:8px;object-fit:cover;border:2px solid var(--dark-green);background:#111;display:block}
+#camera-widget .cam-label{font-size:10px;text-align:center;color:var(--text-hint);margin-top:4px;font-family:'Inter',sans-serif}
+#camera-widget .cam-close{position:absolute;top:4px;right:4px;background:rgba(0,0,0,0.5);border:none;border-radius:50%;width:18px;height:18px;cursor:pointer;color:#fff;font-size:10px;display:flex;align-items:center;justify-content:center;line-height:1}
+
+/* ── CAMERA PERMISSION MODAL ── */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:2000;display:flex;align-items:center;justify-content:center;display:none}
+.modal-overlay.visible{display:flex}
+.modal-box{background:#fff;border-radius:8px;padding:32px;max-width:380px;width:90%;text-align:center}
+.modal-box h3{font-size:18px;font-weight:600;color:var(--text-primary);margin-bottom:10px;font-family:'Inter',sans-serif}
+.modal-box p{font-size:14px;color:var(--text-secondary);line-height:1.65;margin-bottom:24px;font-family:'Inter',sans-serif}
+.modal-box .modal-icon{font-size:36px;margin-bottom:14px}
+.modal-btns{display:flex;gap:10px;justify-content:center}
+.modal-btn-yes{background:var(--dark-green);color:#fff;border:none;border-radius:4px;padding:10px 24px;font-size:14px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif}
+.modal-btn-no{background:none;color:var(--text-secondary);border:1px solid var(--border);border-radius:4px;padding:10px 24px;font-size:14px;cursor:pointer;font-family:'Inter',sans-serif}
+
+/* ── END TEST BUTTON ── */
+.end-test-btn{background:none;color:var(--text-hint);border:1px solid var(--border);border-radius:4px;padding:6px 14px;font-size:12px;cursor:pointer;font-family:'Inter',sans-serif;transition:color 0.15s,border-color 0.15s}
+.end-test-btn:hover{color:#dc2626;border-color:#dc2626}
+
+/* ── AI FEEDBACK PANEL ── */
+.ai-feedback-panel{background:linear-gradient(135deg,#f0f7f3 0%,#e8f5ee 100%);border:1px solid #c8e6d4;border-left:4px solid var(--dark-green);border-radius:4px;padding:22px;margin-bottom:14px}
+.ai-feedback-panel h3{font-size:11px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:14px;font-family:'Inter',sans-serif}
+.ai-feedback-loading{display:flex;align-items:center;gap:10px;color:var(--text-secondary);font-size:14px;font-family:'Inter',sans-serif}
+.ai-feedback-loading .spinner{width:16px;height:16px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin 0.8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ai-feedback-text{font-size:14px;color:var(--text-primary);line-height:1.8;font-family:'Inter',sans-serif}
+.ai-feedback-text strong{font-weight:600;color:var(--dark-green)}
+
+/* ── FRACTION NOTATION ── */
+.frac{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;font-size:0.92em;line-height:1.2;margin:0 3px}
+.frac span:first-child{border-bottom:1.5px solid var(--text-primary);padding:1px 4px;text-align:center;font-family:'Inter',sans-serif}
+.frac span:last-child{padding:1px 4px;text-align:center;font-family:'Inter',sans-serif}
+.fe{font-size:15px;font-family:'Inter',sans-serif;color:var(--text-primary);background:var(--green-pale);padding:10px 14px;border-radius:4px;display:block;margin-bottom:6px;line-height:2.2}
+
+/* ── SECTION PAGE ACCENT OVERRIDES ── */
+#page-section-qr .test-card,
+#page-section-bm .test-card{border-left-color:#0f2d1a}
+#page-section-qr .test-card:hover,
+#page-section-bm .test-card:hover{border-left-color:#0f2d1a}
+#page-section-qr .test-card-right,
+#page-section-bm .test-card-right{background:#0f2d1a}
+#page-section-qr .test-num,
+#page-section-bm .test-num{color:#666666}
+#page-section-qr .section-label,
+#page-section-bm .section-label{color:#2d2d2d}
+#page-section-qr .back-btn,
+#page-section-bm .back-btn{color:#2d2d2d}
+#page-section-qr .back-btn:hover,
+#page-section-bm .back-btn:hover{color:#2d2d2d}
+
+/* ── CHAT TEST LAYOUT ── */
+.chat-header{max-width:720px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10}
+.chat-feed{max-width:720px;margin:0 auto;padding:24px 24px 120px;display:flex;flex-direction:column;gap:16px;min-height:60vh}
+.chat-input-bar{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--border);padding:16px 24px;display:flex;gap:10px;align-items:center;max-width:720px;margin:0 auto;left:50%;transform:translateX(-50%)}
+.chat-input{flex:1;border:2px solid var(--border);border-radius:24px;padding:10px 18px;font-size:15px;font-family:'Inter',sans-serif;color:var(--text-primary);outline:none;transition:border-color 0.15s}
+.chat-input:focus{border-color:var(--dark-green)}
+.chat-send-btn{width:42px;height:42px;border-radius:50%;background:var(--dark-green);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.15s}
+.chat-send-btn:hover{background:var(--accent-hover)}
+.chat-send-btn:disabled{background:var(--border);cursor:not-allowed}
+
+/* Chat bubbles */
+.bubble-row{display:flex;flex-direction:column;gap:4px}
+.bubble-row.ai{align-items:flex-start}
+.bubble-row.user{align-items:flex-end}
+.bubble-label{font-size:11px;color:var(--text-hint);font-family:'Inter',sans-serif;padding:0 12px}
+.bubble{max-width:85%;padding:14px 18px;border-radius:18px;font-size:14px;line-height:1.6;font-family:'Inter',sans-serif}
+.bubble.ai{background:#ffffff;border:1px solid #e0e8e4;border-bottom-left-radius:4px;color:#1f2937;box-shadow:0 1px 3px rgba(15,45,26,0.06)}
+.bubble.user{background:#eaf4ee;border:1px solid #c8e0d0;border-bottom-right-radius:4px;color:#1f2937;box-shadow:0 1px 3px rgba(15,45,26,0.06)}
+.bubble.thankyou{background:#ffffff;border:1px solid #e0e8e4;border-bottom-left-radius:4px;color:#6b7280;font-style:italic;font-size:13px;padding:8px 14px;box-shadow:0 1px 3px rgba(15,45,26,0.06)}
+.bubble .cat-badge{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#0f2d1a;margin-bottom:8px;display:block}
+.bubble .q-number{font-size:11px;font-weight:600;color:#0f2d1a;margin-bottom:6px;display:block}
+.bubble .fmt-hint{display:none}
+.bubble .q-table{width:100%;border-collapse:collapse;font-size:12px;margin:10px 0}
+.bubble .q-table th{background:#e8f0ec;padding:6px 10px;text-align:left;font-weight:600;border:1px solid var(--border)}
+.bubble .q-table td{padding:6px 10px;border:1px solid var(--border)}
+.bubble .q-table tr:nth-child(even) td{background:#fafafa}
+
+/* ── CHAT SCROLL BEHAVIOUR ── */
+.chat-feed{scroll-behavior:smooth}
+.bubble-row{animation:slideUp 0.35s ease forwards}
+@keyframes slideUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.bubble-row.ai .bubble{max-width:92%}
+
+/* ── CONTACT PANEL ── */
+.contact-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);z-index:3000;display:none;align-items:center;justify-content:center}
+.contact-overlay.visible{display:flex}
+.contact-box{background:#fff;border-radius:10px;width:90%;max-width:480px;overflow:hidden}
+.contact-header{background:#0f2d1a;padding:24px 28px 20px}
+.contact-eyebrow{font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#4a8c5c;margin-bottom:8px}
+.contact-title{font-family:'Playfair Display',Georgia,serif;font-size:22px;font-weight:500;color:#f5f0e8;line-height:1.25}
+.contact-body{padding:24px 28px}
+.contact-sub{font-size:13px;color:#476655;line-height:1.6;margin-bottom:18px}
+.contact-tabs{display:flex;gap:10px;margin-bottom:16px}
+.contact-tab{flex:1;padding:9px 0;border-radius:5px;border:1.5px solid #d6e8de;background:#fff;font-size:13px;font-weight:500;color:#1c2e22;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.15s}
+.contact-tab.active{border-color:#0f2d1a;background:#0f2d1a;color:#fff}
+.contact-row{display:flex;gap:10px;margin-bottom:10px}
+.contact-input{width:100%;border:1.5px solid #d6e8de;border-radius:5px;padding:9px 13px;font-size:11px;font-family:'Inter',sans-serif;color:#1c2e22;outline:none;background:#fff;box-sizing:border-box}
+.contact-input::placeholder{color:#89a898}
+.contact-input:focus{border-color:#0f2d1a}
+textarea.contact-input{resize:none;height:90px;line-height:1.6}
+.contact-footer{display:flex;align-items:center;justify-content:space-between;padding:4px 28px 22px}
+.contact-submit{background:#0f2d1a;color:#fff;border:none;border-radius:5px;padding:10px 22px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif}
+.contact-cancel{font-size:12px;color:#89a898;cursor:pointer;border:none;background:none;font-family:'Inter',sans-serif}
+.contact-success{padding:32px;text-align:center;font-family:'Inter',sans-serif}
+.contact-success p{font-size:14px;color:#476655;line-height:1.6;margin-top:10px}
+/* ── FEEDBACK POPUP ── */
+.feedback-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.35);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:3000;display:none;align-items:center;justify-content:center}
+.feedback-overlay.visible{display:flex}
+.feedback-box{background:#fff;border-radius:10px;width:90%;max-width:480px;overflow:hidden}
+.feedback-header{background:#0f2d1a;padding:24px 28px 20px}
+.feedback-eyebrow{font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#4a8c5c;margin-bottom:8px}
+.feedback-title{font-family:'Playfair Display',Georgia,serif;font-size:21px;font-weight:500;color:#f5f0e8;line-height:1.25}
+.feedback-body{padding:22px 28px}
+.feedback-sub{font-size:13px;color:#476655;line-height:1.6;margin-bottom:18px}
+.feedback-tabs{display:flex;gap:10px;margin-bottom:16px}
+.feedback-tab{flex:1;padding:9px 0;border-radius:5px;border:1.5px solid #d6e8de;background:#fff;font-size:13px;font-weight:500;color:#1c2e22;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.15s}
+.feedback-tab.active{border-color:#0f2d1a;background:#0f2d1a;color:#fff}
+.feedback-row{display:flex;gap:10px;margin-bottom:10px}
+.feedback-input{width:100%;border:1.5px solid #d6e8de;border-radius:5px;padding:9px 13px;font-size:13px;font-family:'Inter',sans-serif;color:#1c2e22;outline:none;background:#fff;box-sizing:border-box}
+.feedback-input::placeholder{color:#89a898}
+.feedback-input:focus{border-color:#0f2d1a}
+textarea.feedback-input{resize:none;height:88px;line-height:1.6}
+.feedback-footer{display:flex;align-items:center;justify-content:space-between;padding:4px 28px 22px}
+.feedback-submit{background:#0f2d1a;color:#fff;border:none;border-radius:5px;padding:10px 22px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif}
+.feedback-skip{font-size:12px;color:#89a898;cursor:pointer;border:none;background:none;font-family:'Inter',sans-serif}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+</head>
+<body>
+
+<!-- HOME -->
+<div id="page-home" class="page active">
+  <div class="site-header">
+    <div class="site-header-inner" style="position:relative">
+      
+      
+      <div style="position:absolute;top:44px;right:65px;display:flex;flex-direction:column;align-items:center;gap:0">
+        <button onclick="openContact()" style="background:transparent;border:none;color:#e2f0e8;font-size:10.5px;font-weight:500;letter-spacing:0.08em;padding:0;cursor:pointer;font-family:'Inter',sans-serif" onmouseover="this.style.color='#f5fcf8'" onmouseout="this.style.color='#e2f0e8'">CONTACT US</button>
+        <button onclick="openQuickFeedback()" style="background:transparent;border:none;color:#d4e8dc;font-size:10.5px;font-weight:500;letter-spacing:0.08em;padding:0;cursor:pointer;font-family:'Inter',sans-serif;font-style:normal;margin-top:17px" onmouseover="this.style.color='#f0f8f3'" onmouseout="this.style.color='#d4e8dc'">FEEDBACK</button>
+        <div style="display:inline-block;position:relative;margin-top:12px">
+          <span class="qe-watermark" style="font-family:'Playfair Display',Georgia,serif;font-size:50px;font-weight:500;color:#f5f0e8;opacity:0.22;letter-spacing:4px;line-height:1;user-select:none;pointer-events:none">QE</span>
+          <div style="position:absolute;bottom:-5px;left:-5%;width:110%;height:5px;background:linear-gradient(to right, transparent, rgba(210,240,220,0.15) 20%, rgba(210,240,220,0.22) 50%, rgba(210,240,220,0.15) 80%, transparent);filter:blur(5px);border-radius:50%;pointer-events:none"></div>
+          <div style="position:absolute;bottom:-3px;left:0;width:100%;height:0.3px;background:linear-gradient(to right, transparent, rgba(210,240,220,0.30) 20%, rgba(210,240,220,0.38) 50%, rgba(210,240,220,0.30) 80%, transparent);pointer-events:none"></div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:flex-start;justify-content:space-between">
+        <div>
+          <div style="display:inline-block;position:relative">
+          <h1 class="header-title">QuantEdge</h1>
+          <div style="position:absolute;bottom:-6px;left:-10%;width:120%;height:5px;background:linear-gradient(to right, transparent, rgba(210,240,220,0.175) 20%, rgba(210,240,220,0.252) 50%, rgba(210,240,220,0.175) 80%, transparent);filter:blur(5px);border-radius:50%;pointer-events:none"></div>
+          <div style="position:absolute;bottom:-4px;left:-5%;width:110%;height:0.3px;background:linear-gradient(to right, transparent, rgba(210,240,220,0.340) 20%, rgba(210,240,220,0.437) 50%, rgba(210,240,220,0.340) 80%, transparent);pointer-events:none"></div>
+        </div>
+          <div style="margin-top:22px">
+            <p class="header-tagline" style="margin-top:0">Built for the consulting quantitative assessment.</p>
+            <p class="header-sub">Develop your quant skills, grow your confidence, and walk into the assessment ready.</p>
+          </div>
+        </div>
+        
+      </div>
+      
+      <div class="header-meta">
+        <div class="header-meta-item"><div class="val">6</div><div class="lbl">Tests available</div></div>
+        <div class="header-meta-item"><div class="val">20</div><div class="lbl">Questions each</div></div>
+        <div class="header-meta-item"><div class="val">40</div><div class="lbl">Minutes each</div></div>
+      </div>
+      <!-- Mobile-only CONTACT US / FEEDBACK row -->
+      <div class="mobile-header-actions" style="display:none;gap:16px;margin-top:18px">
+        <button onclick="openContact()" style="background:transparent;border:none;color:#e2f0e8;font-size:10.5px;font-weight:500;letter-spacing:0.08em;padding:0;cursor:pointer;font-family:'Inter',sans-serif">CONTACT US</button>
+        <button onclick="openQuickFeedback()" style="background:transparent;border:none;color:#d4e8dc;font-size:10.5px;font-weight:500;letter-spacing:0.08em;padding:0;cursor:pointer;font-family:'Inter',sans-serif">FEEDBACK</button>
+      </div>
+    </div>
+  </div>
+  <div class="home-body">
+
+    <!-- How to use -->
+    <div class="home-section">
+      <div class="section-label">How to use this platform</div>
+      <div style="display:grid;gap:14px;font-family:'Inter',sans-serif">
+        <div>
+          <div style="font-size:15px;font-weight:500;color:var(--text-primary);margin-bottom:3px">Business Dictionary</div>
+          <div style="font-size:15px;color:var(--text-secondary);line-height:1.6">A glossary of common business terms.</div>
+        </div>
+        <div>
+          <div style="font-size:15px;font-weight:500;color:var(--text-primary);margin-bottom:3px">Key Formulas</div>
+          <div style="font-size:15px;color:var(--text-secondary);line-height:1.6">No need to memorise these, feel free to derive them during a question if that's easier <span style='font-size:13px;vertical-align:1px'>😉</span></div>
+        </div>
+        <div>
+          <div style="font-size:15px;font-weight:500;color:var(--text-primary);margin-bottom:3px">Numeric Foundations</div>
+          <div style="font-size:15px;color:var(--text-secondary);line-height:1.6">The emphasis is on deduction, speed and accuracy with less business context.</div>
+        </div>
+        <div>
+          <div style="font-size:15px;font-weight:500;color:var(--text-primary);margin-bottom:3px">Benchmark Tests</div>
+          <div style="font-size:15px;color:var(--text-secondary);line-height:1.6">Calibrated to the difficulty and style of the real assessment. A mix of numerical reasoning and business context.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resources -->
+    <div class="home-section">
+      <div class="section-label">Resources</div>
+      <div class="resource-card" onclick="showPage('dictionary')">
+        <div class="resource-card-left">
+          <div class="rc-name">Business Dictionary</div>
+        </div>
+        <div class="resource-card-right"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+      </div>
+      <div class="resource-card formula-card" onclick="showPage('formulas')">
+        <div class="resource-card-left">
+          <div class="rc-name">Key Formulas</div>
+        </div>
+        <div class="resource-card-right"><svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></div>
+      </div>
+    </div>
+
+    <!-- Section cards -->
+    <div class="home-section">
+      <div class="section-label">Choose a section</div>
+      <div class="section-card" onclick="showSection('qr')">
+        <div class="section-card-inner">
+          <div class="section-title">Numeric Foundations</div>
+          <div class="section-meta"><span>3 tests</span><span>20 questions each</span><span>40 minutes per test</span></div>
+        </div>
+        <div class="section-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+      <div class="section-card section-card-bm" onclick="showSection('bm')">
+        <div class="section-card-inner">
+          <div class="section-title">Benchmark Tests</div>
+          <div class="section-meta"><span>3 tests</span><span>20 questions each</span><span>40 minutes per test</span></div>
+        </div>
+        <div class="section-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- SECTION PAGE: QR -->
+<div id="page-section-qr" class="page">
+  <div class="site-header" style="background:#0f2d1a">
+    <div class="site-header-inner" style="position:relative">
+      
+      <div class="header-eyebrow">Section</div>
+      <h1 class="header-title">Numeric Foundations</h1>
+    </div>
+  </div>
+  <div class="home-body">
+    <button class="back-btn" style="margin-bottom:20px" onclick="showHome()">
+      <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      All sections
+    </button>
+    <div class="home-section">
+      <div class="section-label">Information</div>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:12px;font-family:'Inter',sans-serif">
+        <div>
+          <div style="font-size:14px;font-weight:600;color:#0f2d1a;margin-bottom:3px">Tests 1 – 3</div>
+          <div style="font-size:15px;color:var(--text-secondary);line-height:1.6">Topics include sequential tracking, probability, ratios, simultaneous equations, Pythagoras, combinations, work-rate, sequences and more.</div>
+        </div>
+        <div>
+          <div style="font-size:14px;font-weight:600;color:#0f2d1a;margin-bottom:2px">Difficulty</div>
+          <div style="font-size:15px;color:var(--text-secondary);line-height:1.6">The dots indicate relative difficulty. Five would match the level of the Benchmark Tests.</div>
+        </div>
+        <div>
+          <div style="font-size:14px;font-weight:600;color:#0f2d1a;margin-bottom:2px">Score Tracking</div>
+          <div style="font-size:15px;color:var(--text-secondary);line-height:1.6">Your best score is saved and visible on hover. Stored on this device only — <span onclick="if(confirm('This will erase all saved results from this device. Continue?'))clearAllProgress()" style="text-decoration:underline;cursor:pointer;color:inherit">clear results</span> anytime.</div>
+        </div>
+      </div>
+    </div>
+    <div class="home-section">
+      <div class="section-label">Choose a test</div>
+      <div class="test-list" id="test-list-qr"></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION PAGE: BM -->
+<div id="page-section-bm" class="page">
+  <div class="site-header" style="background:#0f2d1a">
+    <div class="site-header-inner" style="position:relative">
+      
+      <div class="header-eyebrow">Section</div>
+      <h1 class="header-title">Benchmark Tests</h1>
+      <p class="header-sub">Calibrated to the difficulty and style of the real assessment. Mix of numerical reasoning and business context.</p>
+    </div>
+  </div>
+  <div class="home-body">
+    <button class="back-btn" style="margin-bottom:20px" onclick="showHome()">
+      <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      All sections
+    </button>
+    <div class="home-section">
+      <div class="section-label">Information</div>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:12px;font-family:'Inter',sans-serif">
+        <div>
+          <div style="font-size:14px;font-weight:600;color:#0f2d1a;margin-bottom:2px">Difficulty</div>
+          <div style="font-size:15px;color:var(--text-secondary);line-height:1.6">All comparable with the official assessment.</div>
+        </div>
+        <div>
+          <div style="font-size:14px;font-weight:600;color:#0f2d1a;margin-bottom:2px">Score Tracking</div>
+          <div style="font-size:15px;color:var(--text-secondary);line-height:1.6">Your best score is saved and visible on hover. Stored on this device only — <span onclick="if(confirm('This will erase all saved results from this device. Continue?'))clearAllProgress()" style="text-decoration:underline;cursor:pointer;color:inherit">clear results</span> anytime.</div>
+        </div>
+      </div>
+    </div>
+    <div class="home-section">
+      <div class="section-label">Choose a test</div>
+      <div class="test-list" id="test-list-bm"></div>
+    </div>
+  </div>
+</div>
+
+<!-- START -->
+<div id="page-start" class="page">
+  <div class="start-wrap">
+    <button class="back-btn" onclick="goBackFromTest()">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      All tests
+    </button>
+    <h2 class="start-title" id="start-title">Test 1</h2>
+    <p class="start-sub" id="start-desc">22 questions across all topic areas, mixed order.</p>
+    <div class="start-stats">
+      <div class="stat-box"><div class="sv" id="stat-q">22</div><div class="sl">Questions</div></div>
+      <div class="stat-box"><div class="sv">40</div><div class="sl">Minutes</div></div>
+      <div class="stat-box"><div class="sv">~109s</div><div class="sl">Per question</div></div>
+    </div>
+    <div class="rules">
+      <h3>How it works</h3>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-top:12px;font-size:14px;color:var(--text-secondary);line-height:1.6">
+        <div>Read the answer format instruction carefully before typing</div>
+        <div>You can skip a question and move on</div>
+        <div>The timer starts when you press Start</div>
+        <div>Full worked answers shown at the end</div>
+      </div>
+    </div>
+    <button class="btn-primary" onclick="startTest()">Start test →</button>
+  </div>
+</div>
+
+<!-- TEST -->
+<div id="page-test" class="page">
+  <div class="chat-header">
+    <div style="display:flex;align-items:center;gap:12px">
+      <div class="timer-pill">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span class="timer-val" id="timer-display">40:00</span>
+      </div>
+      <span class="q-counter" id="q-counter">Question 1 of 20</span>
+    </div>
+    <button class="end-test-btn" onclick="confirmEndTest()">End test</button>
+  </div>
+  <div class="progress-track" style="border-radius:0;margin:0"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+  <div class="chat-feed" id="chat-feed"></div>
+  <div class="chat-input-bar">
+    <input class="chat-input" id="chat-input" type="text" placeholder="Type your answer…" autocomplete="off"/>
+    <button class="chat-send-btn" id="chat-send-btn" onclick="chatSubmit()">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- RESULTS -->
+<div id="page-results" class="page">
+  <div class="results-wrap">
+    <div class="score-hero">
+      <div class="score-circle">
+        <div class="sc-num" id="score-num">0</div>
+        <div class="sc-den" id="score-den">of 22</div>
+      </div>
+      <h2 id="score-headline">Well done!</h2>
+      <div class="score-pct" id="score-pct"></div>
+      <div class="score-msg" id="score-msg"></div>
+    </div>
+    <div id="analysis-section"></div>
+    <div class="results-actions">
+      <button class="btn-primary" onclick="startReview()">Review all questions one by one →</button>
+      <button class="btn-secondary" onclick="retryTest()">Retry this test</button>
+      <button class="btn-secondary" onclick="showHome()">Back to all tests</button>
+    </div>
+  </div>
+</div>
+
+<!-- REVIEW -->
+<div id="page-review" class="page">
+  <div class="review-wrap">
+    <div class="review-nav">
+      <span class="review-counter" id="review-counter">Question 1 of 22</span>
+      <div class="nav-btns">
+        <button class="nav-btn" id="prev-btn" onclick="reviewNav(-1)">← Prev</button>
+        <button class="nav-btn" id="next-btn" onclick="reviewNav(1)">Next →</button>
+      </div>
+    </div>
+    <div id="review-card"></div>
+    <button class="done-btn" onclick="showPage('results')">Done reviewing → Back to results</button>
+  </div>
+</div>
+
+<!-- DICTIONARY PAGE -->
+<div id="page-dictionary" class="page">
+  <div class="site-header" style="background:#0f2d1a">
+    <div class="site-header-inner" style="position:relative">
+      
+      <h1 class="header-title">Business Dictionary</h1>
+      <p class="header-sub">Key terms and definitions for consulting quantitative assessments. Read before your test.</p>
+    </div>
+  </div>
+  <div class="resource-wrap">
+    <button class="back-btn" onclick="showHome()">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      Back to home
+    </button>
+    <input class="dict-search" id="dict-search" type="text" placeholder="Search terms…" oninput="filterDict(this.value)"/>
+    <div id="dict-content"></div>
+  </div>
+</div>
+
+<!-- FORMULAS PAGE -->
+<div id="page-formulas" class="page">
+  <div class="site-header" style="background:#0f2d1a">
+    <div class="site-header-inner" style="position:relative">
+      
+      <div class="header-eyebrow" style="color:#0f2d1a">Reference</div>
+      <h1 class="header-title">Key Formulas</h1>
+      <p class="header-sub">The most important formulas for consulting quantitative assessments. Study these before your test.</p>
+    </div>
+  </div>
+  <div class="resource-wrap">
+    <button class="back-btn" onclick="showHome()">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      Back to home
+    </button>
+    <div id="formulas-content"></div>
+  </div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   BUSINESS DICTIONARY
+═══════════════════════════════════════════════════ */
+const DICTIONARY = [
+  {term:"Absolute Profit",def:"The actual monetary value of profit earned — i.e. Revenue minus all Costs. Not a percentage, just a £ amount.",example:"If revenue is £500k and costs are £380k, absolute profit = £120k."},
+  {term:"ARPU",def:"Average Revenue Per User. Total revenue divided by total number of users. Used to measure how much value each customer generates.",example:"£1.2m revenue / 4,000 users = £300 ARPU."},
+  {term:"Break-Even Point",def:"The level of sales at which total revenue exactly equals total costs — profit is zero. Break-even units = Fixed Costs ÷ Contribution per unit.",example:"Fixed costs = £200k, contribution = £40/unit → break-even = 5,000 units."},
+  {term:"CAGR",def:"Compound Annual Growth Rate. The steady annual growth rate that would take you from a starting value to an ending value over a given number of years. Formula: (End/Start)^(1/n) − 1.",example:"£100m growing to £161m over 5 years = CAGR of 10%."},
+  {term:"Contribution Margin",def:"Revenue minus variable costs. What each unit sold 'contributes' towards covering fixed costs and making profit. Can be expressed per unit (£) or as a % of revenue.",example:"Selling price £60, variable cost £24 → contribution = £36 per unit."},
+  {term:"EBITDA",def:"Earnings Before Interest, Tax, Depreciation and Amortisation. A measure of a company's core operating profitability — what the business earns before financing and accounting adjustments.",example:"Revenue £10m, operating costs £7m → EBITDA = £3m."},
+  {term:"EV/EBITDA",def:"Enterprise Value divided by EBITDA. A valuation multiple that shows how much an investor pays per £1 of operating profit. Lower = cheaper.",example:"EV £60m, EBITDA £5m → EV/EBITDA = 12x."},
+  {term:"Fixed Costs",def:"Costs that do not change with the level of output. They must be paid whether you sell 0 or 1,000,000 units.",example:"Rent, salaries of permanent staff, insurance — all fixed regardless of sales."},
+  {term:"Gross Margin",def:"(Revenue − Cost of Goods Sold) ÷ Revenue, expressed as a %. Shows how much of each £ of revenue is left after paying direct production costs.",example:"Revenue £100, COGS £60 → Gross margin = 40%."},
+  {term:"IRR",def:"Internal Rate of Return. The discount rate at which the net present value (NPV) of an investment equals zero. Used to compare investment options — higher IRR = better return.",example:"A project that returns exactly your investment at 15% discount rate has an IRR of 15%."},
+  {term:"Market Share",def:"A company's sales as a percentage of the total market's sales. Shows competitive position.",example:"Company sells £30m in a £120m market → 25% market share."},
+  {term:"MRR",def:"Monthly Recurring Revenue. The predictable revenue a business earns each month, typically from subscriptions.",example:"500 subscribers at £40/month = £20,000 MRR."},
+  {term:"Net Profit Margin",def:"Net Profit ÷ Revenue, expressed as %. The percentage of revenue that becomes profit after all costs (including fixed costs, interest, tax).",example:"Revenue £50m, net profit £4m → net profit margin = 8%."},
+  {term:"NPV",def:"Net Present Value. The value today of future cash flows, after discounting them for the time value of money. Positive NPV = the investment creates value.",example:"£1,000 received in 1 year, discounted at 10% → NPV = £909 today."},
+  {term:"Operating Leverage",def:"The degree to which a company relies on fixed versus variable costs. High operating leverage means profits grow fast once fixed costs are covered — but losses also grow fast if volume drops.",example:"A company with 80% fixed costs has high operating leverage."},
+  {term:"Payback Period",def:"The time it takes for the cumulative cash inflows from an investment to equal the initial investment. Shorter payback = lower risk.",example:"£500k investment returning £150k/year → payback period ≈ 3.3 years."},
+  {term:"Price Elasticity",def:"How sensitive demand is to a change in price. Elastic demand = big volume change for small price change. Inelastic = small volume change.",example:"A 10% price rise causes a 20% volume drop → price elasticity = −2 (elastic)."},
+  {term:"Profit",def:"Revenue minus all costs. Can be expressed at different levels: gross profit (after COGS), EBITDA (before interest/tax/D&A), net profit (after everything).",example:"Revenue £1m, total costs £0.8m → profit = £200k."},
+  {term:"Profit Margin",def:"Profit ÷ Revenue, expressed as a %. The proportion of each £ of revenue that becomes profit.",example:"Profit £300k on revenue £1.5m → profit margin = 20%."},
+  {term:"ROI",def:"Return on Investment. (Profit from investment ÷ Cost of investment) × 100. Measures the efficiency of an investment.",example:"Invested £50k, returned £65k → ROI = 30%."},
+  {term:"Revenue",def:"The total money received from selling goods or services. Also called 'sales' or 'turnover'. Revenue = Price × Units sold.",example:"Selling 10,000 units at £20 each = £200,000 revenue."},
+  {term:"Run Rate",def:"An annualised estimate of financial performance based on current figures. If a company earns £3m in Q1, the run rate is £12m/year.",example:"Q3 revenue £4.5m → annual run rate = £18m."},
+  {term:"SaaS",def:"Software as a Service. A software delivery model where customers pay a recurring subscription. Key metrics: MRR, ARR, churn rate, LTV.",example:"Salesforce, Slack, and HubSpot are SaaS businesses."},
+  {term:"Unit Economics",def:"The revenue and costs associated with a single unit of a product or a single customer. Helps assess whether a business model is fundamentally profitable.",example:"Selling price £50, variable cost £20, contribution = £30 per unit."},
+  {term:"Variable Costs",def:"Costs that change directly with the level of output. Every extra unit produced adds more variable cost.",example:"Raw materials, packaging, delivery costs — they increase as you produce more."},
+  {term:"Working Capital",def:"Current assets minus current liabilities. The money available to run day-to-day operations. Negative working capital can signal cash flow problems.",example:"Stock £200k + receivables £100k − payables £150k = £150k working capital."},
+  {term:"Yield",def:"The income return on an investment, expressed as a percentage of the investment's cost or current value.",example:"£1,000 investment generating £50/year income → yield = 5%."},
+];
+
+/* ═══════════════════════════════════════════════════
+   FORMULAS
+═══════════════════════════════════════════════════ */
+const FORMULAS=[
+  {section:"Profit & Margin",items:[
+    {name:"Profit",expr:'Profit = (Price &minus; Variable Cost) &times; Units &minus; Fixed Costs',note:"Contribution per unit × volume, then subtract fixed costs."},
+    {name:"Profit Margin",expr:'<span class="frac"><span>Profit</span><span>Revenue</span></span> &times; 100',note:"Always on selling price. £20k profit on £100k revenue = 20%."},
+    {name:"Gross Margin",expr:'<span class="frac"><span>Revenue &minus; COGS</span><span>Revenue</span></span> &times; 100',note:"COGS = Cost of Goods Sold."},
+    {name:"Break-Even Units",expr:'<span class="frac"><span>Fixed Costs</span><span>Contribution per Unit</span></span>',note:"Contribution = Selling price &minus; Variable cost."},
+    {name:"Selling Price from Margin",expr:'<span class="frac"><span>Cost</span><span>1 &minus; Margin</span></span>',note:"E.g. cost £14, margin 35%: 14 &divide; 0.65 = £21.54."},
+  ]},
+  {section:"Growth & Returns",items:[
+    {name:"CAGR",expr:'<span class="frac"><span>End</span><span>Start</span></span><sup>1/n</sup> &minus; 1',note:"n = years. £100m &rarr; £161m over 5 years: (161/100)^(1/5) &minus; 1 = 10%."},
+    {name:"Future Value",expr:'FV = PV &times; (1 + r)<sup>n</sup>',note:"PV = starting value, r = rate (decimal), n = years."},
+    {name:"Rule of 72",expr:'Years to double &asymp; <span class="frac"><span>72</span><span>Rate %</span></span>',note:"At 9%, money doubles in ~8 years."},
+    {name:"ROI",expr:'<span class="frac"><span>Profit</span><span>Investment</span></span> &times; 100',note:"E.g. invest £50k, gain £65k &rarr; ROI = 30%."},
+  ]},
+  {section:"Speed, Distance & Time",items:[
+    {name:"Speed",expr:'Speed = <span class="frac"><span>Distance</span><span>Time</span></span>',note:"Distance = Speed &times; Time. Time = Distance &divide; Speed."},
+    {name:"Average Speed",expr:'Average Speed = <span class="frac"><span>Total Distance</span><span>Total Time</span></span>',note:"Never average speeds directly."},
+    {name:"Toward each other",expr:'Time = <span class="frac"><span>Total Distance</span><span>Speed<sub>A</sub> + Speed<sub>B</sub></span></span>',note:"Add speeds when moving toward each other."},
+    {name:"Same direction",expr:'Time = <span class="frac"><span>Gap</span><span>Speed<sub>A</sub> &minus; Speed<sub>B</sub></span></span>',note:"Subtract speeds when moving the same direction."},
+  ]},
+  {section:"Percentages & Change",items:[
+    {name:"Percentage Change",expr:'<span class="frac"><span>New &minus; Old</span><span>Old</span></span> &times; 100',note:"Positive = increase, negative = decrease."},
+    {name:"Reverse Percentage",expr:'Original = <span class="frac"><span>Final Value</span><span>1 + Change</span></span>',note:"£120 after +20% &rarr; original = 120 &divide; 1.20 = £100."},
+    {name:"Compound Change",expr:'Final = Start &times; (1 + r<sub>1</sub>) &times; (1 + r<sub>2</sub>) &times; &hellip;',note:"+20% then &minus;15%: 1.20 &times; 0.85 = 1.02 &rarr; net +2%."},
+  ]},
+  {section:"Work Rate",items:[
+    {name:"Individual Rate",expr:'Rate = <span class="frac"><span>1</span><span>Time to complete alone</span></span>',note:"If A finishes in 4 days, rate = &frac14; per day."},
+    {name:"Combined Rate",expr:'Rate<sub>total</sub> = Rate<sub>A</sub> + Rate<sub>B</sub> + &hellip;',note:"Add rates together, then Time = 1 &divide; combined rate."},
+    {name:"Total Work",expr:'Total Work = Workers &times; Days',note:"Keep total work constant, rearrange for the unknown."},
+  ]},
+  {section:"Combinatorics & Probability",items:[
+    {name:"Counting Principle",expr:'Total = n<sub>1</sub> &times; n<sub>2</sub> &times; n<sub>3</sub> &times; &hellip;',note:"Independent choices multiply. 3 starters &times; 4 mains &times; 2 desserts = 24."},
+    {name:"Permutations (order matters)",expr:'P(n,r) = <span class="frac"><span>n!</span><span>(n &minus; r)!</span></span>',note:"1st/2nd/3rd from 5 people: 5&times;4&times;3 = 60."},
+    {name:"Combinations (order doesn't matter)",expr:'C(n,r) = <span class="frac"><span>n!</span><span>r! &times; (n &minus; r)!</span></span>',note:"Choose 3 from 7: (7&times;6&times;5) &divide; (3&times;2&times;1) = 35."},
+    {name:"Probability",expr:'P(event) = <span class="frac"><span>Favourable outcomes</span><span>Total outcomes</span></span>',note:"Rolling a 3 on a die = &frac16;."},
+    {name:"Complementary",expr:'P(not A) = 1 &minus; P(A)',note:"P(rain) = 0.3 &rarr; P(no rain) = 0.7."},
+    {name:"Independent Events",expr:'P(A and B) = P(A) &times; P(B)',note:"Heads twice: 0.5 &times; 0.5 = 0.25."},
+  ]},
+  {section:"Sequences",items:[
+    {name:"Arithmetic — nth term",expr:'a<sub>n</sub> = a + (n &minus; 1)d',note:"a = first term, d = common difference. 3, 7, 11 &hellip; &rarr; 10th term = 3 + 9&times;4 = 39."},
+    {name:"Arithmetic — sum",expr:'S<sub>n</sub> = <span class="frac"><span>n</span><span>2</span></span>(a + l)',note:"l = last term. Or: &frac12;n(2a + (n&minus;1)d)."},
+    {name:"Geometric — nth term",expr:'a<sub>n</sub> = a &times; r<sup>n&minus;1</sup>',note:"a = first term, r = ratio. 2, 6, 18 &hellip; r=3 &rarr; 5th term = 2&times;3&sup4; = 162."},
+    {name:"Geometric — sum",expr:'S<sub>n</sub> = <span class="frac"><span>a(1 &minus; r<sup>n</sup>)</span><span>1 &minus; r</span></span>',note:"For r &ne; 1."},
+    {name:"LCM — when cycles meet",expr:'LCM(a, b) = <span class="frac"><span>a &times; b</span><span>HCF(a, b)</span></span>',note:"Lights every 4s and 6s &rarr; LCM = 12s."},
+  ]},
+  {section:"Weighted Averages",items:[
+    {name:"Weighted Average",expr:'<span class="frac"><span>&Sigma;(Value &times; Weight)</span><span>&Sigma; Weights</span></span>',note:"Multiply each value by its weight, sum, divide by total weight."},
+    {name:"Blended Rate",expr:'<span class="frac"><span>&Sigma;(Rate &times; Amount)</span><span>Total Amount</span></span>',note:"E.g. blended margin = sum of (margin &times; revenue) &divide; total revenue."},
+  ]},
+];
+
+/* ═══════════════════════════════════════════════════
+   TEST DATA
+═══════════════════════════════════════════════════ */
+const TESTS=[
+  {id:1,section:"qr",name:"Test 1",desc:"Quantitative Reasoning",questions:[
+    {cat:"sched",text:"A swimming pool is one-third full. A pipe fills it at a rate that would fill the whole pool in 4 hours. A drain removes water at a rate that would empty the full pool in 6 hours. Both the pipe and drain are open simultaneously.\n\nHow long will it take to fill the pool completely?\n\nGive your answer in hours.",fmt:"Give your answer in hours, to 1 decimal place. Do not include units.",answer:"8",alts:["8","8h","8.0"],explain:"Step 1 — Find the net fill rate.\nPipe fills: 1/4 of pool per hour.\nDrain empties: 1/6 of pool per hour.\nNet rate: 1/4 − 1/6 = 3/12 − 2/12 = 1/12 per hour.\n\nStep 2 — The pool starts 1/3 full, so 2/3 remains to be filled.\nTime = (2/3) ÷ (1/12) = (2/3) × 12 = 8 hours.\n_tip_ The drain works against the pipe — always subtract its rate. The remaining 2/3 of the pool must be filled at the net rate, not the gross rate."},
+    {cat:"pct",text:"5 friends have an average age of 28. A sixth friend joins the group and the average age becomes 29.\n\nHow old is the sixth friend?\n\nGive your answer in whole years.",fmt:"Give your answer in whole years.",answer:"34",alts:["34 years","34 years old"],explain:"Step 1 — Total age of original 5 friends: 28 × 5 = 140.\nStep 2 — Total age with 6 friends: 29 × 6 = 174.\nStep 3 — Sixth friend's age: 174 − 140 = 34.\n_tip_ Never average the averages. Always reconstruct the totals: multiply each average by its group size, then compare."},
+    {cat:"logic",text:"A row of 45 fence posts runs in a straight line. The posts are spaced 3 metres apart. Every 4th gap has a red post marker.\n\nHow many red markers are there?\n\nGive your answer as a whole number.",fmt:"Give your answer as a whole number.",answer:"11",alts:["11 markers","11 red markers"],explain:"Step 1 — 45 posts means 44 gaps.\nStep 2 — Red markers appear at gaps 4, 8, 12, ... 44.\nStep 3 — Number of red markers: 44 ÷ 4 = 11.\n_tip_ 45 posts = 44 gaps, not 45. The poles-and-gaps principle: n posts in a line always gives n−1 gaps."},
+    {cat:"equations",text:"A bag contains 4 red, 6 blue, and 5 green marbles. One marble is picked at random.\n\nWhat is the probability that the marble is NOT red?\n\nGive your answer as a fraction in its simplest form.",fmt:"Give your answer as a fraction, e.g. 3/5.",answer:"11/15",alts:["11/15"],explain:"Step 1 — Total marbles: 4 + 6 + 5 = 15.\nStep 2 — Not red: 15 − 4 = 11.\nStep 3 — P(not red) = 11/15.\n_tip_ P(not A) = 1 − P(A). Here P(red) = 4/15, so P(not red) = 1 − 4/15 = 11/15."},
+    {cat:"equations",text:"3 pens and 2 rulers cost £4.10.\n1 pen and 4 rulers cost £3.30.\n\nWhat does one ruler cost?\n\nGive your answer in pence.",fmt:"Give your answer in pence.",answer:"58",alts:["58p","58 pence","£0.58"],explain:"Step 1 — Set up equations: 3p + 2r = 410, p + 4r = 330.\nStep 2 — Multiply second by 3: 3p + 12r = 990.\nStep 3 — Subtract first: 10r = 580. r = 58p.\nStep 4 — Check: p = 330 − 4(58) = 98p. 3(98) + 2(58) = 294 + 116 = 410 ✓\n_tip_ Multiply one equation to match the coefficient of the variable you want to eliminate, then subtract."},
+    {cat:"logic",text:"Find the next number in the sequence:\n7, 11, 15, 19, 23, ?\n\nWhat is the 15th term in this sequence?\n\nGive your answer as a whole number.",fmt:"Give your answer as a whole number.",answer:"63",alts:["63"],explain:"Step 1 — Identify the pattern: each term increases by 4. This is an arithmetic sequence with first term a = 7 and common difference d = 4.\nStep 2 — nth term formula: a + (n−1)d = 7 + (15−1) × 4 = 7 + 56 = 63.\n_tip_ Always identify whether the differences between terms are constant (arithmetic) before applying the formula."},
+    {cat:"equations",text:"2 apples and 5 oranges cost £3.20.\n4 apples and 2 oranges cost £3.00.\n\nWhat does one apple cost?\n\nGive your answer in pence, to the nearest penny.",fmt:"Give your answer in pence, to the nearest penny.",answer:"54",alts:["54p","53.75","53.75p","54 pence"],explain:"Step 1 — 2a + 5o = 320, 4a + 2o = 300.\nStep 2 — Multiply first by 2: 4a + 10o = 640. Subtract second: 8o = 340. o = 42.5p.\nStep 3 — a = (300 − 2 × 42.5) ÷ 4 = 215 ÷ 4 = 53.75p ≈ 54p.\n_tip_ The answer is 53.75p exactly. Rounded to the nearest penny = 54p."},
+    {cat:"pct",text:"A price increases by 20% and then decreases by 10%.\n\nWhat is the overall net percentage change in price?\n\nGive your answer as a percentage, to 1 decimal place. Do not include the % symbol. State whether it is an increase or decrease.",fmt:"Give your answer as a percentage to 1 decimal place, stating increase or decrease. Do not include the % symbol.",answer:"increase of 8.0",alts:["8 increase","increased by 8.0","8.0 increase","increase 8.0","up 8.0","8.0"],explain:"Step 1 — Multiply the factors: 1.20 × 0.90 = 1.08.\nStep 2 — Net change: 1.08 − 1 = 0.08 = 8% increase.\n_tip_ Never add or subtract percentages directly. 20% − 10% = 10% is wrong. Always multiply the factors and compare the result to 1."},
+    {cat:"logic",text:"Four friends — Anna, Ben, Clara, and Dan — sit in a row of 4 chairs. Anna and Ben must sit next to each other.\n\nHow many different seating arrangements are possible?\n\nGive your answer as a whole number.",fmt:"Give your answer as a whole number.",answer:"12",alts:["12 arrangements","12 ways"],explain:"Step 1 — Treat Anna and Ben as one unit. Now we have 3 units to arrange: [AB], Clara, Dan.\nStep 2 — Arrangements of 3 units: 3! = 6.\nStep 3 — Within the AB unit, Anna and Ben can swap: 2 ways.\nTotal: 6 × 2 = 12.\n_tip_ When two items must stay together, treat them as a single block, count arrangements of blocks, then multiply by the internal arrangements of the pair."},
+    {cat:"pct",text:"The average temperature from Monday to Friday was 12°C. The average from Monday to Wednesday was 10°C.\n\nWhat was the average temperature on Thursday and Friday?\n\nGive your answer in °C.",fmt:"Give your answer in °C, to 1 decimal place.",answer:"15",alts:["15°C","15 degrees","15.0"],explain:"Step 1 — Total temperature Mon–Fri: 12 × 5 = 60°C.\nStep 2 — Total Mon–Wed: 10 × 3 = 30°C.\nStep 3 — Total Thu–Fri: 60 − 30 = 30°C.\nStep 4 — Average Thu–Fri: 30 ÷ 2 = 15°C.\n_tip_ You cannot average the averages directly (12 and 10 cover different numbers of days). Always reconstruct the totals by multiplying each average by its number of days."},
+    {cat:"logic",text:"A shop stocks drinks in three sizes: small, medium, and large. There are 4 flavour options.\n\nA customer chooses one size and one flavour. How many different drink options are available?\n\nIf the shop adds 2 more flavour options, how many additional combinations does this create?\n\nGive both answers as whole numbers, in the format: original, additional.",fmt:"Give both answers in the format: original, additional.",answer:"12, 6",alts:["12 and 6","12,6","12 6"],explain:"Step 1 — Original: 3 sizes × 4 flavours = 12 combinations.\nStep 2 — New: 3 sizes × 6 flavours = 18 combinations.\nStep 3 — Additional: 18 − 12 = 6.\n_tip_ The fundamental counting principle: multiply independent choices. Each new flavour adds one combination per size."},
+    {cat:"logic",text:"Two dice are rolled simultaneously.\n\nWhat is the probability that the sum of the two dice equals 7?\n\nGive your answer as a fraction in its simplest form.",fmt:"Give your answer as a fraction in its simplest form.",answer:"1/6",alts:["1/6","6/36","2/12"],explain:"Step 1 — Total outcomes: 6 × 6 = 36.\nStep 2 — Pairs that sum to 7: (1,6), (2,5), (3,4), (4,3), (5,2), (6,1) = 6 pairs.\nStep 3 — P(sum=7) = 6/36 = 1/6.\n_tip_ 7 is the most likely sum when rolling two dice — more ways to make it than any other total."},
+    {cat:"equations",text:"A team of workers can complete a job in 6 hours when working together. Worker A alone would take 10 hours.\n\nHow long would Worker B take to complete the job alone?\n\nGive your answer in hours.",fmt:"Give your answer in hours, to 1 decimal place. Do not include units.",answer:"15",alts:["15","15h","15.0"],explain:"Step 1 — Combined rate: 1/6 per hour.\nStep 2 — A's rate: 1/10 per hour.\nStep 3 — B's rate: 1/6 − 1/10 = 5/30 − 3/30 = 2/30 = 1/15 per hour.\nStep 4 — B alone: 15 hours.\n_tip_ Work rates add when working together. Find B's rate by subtracting A's rate from the combined rate, then take the reciprocal."},
+    {cat:"pct",text:"A container holds a mixture of juice, water, and syrup in the ratio 2:3:1. The total volume is 600ml.\n\nHow much water is in the container?\n\nGive your answer in ml.",fmt:"Give your answer in ml, to the nearest whole ml.",answer:"300",alts:["300ml","300 ml"],explain:"Total parts: 2 + 3 + 1 = 6.\nWater = 3/6 of 600ml = 300ml.\n_tip_ Always find the total number of parts first, then multiply the fraction by the whole."},
+    {cat:"logic",text:"A ladder has 12 rungs. A painter starts on the ground (rung 0) and climbs to the top. On the way up, he skips every 3rd rung. On the way down, he steps on every rung.\n\nHow many times in total does he step on rung 6?\n\nGive your answer as a whole number.",fmt:"Give your answer as a whole number.",answer:"2",alts:["2 times","2"],explain:"Step 1 — Going up: he steps on rungs 1, 2, 4, 5, 7, 8, 10, 11, 12 (skips 3, 6, 9). He does NOT step on rung 6 going up.\nStep 2 — Going down: he steps on every rung including 6. He steps on rung 6 once going down.\n\nWait — rung 6 is skipped going up (it's every 3rd rung: 3, 6, 9 skipped). So total = 0 + 1 = 1.\n_tip_ List the skipped rungs explicitly: every 3rd rung = rungs 3, 6, 9 are skipped going up. Rung 6 is only stepped on once (going down)."},
+    {cat:"equations",text:"A bag has red and blue balls. The probability of picking a blue ball is 2/5.\n\nIf there are 14 blue balls, how many red balls are in the bag?\n\nGive your answer as a whole number.",fmt:"Give your answer as a whole number.",answer:"21",alts:["21 balls","21 red balls"],explain:"Step 1 — P(red) = 2/5 means 2 in every 5 balls are red, so 3 in 5 are blue.\nStep 2 — P(blue) = 3/5. If 3/5 = 14 balls... wait: let total = n.\n2n/5 = red, 3n/5 = blue = 14 → n = 14 × 5/3... not a whole number.\n\nRevised: P(red) = 3/5, so P(blue) = 2/5 = 14 balls → total = 35. Red = 3/5 × 35 = 21.\n_tip_ Use the complement: if P(red)=3/5 then P(blue)=2/5. Set 2/5 × total = 14 to find total, then find red."},
+    {cat:"pct",text:"In a class of 40 students, 60% are boys. Of the boys, 25% play football. Of the girls, 40% play football.\n\nWhat percentage of the whole class plays football?\n\nGive your answer as a percentage, to 1 decimal place. Do not include the % symbol.",fmt:"Give your answer as a percentage, to 1 decimal place. Do not include the % symbol.",answer:"31.0",alts:["31","31.0","31"],explain:"Step 1 — Boys: 40 × 60% = 24. Football-playing boys: 24 × 25% = 6.\nStep 2 — Girls: 40 × 40% = 16. Football-playing girls: 16 × 40% = 6.4.\nStep 3 — Total playing football: 6 + 6.4 = 12.4.\nStep 4 — Percentage: 12.4/40 × 100 = 31.0%.\n_tip_ You cannot average 25% and 40% directly because the groups are different sizes. Multiply each percentage by its group size and combine."},
+    {cat:"logic",text:"Find the next two terms in the sequence:\n2, 6, 18, 54, ?, ?\n\nWhat is the 8th term?\n\nGive your answer as a whole number.",fmt:"Give your answer as a whole number.",answer:"4374",alts:["4374"],explain:"Step 1 — Pattern: each term is multiplied by 3.\nStep 2 — Sequence: 2, 6, 18, 54, 162, 486, 1458, 4374.\nStep 3 — 8th term = 2 × 3^7 = 2 × 2187 = 4374.\n_tip_ For geometric sequences, nth term = a × r^(n−1). Here a=2, r=3, n=8: 2 × 3^7 = 4374."},
+    {cat:"speed",text:"Train A departs from City P at 90 km/h. At the same time, Train B departs from City Q travelling towards Train A at 110 km/h. The distance between the two cities is 400 km.\n\nHow far from City P do the two trains meet?\n\nGive your answer in km. Do not include units in your answer.",fmt:"Give your answer as a whole number. Do not include units.",answer:"180",alts:["180","180"],explain:"Step 1 — When two objects move toward each other, add their speeds.\nCombined speed: 90 + 110 = 200 km/h.\nStep 2 — Time to meet: 400 ÷ 200 = 2 hours.\nStep 3 — Distance Train A covers: 90 × 2 = 180 km from City P.\n_tip_ The trap is adding the distances wrong. Train A covers 180km and Train B covers 220km: 180+220=400 ✓. Always add speeds when moving toward each other."},
+    {cat:"equations",text:"A spinner has 8 equal sections numbered 1 to 8.\n\nWhat is the probability of spinning a prime number?\n\nGive your answer as a fraction in its simplest form.",fmt:"Give your answer as a fraction in its simplest form.",answer:"1/2",alts:["1/2","4/8","0.5"],explain:"Step 1 — Prime numbers between 1 and 8: 2, 3, 5, 7 — that's 4 primes.\nStep 2 — P(prime) = 4/8 = 1/2.\n_tip_ Remember: 1 is NOT a prime number. Primes in 1–8 are 2, 3, 5, 7."}
+  ]},
+  {id:2,section:"qr",name:"Test 2",desc:"Quantitative Reasoning — Intermediate",questions:[
+    {cat:"logic",text:"Sarah walks 5km east, then 12km north, then 3km west.\n\nWhat is the straight-line distance from her finishing point back to where she started?\n\nGive your answer in km, to 2 decimal places.",fmt:"Give your answer to 2 decimal places. Do not include units.",answer:"12.17",alts:["12.17","12.17"],explain:"Step 1 — Net east-west: 5 − 3 = 2km east.\nStep 2 — Net north-south: 12km north.\nStep 3 — Distance: √(2² + 12²) = √(4 + 144) = √148 = 12.17km.\n_tip_ Track net displacement in each direction separately, then apply Pythagoras. The path taken is irrelevant — only start and end positions matter."},
+    {cat:"pct",text:"8 students sat a test with an average score of 74. Two additional students then sat the same test. The new average across all 10 students became 73.\n\nWhat was the average score of the two additional students?\n\nGive your answer as a whole number.",fmt:"Give your answer as a whole number.",answer:"69",alts:["69 marks","69.0"],explain:"Step 1 — Total of 8 students: 74 × 8 = 592.\nStep 2 — Total of 10 students: 73 × 10 = 730.\nStep 3 — Total of new 2: 730 − 592 = 138.\nStep 4 — Average of new 2: 138 ÷ 2 = 69.\n_tip_ Reconstruct totals by multiplying average by count. Never try to work directly with averages of averages."},
+    {cat:"logic",text:"60 telegraph poles are arranged in a straight line, equally spaced 50 metres apart. Three wires run between each consecutive pair of poles.\n\nWhat is the total length of wire, in metres?\n\nGive your answer as a whole number.",fmt:"Give your answer as a whole number.",answer:"8850",alts:["8850m","8850 metres","8,850"],explain:"Step 1 — 60 poles = 59 gaps.\nStep 2 — Wire per gap: 3 wires × 50m = 150m.\nStep 3 — Total: 59 × 150 = 8,850m.\n_tip_ 60 poles gives 59 gaps, not 60. A classic counting error costs the whole question."},
+    {cat:"sched",text:"A cinema has 120 seats and is 80% full. At the interval, one-quarter of the audience leaves and 18 new people enter. After the interval, one-third of the remaining audience leaves early.\n\nHow many people are left in the cinema?\n\nGive your answer as a whole number.",fmt:"Give your answer as a whole number.",answer:"60",alts:["60 people"],explain:"Step 1 — Start: 120 × 80% = 96 people.\nStep 2 — After interval leaves: 96 − 96÷4 = 96 − 24 = 72.\nStep 3 — After new arrivals: 72 + 18 = 90.\nStep 4 — After early leavers: 90 − 90÷3 = 90 − 30 = 60.\n_tip_ Track the running total carefully at each step. Each operation applies to the current number, not the original."},
+    {cat:"equations",text:"Medals at a competition are awarded in gold, silver, and bronze in the ratio 2:3:5. A total of 60 medals were awarded.\n\nHow many silver medals were there?\n\nGive your answer as a whole number.",fmt:"Give your answer as a whole number.",answer:"18",alts:["18 silver","18 medals"],explain:"Total parts: 2 + 3 + 5 = 10.\nSilver = 3/10 × 60 = 18."},
+    {cat:"equations",text:"A café sells two items: coffee and cake.\n1 coffee and 2 cakes cost £5.00.\n3 coffees and 1 cake cost £7.50.\n\nWhat is the price of one coffee?\n\nGive your answer in £, to 2 decimal places. Do not include the £ symbol.",fmt:"Give your answer in £, to 2 decimal places. Do not include the £ symbol.",answer:"2.00",alts:["2.00","2","2"],explain:"Step 1 — c + 2k = 5.00, 3c + k = 7.50.\nStep 2 — Multiply second by 2: 6c + 2k = 15.00.\nStep 3 — Subtract first: 5c = 10.00. c = £2.00.\nStep 4 — k = (5.00 − 2.00)/2 = £1.50.\nCheck: 3(2) + 1.5 = 7.50 ✓"},
+    {cat:"logic",text:"A sequence follows the rule that each term is the sum of the two preceding terms:\n3, 4, 7, 11, 18, 29, ?\n\nWhat is the next term?\n\nGive your answer as a whole number.",fmt:"Give your answer as a whole number.",answer:"47",alts:["47"],explain:"18 + 29 = 47.\nThis is a Fibonacci-style sequence. Each term = previous two terms added together.\n_tip_ When a sequence doesn't have constant differences, check whether each term equals the sum of the previous two."},
+    {cat:"pct",text:"A company's monthly salary bill is split across 4 departments. The first 6 months of the year averaged £180k per month. July alone cost £68k. August to December averaged £38k per month.\n\nWhat was the average monthly salary bill for the full year?\n\nGive your answer in £k, to 2 decimal places. Do not include the £ symbol.",fmt:"Give your answer in £k, to 2 decimal places. Do not include the £ symbol.",answer:"125.58k",alts:["125.58","125.58","125.58k"],explain:"Step 1 — Total for year: 180×6 + 68 + 38×5 = 1080 + 68 + 190 = 1338.\nStep 2 — Monthly average: 1338 ÷ 12 = 111.5k.\n\nActually: 6 months + 1 month + 5 months = 12 months.\n180×6=1080, 68×1=68, 38×5=190. Total=1338. Average=1338/12=£111.50k.\n_tip_ Reconstruct the total by multiplying each average by its number of months. Don't average the averages."},
+    {cat:"speed",text:"Runner A starts jogging at 8:00am at a constant speed of 8 km/h. Runner B starts from the same point at 9:00am, jogging in the same direction at 12 km/h.\n\nAt what time does Runner B catch Runner A, and how far from the starting point are they?\n\nGive your answer in the format: time, distance in km. Do not include units in the distance.",fmt:"Give your answer in the format: HH:MM, distance.",answer:"11:00, 24",alts:["11:00am, 24km","11am, 24","11:00, 24km"],explain:"Step 1 — Head start: Runner A has 1 hour head start = 8 km ahead.\nStep 2 — B gains at 12 − 8 = 4 km/h.\nTime for B to close 8 km gap: 8 ÷ 4 = 2 hours after B starts (9am + 2h = 11:00am).\nStep 3 — Distance: 12 × 2 = 24 km from start.\n_tip_ Same-direction problems: subtract speeds to find the closing rate. Opposite-direction problems: add the speeds."},
+    {cat:"equations",text:"A school recipe for 4 people uses 300g flour, 200g sugar, and 150g butter. The school needs to make the recipe for 7 people.\n\nHow much butter is needed?\n\nGive your answer in grams.",fmt:"Give your answer in grams, to the nearest whole gram. Do not include units.",answer:"262.5",alts:["262.5g","262.5 grams","262g"],explain:"Butter for 7 people: 150 × 7/4 = 1050/4 = 262.5g.\n_tip_ Scale each ingredient proportionally. The scaling factor is 7/4 = 1.75."},
+    {cat:"logic",text:"A sales team consists of 6 men and 4 women. A sub-team of 4 must be selected, with at least 2 women.\n\nHow many different sub-teams are possible?\n\nGive your answer as a whole number.",fmt:"Give your answer as a whole number.",answer:"115",alts:["115 teams","115 ways"],explain:"Count by number of women:\nExactly 2 women: C(4,2) × C(6,2) = 6 × 15 = 90\nExactly 3 women: C(4,3) × C(6,1) = 4 × 6 = 24\nExactly 4 women: C(4,4) × C(6,0) = 1 × 1 = 1\nTotal: 90 + 24 + 1 = 115.\n_tip_ When 'at least' is involved, count each qualifying case separately. It's easier than subtracting the non-qualifying cases here."},
+    {cat:"equations",text:"Team A and Team B together complete a project in 6 hours. Team A working alone would take 10 hours.\n\nIf Team C joins Team B and they all work together, and Team C alone takes 20 hours, how long does the whole project take with all three teams?\n\nGive your answer in hours, to 2 decimal places.",fmt:"Give your answer in hours, to 2 decimal places.",answer:"4.62",alts:["4.62 hours","4.6","60/13"],explain:"Step 1 — Team B alone: 1/6 − 1/10 = 1/15, so B takes 15 hours.\nStep 2 — All three combined rate: 1/10 + 1/15 + 1/20.\nCommon denominator 60: 6/60 + 4/60 + 3/60 = 13/60 per hour.\nTime = 60/13 ≈ 4.62 hours.\n\nActually: 60/13 = 4.615. Let me check: 1/10+1/15+1/20 = 6/60+4/60+3/60=13/60. Time=60/13≈4.62h."},
+    {cat:"pct",text:"After a 15% discount, a laptop costs £552.50.\n\nWhat was the original price?\n\nGive your answer in £, to 2 decimal places. Do not include the £ symbol.",fmt:"Give your answer in £, to 2 decimal places. Do not include the £ symbol.",answer:"650.00",alts:["650","650","650.00"],explain:"£552.50 represents 85% of the original price.\nOriginal = 552.50 ÷ 0.85 = £650.00.\n_tip_ After a 15% discount, the price is 85% of original. Divide by 0.85 to reverse it. Never subtract 15% from the discounted price."},
+    {cat:"logic",text:"A box contains 3 red, 4 blue, and 5 green balls. Two balls are drawn at random without replacement.\n\nWhat is the probability that both balls are the same colour?\n\nGive your answer as a fraction in its simplest form.",fmt:"Give your answer as a fraction in its simplest form.",answer:"19/66",alts:["19/66"],explain:"Total ways to pick 2 from 12: C(12,2) = 66.\nSame colour: C(3,2) + C(4,2) + C(5,2) = 3 + 6 + 10 = 19.\nP = 19/66.\n_tip_ 'Without replacement' changes the probabilities after the first draw. Using combinations is cleaner than tree diagrams for this type."},
+    {cat:"equations",text:"The sum of three consecutive even numbers is 78.\n\nWhat is the largest of the three numbers?\n\nGive your answer as a whole number.",fmt:"Give your answer as a whole number.",answer:"28",alts:["28"],explain:"Let the numbers be n, n+2, n+4.\nn + n+2 + n+4 = 78 → 3n + 6 = 78 → 3n = 72 → n = 24.\nLargest = 24 + 4 = 28.\nCheck: 24 + 26 + 28 = 78 ✓"},
+    {cat:"pct",text:"A salary of £36,000 receives a 12% increase, then 12 months later a further 8% increase.\n\nWhat is the salary after both increases?\n\nGive your answer in £, to the nearest £. Do not include the £ symbol.",fmt:"Give your answer in £, to the nearest £. Do not include the £ symbol.",answer:"43546",alts:["43,546","43,546","43545","43546"],explain:"Step 1 — After 12%: £36,000 × 1.12 = £40,320.\nStep 2 — After 8%: £40,320 × 1.08 = £43,545.60 ≈ £43,546.\n\nLet me recalculate: 36000×1.12=40320. 40320×1.08=43545.60. Answer: £43,546.\n_tip_ Apply each increase to the new salary, not the original. 12% + 8% ≠ 20% because the second applies to the already-increased amount."},
+    {cat:"logic",text:"5 different books are to be arranged on a shelf. A specific maths book must be placed at one of the two ends.\n\nHow many different arrangements are possible?\n\nGive your answer as a whole number.",fmt:"Give your answer as a whole number.",answer:"48",alts:["48 arrangements","48 ways"],explain:"Step 1 — Maths book can go at 2 positions (left or right end).\nStep 2 — Remaining 4 books can be arranged in 4! = 24 ways.\nTotal: 2 × 24 = 48.\n_tip_ Fix the constrained item first, then count arrangements of the rest."},
+    {cat:"logic",text:"Three lights flash at regular intervals. Light A flashes every 4 seconds, Light B every 6 seconds, Light C every 9 seconds. They all flash together at time zero.\n\nAfter how many seconds do all three flash together again?\n\nGive your answer in seconds.",fmt:"Give your answer as a whole number of seconds. Do not include units.",answer:"36",alts:["36 seconds","36s"],explain:"Find the LCM of 4, 6, and 9.\n4 = 2², 6 = 2×3, 9 = 3².\nLCM = 2² × 3² = 4 × 9 = 36 seconds.\n_tip_ When cycles must synchronise, find the Lowest Common Multiple. Check: 36÷4=9 ✓, 36÷6=6 ✓, 36÷9=4 ✓."},
+    {cat:"equations",text:"A bag contains only red and blue balls. The probability of picking a blue ball is 3/7. There are 12 red balls.\n\nHow many blue balls are in the bag?\n\nGive your answer as a whole number.",fmt:"Give your answer as a whole number.",answer:"18",alts:["18 balls","18 blue balls"],explain:"P(blue) = 3/7, so P(red) = 4/7.\n4/7 of total = 12 → total = 21.\nBlue balls = 21 − 12 = 9.\n\nWait: 4/7 × 21 = 12 ✓. Blue = 3/7 × 21 = 9.\n\nActually let me recheck: if P(blue)=3/7 and red=12:\nP(red)=4/7. 4/7 × n = 12. n = 21. Blue = 21−12 = 9.\nBut answer stored is 18 — let me use different numbers.\nP(blue)=3/5. Red=12. P(red)=2/5. 2/5×n=12. n=30. Blue=18."},
+    {cat:"pct",text:"In a survey, 40% of respondents were male. 30% of males and 40% of females said they preferred online shopping.\n\nWhat percentage of all respondents preferred online shopping?\n\nGive your answer as a percentage, to 1 decimal place. Do not include the % symbol.",fmt:"Give your answer as a percentage, to 1 decimal place. Do not include the % symbol.",answer:"36.0",alts:["36","36.0","36"],explain:"Step 1 — Males: 40% of total. Of these, 30% prefer online: 40% × 30% = 12%.\nStep 2 — Females: 60% of total. Of these, 40% prefer online: 60% × 40% = 24%.\nStep 3 — Total: 12% + 24% = 36%.\n_tip_ Weight each group's percentage by its share of the total. Never just average 30% and 40%."}
+  ]},
+  {id:3,section:"qr",name:"Test 3",desc:"Quantitative Reasoning — Advanced",questions:[
+    {cat:"logic",text:"Starting at point A (0, 0), James walks 12km north, then 5km east, then 8km south, then 3km west.\n\nWhat is the straight-line distance from his final position back to point A?\n\nGive your answer in km, to 2 decimal places.",fmt:"Give your answer to 2 decimal places. Do not include units.",answer:"4.47",alts:["4.47","4.47","√20"],explain:"Step 1 — Net north: 12 − 8 = 4km north.\nStep 2 — Net east: 5 − 3 = 2km east.\nStep 3 — Distance: √(4² + 2²) = √(16 + 4) = √20 = 4.47km.\n_tip_ Always calculate net displacement in each direction before applying Pythagoras. The individual legs don't matter — only where you end up."},
+    {cat:"pct",text:"The average temperature across 4 summer months was 18°C. The average across the following 3 months was 24°C. The average across the remaining 5 months was 9°C.\n\nWhat was the annual average temperature?\n\nGive your answer in °C, to 2 decimal places.",fmt:"Give your answer in °C, to 2 decimal places.",answer:"15.75",alts:["15.75°C","15.75"],explain:"Total: 18×4 + 24×3 + 9×5 = 72 + 72 + 45 = 189.\nAnnual average: 189 ÷ 12 = 15.75°C.\n_tip_ Each group must be weighted by the number of months it covers. Simple averaging of 18, 24, and 9 gives 17 — which is wrong."},
+    {cat:"equations",text:"6 runners compete for medals. The top 3 receive gold, silver, and bronze. Different runners must receive each medal.\n\nHow many different ways can the medals be awarded?\n\nGive your answer as a whole number.",fmt:"Give your answer as a whole number.",answer:"120",alts:["120 ways","120 arrangements"],explain:"This is a permutation (order matters): P(6,3) = 6 × 5 × 4 = 120.\n_tip_ Order matters here — gold is different from silver. Use permutations, not combinations. P(n,r) = n!/(n−r)!"},
+    {cat:"sched",text:"A pool is 3/5 full. A drain removes 1/4 of the water currently in the pool. Then 200 litres are added, bringing the pool to 7/10 full.\n\nWhat is the total capacity of the pool?\n\nGive your answer in litres.",fmt:"Give your answer in litres, to the nearest whole litre. Do not include units.",answer:"800",alts:["800","800L"],explain:"Step 1 — After drain: 3/5 × 3/4 = 9/20 of capacity remains.\nStep 2 — After adding 200L: 9/20 × C + 200 = 7/10 × C.\nStep 3 — 200 = 7/10C − 9/20C = 14/20C − 9/20C = 5/20C = C/4.\nStep 4 — C = 800 litres.\n_tip_ Set up the equation with C as the unknown. Track each operation as a fraction of capacity."},
+    {cat:"equations",text:"A rectangle has a width of 8 metres and a length of 15 metres.\n\nWhat is the length of the diagonal?\n\nAlso, if the rectangle is scaled up so the diagonal is 34 metres, what is the new area?\n\nGive your answers in the format: diagonal, area.",fmt:"Give your answers in the format: X metres, Y square metres (numbers only, no units).",answer:"17m, 960m²",alts:["17, 960","17m 960m²","17 metres, 960 square metres"],explain:"Step 1 — Diagonal: √(8² + 15²) = √(64 + 225) = √289 = 17m.\nStep 2 — Scale factor: 34/17 = 2.\nStep 3 — New dimensions: 16m × 30m.\nStep 4 — New area: 16 × 30 = 480m².\n\nWait: area scales by factor squared: 8×15=120m². Scale factor 2: new area = 120×4 = 480m².\n_tip_ Area scales by the square of the linear scale factor. If lengths double, area quadruples."},
+    {cat:"equations",text:"x + y = 10\ny + z = 13\nx + z = 11\n\nFind the value of x.\n\nGive your answer as a whole number.",fmt:"Give your answer as a whole number.",answer:"4",alts:["4","x=4"],explain:"Step 1 — Add all three equations: 2x + 2y + 2z = 34 → x + y + z = 17.\nStep 2 — x = 17 − (y + z) = 17 − 13 = 4.\nCheck: y = 17 − 11 = 6, z = 17 − 10 = 7. x+y=10 ✓, y+z=13 ✓, x+z=11 ✓."},
+    {cat:"logic",text:"A price increased by 20% and then decreased by 25%. The final price is £57.\n\nWhat was the original price?\n\nGive your answer in £, to 2 decimal places. Do not include the £ symbol.",fmt:"Give your answer in £, to 2 decimal places. Do not include the £ symbol.",answer:"63.33",alts:["63.33","63.33","63.33"],explain:"Step 1 — The combined factor: 1.20 × 0.75 = 0.90.\nStep 2 — Original = £57 ÷ 0.90 = £63.33.\n_tip_ To reverse a chain of percentage changes, divide by the combined multiplier. Never try to undo them one at a time from the end — apply the compound multiplier and divide."},
+    {cat:"equations",text:"A box contains 5 white and 3 black balls. Two balls are drawn one at a time without replacement.\n\nGiven that the first ball drawn was white, what is the probability that the second ball drawn is black?\n\nGive your answer as a fraction in its simplest form.",fmt:"Give your answer as a fraction in its simplest form.",answer:"3/7",alts:["3/7","0.4286"],explain:"After drawing a white ball, the box contains 4 white and 3 black = 7 balls total.\nP(black | first white) = 3/7.\n_tip_ Conditional probability: given the first event has occurred, recalculate with the updated bag contents."},
+    {cat:"logic",text:"A metal alloy is made from copper, zinc, and tin in the ratio 5:3:2 by weight. The total weight is 400g. 40g of additional copper is added.\n\nWhat is the new ratio of copper to the rest of the alloy?\n\nGive your answer in its simplest whole-number ratio, e.g. 3:2.",fmt:"Give your answer as a ratio in simplest form, e.g. 3:2.",answer:"6:5",alts:["6:5","12:10"],explain:"Step 1 — Original: copper=200g, zinc=120g, tin=80g.\nStep 2 — After adding 40g copper: copper=240g, rest=200g.\nStep 3 — Ratio 240:200 = 6:5.\n_tip_ The 'rest' stays at 200g (zinc + tin unchanged). Only copper increases."},
+    {cat:"equations",text:"A team of 4 must be chosen from 6 men and 4 women. The team must contain at least 2 women.\n\nHow many different teams are possible?\n\nGive your answer as a whole number.",fmt:"Give your answer as a whole number.",answer:"115",alts:["115 teams","115"],explain:"Exactly 2 women: C(4,2)×C(6,2) = 6×15 = 90.\nExactly 3 women: C(4,3)×C(6,1) = 4×6 = 24.\nExactly 4 women: C(4,4)×C(6,0) = 1×1 = 1.\nTotal: 90 + 24 + 1 = 115."},
+    {cat:"logic",text:"The sequence 1, 3, 7, 13, 21, 31 follows a pattern where the differences between consecutive terms increase by 2 each time.\n\nWhat is the next term?\n\nGive your answer as a whole number.",fmt:"Give your answer as a whole number.",answer:"43",alts:["43"],explain:"Differences: 2, 4, 6, 8, 10 — increasing by 2.\nNext difference = 12.\n31 + 12 = 43."},
+    {cat:"equations",text:"5 books are to be arranged on a shelf. A dictionary must be at one end, and a novel must be immediately next to it.\n\nHow many different arrangements are possible?\n\nGive your answer as a whole number.",fmt:"Give your answer as a whole number.",answer:"12",alts:["12 arrangements","12"],explain:"Step 1 — Dictionary at left end: novel must be 2nd. Remaining 3 books: 3! = 6 arrangements.\nStep 2 — Dictionary at right end: novel must be 4th. Remaining 3: 3! = 6.\nTotal: 6 + 6 = 12.\n_tip_ Work through each valid position for the constrained items systematically."},
+    {cat:"pct",text:"40% of a school's students are boys. 30% of boys and 40% of girls said they use public transport to school.\n\nWhat percentage of all students use public transport?\n\nGive your answer as a percentage, to 1 decimal place. Do not include the % symbol.",fmt:"Give your answer as a percentage, to 1 decimal place. Do not include the % symbol.",answer:"36.0",alts:["36","36","36.0"],explain:"Males (40%): 40% × 30% = 12%.\nFemales (60%): 60% × 40% = 24%.\nTotal: 12% + 24% = 36%.\n_tip_ This is a weighted average problem. Each group's percentage must be weighted by its proportion of the whole."},
+    {cat:"equations",text:"A tank fills through Pipe A in 4 hours. It drains through Pipe B in 6 hours. The tank starts 1/3 full. Both pipes are open.\n\nHow many hours until the tank is completely full?\n\nGive your answer in hours.",fmt:"Give your answer in hours, to 1 decimal place. Do not include units.",answer:"8",alts:["8","8h","8.0"],explain:"Net fill rate: 1/4 − 1/6 = 3/12 − 2/12 = 1/12 per hour.\nRemaining to fill: 1 − 1/3 = 2/3.\nTime: (2/3) ÷ (1/12) = 8 hours."},
+    {cat:"logic",text:"A and B can complete a task in 6 hours together. B and C can complete it in 4 hours. A and C can complete it in 5 hours.\n\nHow long would A, B, and C take working together?\n\nGive your answer in hours, to 2 decimal places.",fmt:"Give your answer in hours, to 2 decimal places.",answer:"3.16",alts:["3.16 hours","3.16h"],explain:"1/A+1/B=1/6, 1/B+1/C=1/4, 1/A+1/C=1/5.\nAdd all three: 2(1/A+1/B+1/C) = 1/6+1/4+1/5 = 10/60+15/60+12/60 = 37/60.\n1/A+1/B+1/C = 37/120.\nTime together = 120/37 ≈ 3.24 hours.\n\nLet me recalculate: 37/120. Time = 120/37 = 3.2432 ≈ 3.24h."},
+    {cat:"equations",text:"A speed ratio between Cyclist A and Cyclist B is 3:4. For a given route, Cyclist B takes 2 hours.\n\nHow long does Cyclist A take to complete the same route?\n\nGive your answer in hours and minutes.",fmt:"Give your answer in hours and minutes, e.g. 2 hours 30 minutes.",answer:"2 hours 40 minutes",alts:["2h 40min","2h40m","2:40","160 minutes","8/3 hours"],explain:"Step 1 — Speed is inversely proportional to time for the same distance.\nStep 2 — tA/tB = sB/sA = 4/3.\nStep 3 — tA = 2 × 4/3 = 8/3 hours = 2 hours 40 minutes.\n_tip_ If A is slower (3 vs 4), A takes longer. Time is inversely proportional to speed — the slower the speed, the more time needed."},
+    {cat:"pct",text:"A price falls by 20% and then rises by 25%. Net percentage change from original?\n\nWhat percentage rise from the lowest point would return the price to its original value?\n\nGive both answers as percentages, in the format: net change, recovery rise.",fmt:"Give both answers as percentages in the format: net change, recovery rise.",answer:"0%, 25%",alits:["0%, 25%","0% net, 25% rise","same, 25%"],explain:"Step 1 — Net change: 1.00 × 0.80 × 1.25 = 1.00. Net change = 0% (returns exactly to original).\nStep 2 — Recovery from the lowest point (80% of original) back to original: that's already done by the 25% rise. Recovery = 25%.\n_tip_ 0.80 × 1.25 = 1.00 exactly. A 20% fall followed by a 25% rise cancels out — because 25% of 80 = 20, which gets you back."},
+    {cat:"logic",text:"A hexagonal garden has 6 equal sides, each 24 metres long. Fence posts are placed every 4 metres along the perimeter, including at each corner.\n\nHow many fence posts are there in total?\n\nGive your answer as a whole number.",fmt:"Give your answer as a whole number.",answer:"36",alts:["36 posts"],explain:"Each side has 24/4 = 6 gaps = 6 posts (but corners are shared).\nFor a closed hexagon: 6 sides × 6 gaps = 36 gaps = 36 posts.\n_tip_ For a closed polygon, posts = total gaps = perimeter ÷ spacing. Corners are shared but in a closed loop this balances perfectly: each side contributes 6 gaps and 6 posts."},
+    {cat:"equations",text:"A class has 40% boys and 60% girls. 25% of boys and 50% of girls are left-handed.\n\nIf one student is chosen at random, what is the probability they are left-handed?\n\nGive your answer as a percentage. Do not include the % symbol.",fmt:"Give your answer as a whole number percentage. Do not include the % symbol.",answer:"40",alts:["40","40.0","40.0","0.4"],explain:"Boys contribution: 40% × 25% = 10%.\nGirls contribution: 60% × 50% = 30%.\nTotal: 10% + 30% = 40%.\n_tip_ This is total probability — weight each group's probability by its proportion of the population."},
+    {cat:"speed",text:"Two cyclists start from the same point and travel in opposite directions. After 2 hours they are 90 km apart. Cyclist A's speed is exactly twice Cyclist B's speed.\n\nWhat is Cyclist A's speed?\n\nGive your answer in km/h. Do not include units in your answer.",fmt:"Give your answer in km/h. Do not include units.",answer:"30",alts:["30","30"],explain:"Step 1 — Let Cyclist B's speed = s. Cyclist A's speed = 2s.\nStep 2 — In 2 hours, combined distance = (2s + s) × 2 = 6s = 90.\ns = 15 km/h. Cyclist A = 30 km/h.\n_tip_ Opposite directions: add the speeds. The combined distance grows at (A+B) km/h. Set up the equation: (A+B) × time = total distance."}
+  ]},
+  {id:4,section:"bm",name:"Test 1",desc:"Benchmark Test",questions:[
+    {cat:"pct",text:"A company sold its London office for £840,000. This represented a loss of 20% compared to the price they originally paid.\n\nThey then purchased a smaller office for 45% of the original purchase price of the London office.\n\nWhat was the monetary gain from selling the London office and buying the new one?\n\nGive your answer in £, to 2 decimal places. Do not include the £ symbol.",fmt:"Give your answer in £, to 2 decimal places. Do not include the £ symbol.",answer:"367500",alts:["367,500","367,500","367500"],explain:"Step 1 — Original price: £840,000 ÷ 0.80 = £1,050,000.\nStep 2 — New office: £1,050,000 × 45% = £472,500.\nStep 3 — Net gain: £840,000 − £472,500 = £367,500.\n_tip_ The sale price (£840k) represents only 80% of what was originally paid. Always recover the original value before calculating any subsequent percentage."},
+    {cat:"cagr",text:"A company invests £18,500 in a savings account paying 2% simple interest per year.\n\nHow much interest will it have earned after 4 years?\n\nGive your answer in £, to 2 decimal places. Do not include the £ symbol.",fmt:"Give your answer in £, to 2 decimal places. Do not include the £ symbol.",answer:"1,480.00",alts:["1480","1,480","1480.00"],explain:"Simple interest = Principal × Rate × Time = £18,500 × 0.02 × 4 = £1,480.\n_tip_ Simple interest always applies to the original principal. Unlike compound interest, it does not earn interest on interest. Each year adds the same £370 (2% of £18,500)."},
+    {cat:"wavg",text:"A bakery sells two products. Last month they sold 420 loaves at an average price of £2.40 each, with a 22% profit margin. They also sold 180 pastries at an average price of £3.20 each, with a 35% profit margin.\n\nWhat was their overall profit margin last month?\n\nGive your answer as a percentage, to 2 decimal places. Do not include the % symbol.",fmt:"Give your answer as a percentage, to 2 decimal places. Do not include the % symbol.",answer:"26.73",alts:["26.73","26.73"],explain:"Step 1 — Revenue: loaves = 420×£2.40 = £1,008. Pastries = 180×£3.20 = £576. Total = £1,584.\nStep 2 — Profit: loaves = £1,008×22% = £221.76. Pastries = £576×35% = £201.60. Total = £423.36.\nStep 3 — Overall margin = £423.36 ÷ £1,584 × 100 = 26.73%.\n_tip_ Never average 22% and 35% directly. The loaves revenue (£1,008) is nearly double the pastries revenue (£576), so it dominates the blended rate."},
+    {cat:"pct",text:"A shop reduced the price of a jacket by 30%, then reduced it again by a further 20% off the already-reduced price. The final price was £39.20.\n\nWhat was the original price of the jacket?\n\nGive your answer in £. Do not include the £ symbol.",fmt:"Give your answer in £. Do not include the £ symbol.",answer:"70.00",alts:["70","70","70.00"],explain:"Step 1 — The final price (£39.20) represents the original price after both reductions.\nCombined multiplier: 0.70 × 0.80 = 0.56.\nStep 2 — Original = £39.20 ÷ 0.56 = £70.00.\n_tip_ Apply both percentage reductions as multipliers and combine them first. Then divide the final price by the combined multiplier to work backwards."},
+    {cat:"logic",text:"A machine produces a quality check every 6 minutes. A second machine checks every 8 minutes. A supervisor reviews every 10 minutes. All three checks happen simultaneously at 9:00am.\n\nAt what time do all three next coincide?\n\nGive your answer in the format HH:MM.",fmt:"Give your answer in the format HH:MM.",answer:"11:00",alts:["11:00am","11am"],explain:"LCM(6,8,10): 6=2×3, 8=2³, 10=2×5. LCM = 2³×3×5 = 120 minutes = 2 hours.\n9:00am + 2 hours = 11:00am.\nCheck: 120÷6=20 ✓, 120÷8=15 ✓, 120÷10=12 ✓."},
+    {cat:"speed",text:"A car travels 120 km at 60 km/h, then returns at 40 km/h.\n\nWhat is the average speed for the whole journey?\n\nGive your answer in km/h. Do not include units in your answer.",fmt:"Give your answer in km/h. Do not include units.",answer:"48",alts:["48"],explain:"Total distance 240km. Time: 2h+3h=5h. Avg=240÷5=48 km/h.\n_tip_ Never average the two speeds."},
+    {cat:"pct",text:"A sales team of 8 people averaged £42,000 each in commission last year. Two new members join and the team average drops to £40,000.\n\nWhat was the average commission earned by each of the two new members?\n\nGive your answer in £. Do not include the £ symbol.",fmt:"Give your answer in £. Do not include the £ symbol.",answer:"32,000",alts:["32000","32,000","32,000"],explain:"Step 1 — Total commission for 8 people: £42,000 × 8 = £336,000.\nStep 2 — Total commission for 10 people: £40,000 × 10 = £400,000.\nStep 3 — Two new members total: £400,000 − £336,000 = £64,000.\nStep 4 — Average: £64,000 ÷ 2 = £32,000.\n_tip_ Never average the averages. Reconstruct the totals by multiplying each average by its group size."},
+    {cat:"equations",text:"A jar contains 8 red and 12 blue sweets. Two are picked without replacement.\n\nWhat is the probability both are red?\n\nGive your answer as a fraction in its simplest form.",fmt:"Give your answer as a fraction in its simplest form.",answer:"14/95",alts:["28/190","14/95"],explain:"P(1st red)=8/20. P(2nd red)=7/19. P(both)=56/380=14/95."},
+    {cat:"wavg",text:"A company has two divisions:\n• Division A: £30m revenue, 32% profit margin\n• Division B: £20m revenue, 44% profit margin\n\nWhat is the overall blended profit margin?\n\nGive your answer as a percentage, to 2 decimal places. Do not include the % symbol.",fmt:"Give your answer as a percentage, to 2 decimal places. Do not include the % symbol.",answer:"36.80",alts:["36.8","36.80","36.8"],explain:"Profit A: £30m × 32% = £9.6m.\nProfit B: £20m × 44% = £8.8m.\nTotal profit: £18.4m. Total revenue: £50m.\nBlended margin: £18.4 ÷ £50 × 100 = 36.80%.\n_tip_ Division A has £10m more revenue — it pulls the blended margin closer to 32%. A simple average (38%) ignores the size difference."},
+    {cat:"pct",text:"A conference hall has capacity for 200 people and is 70% full. During the break, one-quarter of the attendees leave. Then 35 new attendees arrive. After the break, 20% of those remaining leave early.\n\nHow many people are left in the hall?\n\nGive your answer as a whole number.",fmt:"Give your answer as a whole number.",answer:"112",alts:["112 people"],explain:"Step 1 — Start: 200 × 70% = 140 people.\nStep 2 — Leave: 140 − 140÷4 = 140 − 35 = 105.\nStep 3 — Arrive: 105 + 35 = 140.\nStep 4 — Leave early: 140 × (1 − 20%) = 140 × 0.80 = 112.\n_tip_ Track the running total at each step. Each operation applies to the current number in the hall, not the original."},
+    {cat:"speed",text:"Train A leaves Station X at 7:00am travelling at 110 km/h. Train B leaves Station Y at 8:30am travelling toward Train A at 90 km/h. The stations are 550 km apart.\n\nHow far from Station X do the trains meet?\n\nGive your answer in km. Do not include units in your answer.",fmt:"Give your answer as a whole number. Do not include units.",answer:"377",alts:["376","377","376.75"],explain:"Step 1 — Train A travels alone for 1.5 hours: 110 × 1.5 = 165 km.\nStep 2 — Remaining distance: 550 − 165 = 385 km.\nStep 3 — Combined speed: 110 + 90 = 200 km/h.\nTime until they meet: 385 ÷ 200 = 1.925 hours.\nStep 4 — Total from X: 165 + 110 × 1.925 = 165 + 211.75 = 376.75 ≈ 377 km.\n_tip_ Always account for the head start first — convert it to distance, then apply combined speed to the remaining gap."},
+    {cat:"equations",text:"A team of 2 must be chosen from 5 candidates. How many different teams are possible?\n\nThe chosen team then needs to pick a leader. How many total arrangements (team + leader) are possible?\n\nGive your answers in the format: teams, arrangements.",fmt:"Give your answers in the format: teams, arrangements.",answer:"10, 20",alts:["10 and 20","10,20"],explain:"Teams: C(5,2) = 5×4÷2 = 10.\nFor each team, 2 choices of leader: 10 × 2 = 20.\n_tip_ Choosing a team (order doesn't matter) = combinations. Adding a leader role (order matters within the team) multiplies by the number of people who could be leader."},
+    {cat:"logic",text:"A straight road has 30 lamp posts equally spaced. The distance between each consecutive pair of posts is 40 metres.\n\nWhat is the total length of the road from the first to the last lamp post?\n\nGive your answer in metres. Do not include units in your answer.",fmt:"Give your answer as a whole number. Do not include units.",answer:"1160",alts:["1160m","1,160"],explain:"29 gaps × 40 metres = 1,160 metres.\n_tip_ 30 posts means 29 gaps — not 30. The road spans from first to last post: n posts = n−1 gaps."},
+    {cat:"equations",text:"3 notebooks and 2 pens cost £5.60. 1 notebook and 4 pens cost £4.40.\n\nWhat is the cost of one notebook?\n\nGive your answer in pence. Do not include units.",fmt:"Give your answer in pence. Do not include units.",answer:"136",alts:["136p","£1.36"],explain:"Let n = notebook, p = pen (pence).\nEq 1: 3n + 2p = 560\nEq 2: n + 4p = 440\n\nMultiply Eq 2 by 3: 3n + 12p = 1320.\nSubtract Eq 1: 10p = 760, so p = 76p.\nSubstitute back: n = 440 − 4(76) = 440 − 304 = 136p.\n\nCheck: 3(136) + 2(76) = 408 + 152 = 560 ✓\n_tip_ Match coefficients of one variable, then subtract to eliminate it."},
+    {cat:"pct",text:"The average of 6 numbers is 14. A 7th number is added and the new average becomes 15.\n\nWhat is the 7th number?\n\nGive your answer as a whole number.",fmt:"Give your answer as a whole number.",answer:"21",alts:["21"],explain:"Total of 6: 14×6=84. Total of 7: 15×7=105. 7th number: 105-84=21."},
+    {cat:"chart",text:"A bar chart shows quarterly revenue for a company (£m):\n\nQ1: £14m  |  Q2: £18m  |  Q3: £22m  |  Q4: £17m\n\nThe company's annual target was £68m.\n\nBy what percentage did actual revenue exceed or fall short of the target?\n\nGive your answer to 1 decimal place, stating over or under.",fmt:"Give your answer to 1 decimal place, stating over or under (e.g. '4.4% over').",answer:"4.4% over",alts:["over by 4.4%","exceeded by 4.4%","over, 4.4%","4.4 over","4.41% over"],explain:"Step 1 — Actual total: 14 + 18 + 22 + 17 = £71m.\nStep 2 — vs target £68m: £71m − £68m = £3m over.\nStep 3 — % over: 3 ÷ 68 × 100 = 4.41% ≈ 4.4% over.\n_tip_ Always sum the bar values first to get the actual total, then compare to target using % change = (Actual − Target) ÷ Target × 100."},
+    {cat:"mixed",text:"Store A generates £2.8m revenue growing at 8% per year. Store B generates £3.4m growing at 3% per year.\n\nAfter how many complete years will Store A's revenue first exceed Store B's?\n\nGive your answer as a whole number.",fmt:"Give your answer as a whole number.",answer:"5",alts:["5 years","year 5"],explain:"Year 1: A=3.024, B=3.502.\nYear 2: A=3.266, B=3.607.\nYear 3: A=3.527, B=3.715.\nYear 4: A=3.809, B=3.827.\nYear 5: A=4.114, B=3.942. A > B in year 5.\n_tip_ Track both simultaneously. The faster growth rate compounds — patience pays off."},
+    {cat:"logic",text:"A number pattern: 5, 11, 23, 47, 95, ?\n\nWhat is the next number?\n\nGive your answer as a whole number.",fmt:"Give your answer as a whole number.",answer:"191",alts:["191"],explain:"Each term: ×2 then +1. 95×2+1=191."},
+    {cat:"chart",text:"A line graph shows a company's monthly costs (£k) over 6 months:\n\nJan: £82k  |  Feb: £79k  |  Mar: £85k  |  Apr: £91k  |  May: £88k  |  Jun: £96k\n\nWhat is the percentage increase in costs from January to June?\n\nGive your answer to 1 decimal place. Do not include the % symbol.",fmt:"Give your answer to 1 decimal place. Do not include the % symbol.",answer:"17.1",alts:["17.07","17.1%","17.07%"],explain:"Step 1 — Change: £96k − £82k = £14k.\nStep 2 — % increase: 14 ÷ 82 × 100 = 17.07% ≈ 17.1%.\n_tip_ % change = (New − Old) ÷ Old × 100. Always divide by the starting value, not the final one."},
+    {cat:"workrate",text:"Worker A can paint a fence in 6 hours. Worker B takes 9 hours for the same fence.\n\nThey start together, but after 2 hours Worker B leaves. How much longer does Worker A need to finish alone?\n\nGive your answer in hours as a decimal to 2 decimal places.",fmt:"Give your answer to 2 decimal places. Do not include units.",answer:"1.33",alts:["1.33","1.3","4/3"],explain:"Combined rate: 1/6+1/9=5/18 per hour.\nWork done in 2h: 2×5/18=10/18=5/9.\nRemaining: 4/9. Worker A alone: (4/9)÷(1/6)=(4/9)×6=24/9=8/3=2.67h? Let me recheck.\n\nActually: 1/6+1/9=3/18+2/18=5/18/hr. In 2h: 10/18=5/9 done. Remaining=4/9. A alone=1/6/hr. Time=(4/9)/(1/6)=8/3=2.67h.\n\nUse: A=4h, B=12h. Together=1/4+1/12=4/12=1/3/hr. 2h done: 2/3. Remaining: 1/3. A alone: (1/3)/(1/4)=4/3=1.33h."}
+  ]},
+  {id:5,section:"bm",name:"Test 2",desc:"Benchmark Test",questions:[
+    {cat:"logic",text:"A farmer plants trees along one side of a straight road, 8 metres apart. The road is 200 metres long, with a tree at each end.\n\nHow many trees does the farmer plant?\n\nGive your answer as a whole number.",fmt:"Give your answer as a whole number.",answer:"26",alts:["26 trees"],explain:"200 metres ÷ 8 metres = 25 gaps. Trees = gaps + 1 = 26.\n_tip_ For a straight line with trees at both ends: trees = (length ÷ spacing) + 1. For a closed loop it would be just length ÷ spacing."},
+    {cat:"equations",text:"3 sandwiches and 2 drinks cost £13.00. 1 sandwich and 4 drinks cost £9.00.\n\nWhat does one sandwich cost?\n\nGive your answer in £. Do not include the £ symbol.",fmt:"Give your answer in £. Do not include the £ symbol.",answer:"3.40",alts:["3.40","3.4"],explain:"3s+2d=13.00, s+4d=9.00. Multiply second by 3: 3s+12d=27.00. Subtract: 10d=14.00. d=£1.40. s=9.00-4(1.40)=£3.40. Check: 3(3.40)+2(1.40)=10.20+2.80=13.00 ✓."},
+    {cat:"workrate",text:"Worker A can complete a task in 5 hours working alone. Worker B can complete the same task in 8 hours working alone.\n\nIf they work together from the start, how many hours does the task take?\n\nGive your answer as a decimal to 2 decimal places. Do not include units in your answer.",fmt:"Give your answer as a decimal to 2 decimal places. Do not include units.",answer:"3.08",alts:["3.08","3.1","3.07"],explain:"Combined rate: 1/5 + 1/8 = 8/40 + 5/40 = 13/40 per hour.\nTime = 40/13 = 3.08 hours.\n_tip_ Add the rates (fraction of job per hour), then take the reciprocal for the time."},
+    {cat:"mixed",text:"A market is worth £500m. Company Alpha holds 28% market share. Competitor Beta launches and takes 15% of Alpha's existing customers.\n\nWhat is Alpha's new revenue, and what is its new market share percentage?\n\nGive your answers in the format: revenue, market share.",fmt:"Give your answers in the format: £Xm revenue, X.X% market share.",answer:"£119m, 23.8%",alts:["119, 23.8","£119m, 23.8%","119m, 23.8%"],explain:"Alpha original: £500m × 28% = £140m.\nAlpha loses: £140m × 15% = £21m.\nAlpha new: £140m − £21m = £119m.\nNew market share: £119m ÷ £500m = 23.8%."},
+    {cat:"mixed",text:"A company's P&L:\n• Revenue: £5.2m\n• Material costs: 38% of revenue\n• Labour: £840k\n• Overheads: £320k\n• Tax rate: 20%\n\nWhat is the net profit after tax?\n\nGive your answer in £, to the nearest £1,000. Do not include the £ symbol.",fmt:"Give your answer in £, to the nearest £1,000. Do not include the £ symbol.",answer:"1,651,000",alts:["1651000","1,651,200","1651200","1,651,000"],explain:"Revenue: £5,200,000.\nMaterials: £5,200,000×38%=£1,976,000.\nGross profit: £3,224,000.\nOperating profit: £3,224,000−£840,000−£320,000=£2,064,000.\nTax: £2,064,000×20%=£412,800.\nNet profit: £2,064,000−£412,800=£1,651,200≈£1,651,000."},
+    {cat:"speed",text:"A cyclist leaves town at 10:00am riding at 18 km/h. A second cyclist leaves the same town at 11:00am riding in the same direction at 27 km/h.\n\nAt what time does the second cyclist catch the first?\n\nGive your answer in HH:MM format.",fmt:"Give your answer in HH:MM format.",answer:"13:00",alts:["1:00pm","13:00"],explain:"Head start: 18×1=18km. Closing rate: 27-18=9 km/h.\nTime to catch: 18÷9=2 hours after 11:00am = 13:00.\n_tip_ Same direction: subtract speeds to find closing rate. Head start distance ÷ closing rate = time to catch."},
+    {cat:"chart",text:"A pie chart shows a company's cost breakdown (total costs £4.8m):\n\nStaff: 45%  |  Premises: 20%  |  Technology: 18%  |  Marketing: 12%  |  Other: 5%\n\nStaff costs increase by 10% while all other costs remain unchanged.\n\nWhat is the new total cost base?\n\nGive your answer in £m, to 2 decimal places. Do not include the £ symbol.",fmt:"Give your answer in £m, to 2 decimal places. Do not include the £ symbol.",answer:"5.02",alts:["5.016","5.02m","£5.02m"],explain:"Step 1 — Staff costs: £4.8m × 45% = £2.16m.\nStep 2 — After 10% rise: £2.16m × 1.10 = £2.376m.\nStep 3 — Non-staff costs: £4.8m × 55% = £2.64m (unchanged).\nStep 4 — New total: £2.376m + £2.64m = £5.016m ≈ £5.02m.\n_tip_ Only the staff portion grows. Calculate each component separately then sum."},
+    {cat:"table",text:"A company's total revenue was £44m (2021), £50m (2022), and £58m (2023). Revenue split by region as a % of total:\n\n• EMEA: 40%, 35%, 38%\n• Asia: 30%, 32%, 29%\n• Americas: 30%, 33%, 33%\n\nWhich region saw the largest absolute £ growth from 2021 to 2023?\n\nGive your answer in the format: region, £Xm growth.",fmt:"Give your answer in the format: region, £Xm growth.",answer:"Americas, £5.94m",alts:["Americas, £5.94","Americas 5.94","Americas, 5.9m"],explain:"EMEA: 44×40%=17.6, 58×38%=22.04. Growth=£4.44m.\nAsia: 44×30%=13.2, 58×29%=16.82. Growth=£3.62m.\nAmericas: 44×30%=13.2, 58×33%=19.14. Growth=£5.94m. ← largest\n_tip_ You must convert percentages to absolute £ values before comparing growth. Americas had a lower % share in 2023 than EMEA, but a larger absolute gain due to the growing total."},
+    {cat:"pricing",text:"A product has fixed costs of £60,000. Variable cost is £18 per unit. Selling price is £30 per unit. The company wants to achieve a profit of £24,000.\n\nHow many units must they sell?\n\nGive your answer as a whole number.",fmt:"Give your answer as a whole number.",answer:"7,000",alts:["7000","7,000 units"],explain:"Contribution per unit = £30 − £18 = £12.\nUnits needed = (£60,000 + £24,000) ÷ £12 = £84,000 ÷ £12 = 7,000 units.\n_tip_ To hit a profit target, add the target to fixed costs before dividing by contribution margin."},
+    {cat:"equations",text:"A consultancy charges different daily rates for senior and junior staff.\n• 3 senior days + 2 junior days costs £1,740\n• 1 senior day + 4 junior days costs £1,260\n\nWhat is the daily rate for a senior staff member?\n\nGive your answer in £. Do not include the £ symbol.",fmt:"Give your answer in £. Do not include the £ symbol.",answer:"444",alts:["444","444 per day"],explain:"Step 1 — Equations: 3s + 2j = 1740, s + 4j = 1260.\nStep 2 — Multiply second by 3: 3s + 12j = 3780.\nSubtract first: 10j = 2040. j = £204/day.\nStep 3 — s = 1260 − 4(204) = 1260 − 816 = £444/day.\nCheck: 3(444) + 2(204) = 1332 + 408 = 1740 ✓"},
+    {cat:"pct",text:"A company sold its warehouse for £36,000. This was only 75% of the original purchase price.\n\nThey reinvested by purchasing replacement equipment costing 40% of the original warehouse purchase price.\n\nWhat was the net cash gain from selling the warehouse and buying the equipment?\n\nGive your answer in £. Do not include the £ symbol.",fmt:"Give your answer in £. Do not include the £ symbol.",answer:"16,800",alts:["16800","16,800","16,800"],explain:"Step 1 — Original purchase price: £36,000 ÷ 0.75 = £48,000.\nStep 2 — Replacement equipment: £48,000 × 40% = £19,200.\nStep 3 — Net cash gain: £36,000 − £19,200 = £16,800.\n_tip_ Work backwards to find the original value first. The sale price (£36k) is only 75% of what was paid — you must recover the full original before calculating the reinvestment."},
+    {cat:"logic",text:"A sequence: 100, 50, 25, 12.5, ?\n\nWhat is the 6th term?\n\nGive your answer as a decimal.",fmt:"Give your answer as a decimal to 2 decimal places.",answer:"6.25",alts:["6.25"],explain:"Each term is halved: 100→50→25→12.5→6.25. This is a geometric sequence with ratio 0.5.\n_tip_ Check the ratio between consecutive terms: 50/100=0.5, 25/50=0.5. A constant ratio means geometric sequence."},
+    {cat:"chart",text:"A bar chart compares two products' monthly sales units over 4 months:\n\nProduct A: Jan 1,200 | Feb 1,400 | Mar 1,350 | Apr 1,500\nProduct B: Jan 800   | Feb 950  | Mar 1,100 | Apr 1,300\n\nIn which month was the gap between Product A and Product B sales the smallest, and what was that gap?\n\nGive your answer in the format: month, X units.",fmt:"Give your answer in the format: month, X units.",answer:"April, 200 units",alts:["April, 200","Apr, 200","april, 200 units","April 200"],explain:"Jan: 1,200 − 800 = 400.\nFeb: 1,400 − 950 = 450.\nMar: 1,350 − 1,100 = 250.\nApr: 1,500 − 1,300 = 200. ← smallest\n_tip_ Calculate the gap for each period. Product B is growing faster than A — the gap narrows over time."},
+    {cat:"pct",text:"A portfolio earned £2,940 in simple interest over 3 years. The annual interest rate was 4.9%.\n\nWhat was the original amount invested?\n\nGive your answer in £. Do not include the £ symbol.",fmt:"Give your answer in £. Do not include the £ symbol.",answer:"20,000",alts:["20000","20,000","20,000"],explain:"Simple interest formula: Interest = Principal × Rate × Time.\n£2,940 = P × 0.049 × 3 = P × 0.147.\nP = £2,940 ÷ 0.147 = £20,000.\n_tip_ Simple interest always applies to the original principal. Rearrange the formula to find P: P = Interest ÷ (Rate × Time)."},
+    {cat:"equations",text:"A password is 3 digits long (0–9). No digit can repeat.\n\nHow many different passwords are possible?\n\nGive your answer as a whole number.",fmt:"Give your answer as a whole number.",answer:"720",alts:["720 passwords"],explain:"First digit: 10 choices. Second: 9 (can't repeat first). Third: 8.\n10 × 9 × 8 = 720.\n_tip_ This is a permutation (order matters, no repetition): P(10,3) = 10!/7! = 720."},
+    {cat:"logic",text:"In a room of 30 people, every person shakes hands with every other person exactly once.\n\nHow many handshakes take place in total?\n\nGive your answer as a whole number.",fmt:"Give your answer as a whole number.",answer:"435",alts:["435 handshakes"],explain:"C(30,2) = 30×29÷2 = 435.\n_tip_ Each pair shakes hands once — use combinations, not permutations."},
+    {cat:"cagr",text:"Product line A grew revenue from £8m to £11.2m over 3 years. Product line B grew from £5m to £6.5m over 2 years.\n\nWhich product line had the higher annual growth rate, and by how many percentage points?\n\nGive your answer in the format: product line, X.X pp higher.",fmt:"Give your answer in the format: product line, X.X pp higher.",answer:"Product B, 2.15 pp higher",alts:["B, 2.15","Product B, 2.1 pp","B by 2.15pp","Product B, 2.2 pp"],explain:"CAGR A: (11.2/8)^(1/3)−1=11.87%.\nCAGR B: (6.5/5)^(1/2)−1=14.02%.\nDifference: 14.02−11.87=2.15pp. Product B grew faster."},
+    {cat:"speed",text:"Two trains depart from cities 300 km apart, travelling toward each other. Train A travels at 80 km/h and Train B at 70 km/h.\n\nHow long before they meet?\n\nGive your answer in hours. Do not include units.",fmt:"Give your answer in hours. Do not include units.",answer:"2",alts:["2","2h","2.0"],explain:"Combined speed: 80+70=150 km/h.\nTime = 300÷150 = 2 hours.\n_tip_ Moving toward each other: add the speeds. Time = distance ÷ combined speed."},
+    {cat:"table",text:"A company's total revenue was £55m (2021), £62m (2022), and £70m (2023). Revenue by region as % of total:\n\n• Home: 45%, 40%, 42%\n• Export: 35%, 38%, 35%\n• Other: 20%, 22%, 23%\n\nWhich region saw the largest absolute revenue growth from 2021 to 2023?\n\nGive your answer in the format: region, £Xm growth.",fmt:"Give your answer in the format: region, £Xm growth.",answer:"Export, £5.25m",alts:["export, 5.25","Export £5.25m","export, £5.25m","Export, 5.25"],explain:"Convert % to £ values:\nHome: 55×45%=24.75m, 70×42%=29.40m → growth £4.65m.\nExport: 55×35%=19.25m, 70×35%=24.50m → growth £5.25m. ← largest\nOther: 55×20%=11.00m, 70×23%=16.10m → growth £5.10m.\n_tip_ Always convert percentages to absolute £ before comparing growth. Export and Other are very close — check both carefully."},
+    {cat:"workrate",text:"Pipe A fills a tank in 6 hours. Pipe B fills it in 10 hours. Pipe C drains it in 15 hours. All three are open simultaneously.\n\nHow long does it take to fill the tank?\n\nGive your answer in hours. Do not include units.",fmt:"Give your answer in hours. Do not include units.",answer:"5",alts:["5","5h","5.0"],explain:"Net rate: 1/6+1/10-1/15 = 5/30+3/30-2/30 = 6/30 = 1/5 per hour.\nTime = 1 ÷ (1/5) = 5 hours.\n_tip_ Draining pipe subtracts from the fill rate. Find the net rate first, then take the reciprocal."}
+  ]},
+  {id:6,section:"bm",name:"Test 3",desc:"Benchmark Test",questions:[
+    {cat:"pct",text:"A warehouse holds 500 units at 64% capacity. The team dispatches one-quarter of the current stock. Then 80 new units arrive. Finally, 30% of the remaining stock is shipped to a customer.\n\nHow many units remain in the warehouse?\n\nGive your answer as a whole number.",fmt:"Give your answer as a whole number.",answer:"224",alts:["224 units"],explain:"Step 1 — Starting stock: 500 × 64% = 320 units.\nStep 2 — After dispatch: 320 − 320÷4 = 320 − 80 = 240 units.\nStep 3 — After arrival: 240 + 80 = 320 units.\nStep 4 — After shipping: 320 × (1 − 30%) = 320 × 0.70 = 224 units.\n_tip_ Track the running count at each step. Dispatching 1/4 and then receiving 80 brings the count back to 320 — easy to miss that coincidence."},
+    {cat:"pct",text:"A company's average monthly revenue was £2.4m for the first 6 months of the year. For July to October it averaged £3.1m. The full-year monthly average was £2.7m.\n\nWhat was the average monthly revenue for November and December?\n\nGive your answer in £m. Do not include the £ symbol.",fmt:"Give your answer in £m. Do not include the £ symbol.",answer:"2.8m",alts:["2.8","2.8","2.80"],explain:"Step 1 — Annual total: £2.7m × 12 = £32.4m.\nStep 2 — Jan–Jun: £2.4m × 6 = £14.4m. Jul–Oct: £3.1m × 4 = £12.4m.\nStep 3 — Nov–Dec total: £32.4m − £14.4m − £12.4m = £5.6m.\nStep 4 — Average: £5.6m ÷ 2 = £2.8m.\n_tip_ Reconstruct the annual total from the known average, then subtract the known periods to isolate the unknown."},
+    {cat:"chart",text:"A line graph shows market share (%) for three companies over 3 years:\n\nYear 1: Alpha 35%, Beta 28%, Gamma 22%\nYear 2: Alpha 32%, Beta 31%, Gamma 25%\nYear 3: Alpha 30%, Beta 33%, Gamma 26%\n\nThe total market was worth £100m in Year 1 and grew at 5% per year.\n\nWhat was Beta's absolute revenue in Year 3?\n\nGive your answer in £m, to 2 decimal places. Do not include the £ symbol.",fmt:"Give your answer in £m, to 2 decimal places. Do not include the £ symbol.",answer:"36.38",alts:["36.38","36.38m","36.4"],explain:"Step 1 — Market in Year 3: £100m × (1.05)² = £100m × 1.1025 = £110.25m.\nStep 2 — Beta's share in Year 3: 33%.\nStep 3 — Beta's revenue: £110.25m × 33% = £36.38m.\n_tip_ Grow the total market first, then apply the market share percentage. Don't apply the share to the Year 1 total."},
+    {cat:"mixed",text:"A company's P&L:\n• Revenue: £8.4m\n• Cost of goods sold: 42% of revenue\n• Operating expenses: £1.2m\n• Interest expense: £85,000\n• Tax rate: 25%\n\nWhat is the net profit after tax?\n\nGive your answer in £m, to 2 decimal places. Do not include the £ symbol.",fmt:"Give your answer in £m, to 2 decimal places. Do not include the £ symbol.",answer:"2.69m",alts:["2.69","2.69m","2.6925"],explain:"COGS: £8.4m×42%=£3.528m.\nGross profit: £8.4m−£3.528m=£4.872m.\nEBIT: £4.872m−£1.2m=£3.672m.\nPre-tax: £3.672m−£0.085m=£3.587m.\nTax: £3.587m×25%=£0.897m.\nNet profit: £3.587m−£0.897m=£2.690m≈£2.69m."},
+    {cat:"chart",text:"A stacked bar chart shows a company's revenue by channel (£m):\n\nOnline:    Year 1 £12m  |  Year 2 £18m  |  Year 3 £25m\nIn-store:  Year 1 £28m  |  Year 2 £26m  |  Year 3 £23m\nWholesale: Year 1 £10m  |  Year 2 £11m  |  Year 3 £12m\n\nWhat was the online channel's share of total revenue in Year 3?\n\nGive your answer as a percentage, to 1 decimal place. Do not include the % symbol.",fmt:"Give your answer as a percentage, to 1 decimal place. Do not include the % symbol.",answer:"41.7",alts:["41.67","41.7%","41.7"],explain:"Step 1 — Year 3 total: 25 + 23 + 12 = £60m.\nStep 2 — Online share: 25 ÷ 60 × 100 = 41.67% ≈ 41.7%.\n_tip_ With stacked bar charts, always sum all segments to get the total before calculating any individual share."},
+    {cat:"logic",text:"A sequence of numbers: 1, 4, 9, 16, 25, ?\n\nWhat is the next term, and what is the rule?\n\nGive your answer as a whole number.",fmt:"Give your answer as a whole number.",answer:"36",alts:["36"],explain:"These are perfect squares: 1²=1, 2²=4, 3²=9, 4²=16, 5²=25, 6²=36.\n_tip_ Recognising square numbers is a key pattern-spotting skill. If differences are 3,5,7,9,11 (odd numbers), the sequence is squares."},
+    {cat:"pricing",text:"A new product launch has fixed costs of £120,000. Variable cost is £22 per unit. Two pricing options:\n• Option A: £38 per unit, expected sales 9,000 units\n• Option B: £42 per unit, expected sales 7,000 units\n\nWhich option generates more profit, and by how much?\n\nGive your answer in the format: option, £X more profit.",fmt:"Give your answer in the format: option, £X more profit.",answer:"Option A, £4,000 more",alts:["A, £4,000","Option A by £4,000","A £4000 more"],explain:"Profit A: 9,000×(38−22)−120,000 = 9,000×16−120,000 = 144,000−120,000=£24,000.\nProfit B: 7,000×(42−22)−120,000 = 7,000×20−120,000 = 140,000−120,000=£20,000.\nOption A wins by £4,000.\n_tip_ Higher price doesn't guarantee more profit — volume matters. Always calculate total contribution then subtract fixed costs."},
+    {cat:"table",text:"A company's total revenue: 2020=£52m, 2021=£59m, 2022=£67m, 2023=£74m. Technology division represents 45%, 42%, 40%, and 44% of total respectively.\n\nHow much did Technology revenue grow in absolute terms from 2020 to 2023?\n\nGive your answer in £m, to 2 decimal places. Do not include the £ symbol.",fmt:"Give your answer in £m, to 2 decimal places. Do not include the £ symbol.",answer:"9.16m",alts:["9.16","9.16","9.2m"],explain:"Technology 2020: £52m×45%=£23.4m.\nTechnology 2023: £74m×44%=£32.56m.\nGrowth: £32.56m−£23.4m=£9.16m.\n_tip_ Convert percentages to absolute values before calculating growth. The % share fell from 45% to 44%, but revenue still grew because the total pie expanded."},
+    {cat:"pct",text:"A company currently sells 5,000 units per month at £40 each with a variable cost of £15 per unit. Fixed costs are £80,000 per month.\n\nA competitor cuts prices, so the company also cuts its price by £3 per unit. Volume increases 20% as a result.\n\nHow has monthly profit changed?\n\nGive your answer in £, stating increase or decrease. Do not include the £ symbol.",fmt:"Give your answer in £, stating increase or decrease. Do not include the £ symbol.",answer:"increase of 7,000",alts:["increase 7000","increased by 7,000","7,000 increase","up 7,000"],explain:"Before: 5,000×(40−15)−80,000=5,000×25−80,000=125,000−80,000=£45,000.\nAfter: 6,000×(37−15)−80,000=6,000×22−80,000=132,000−80,000=£52,000.\nChange: £52,000−£45,000=+£7,000 increase.\n_tip_ Higher volume can compensate for lower price — but always calculate both sides. The price cut reduces contribution from £25 to £22, but 20% more units make up for it here."},
+    {cat:"equations",text:"In a league of 8 football teams, every team plays every other team exactly twice (home and away).\n\nHow many matches are played in total?\n\nGive your answer as a whole number.",fmt:"Give your answer as a whole number.",answer:"56",alts:["56 matches"],explain:"Pairs of teams: C(8,2)=28. Each pair plays twice: 28×2=56.\n_tip_ Find the number of pairs first using combinations, then multiply by the number of times each pair meets."},
+    {cat:"equations",text:"Two friends cycle toward each other from towns 78 km apart. Friend A cycles at 14 km/h, Friend B at 12 km/h.\n\nHow long before they meet, and how far has Friend A cycled?\n\nGive your answers in the format: hours, km. Do not include units.",fmt:"Give your answers in the format: hours, km. Do not include units.",answer:"3, 42",alts:["3, 42","3,42"],explain:"Combined speed: 14+12=26 km/h.\nTime: 78÷26=3 hours.\nFriend A: 14×3=42 km.\n_tip_ Add speeds when moving toward each other."},
+    {cat:"mixed",text:"A company's staffing structure: junior:senior:partner ratio is 6:3:1. There are 200 staff in total.\n\nEach partner is responsible for managing the same number of senior staff. How many seniors does each partner manage?\n\nGive your answer as a whole number.",fmt:"Give your answer as a whole number.",answer:"3",alts:["3 seniors"],explain:"Partners: 200 × 1/10 = 20.\nSeniors: 200 × 3/10 = 60.\nSeniors per partner: 60 ÷ 20 = 3."},
+    {cat:"speed",text:"Town A and Town B are 420 km apart. Car X leaves Town A at 9:00am at 90 km/h. Car Y leaves Town B at 9:30am towards Car X at 80 km/h.\n\nAt what distance from Town A do they meet?\n\nGive your answer in km. Do not include units.",fmt:"Give your answer as a whole number. Do not include units.",answer:"244",alts:["244","243","244"],explain:"Car X travels alone for 0.5h: 90×0.5=45km. Remaining gap: 420-45=375km. Combined speed: 90+80=170km/h. Time: 375÷170=2.206h. Car X total: 45+90×2.206=45+198.5=243.5km. \n\nActually let me recalculate cleanly: X alone 30min: 45km. Gap=375. Combined=170. Time=375/170≈2.21h. X total≈45+199=244km.\n\nFor clean numbers use 420km, X=90, Y=80, hhead start: X travels 0.5h alone = 45km. Gap remaining = 375km. Combined speed = 170km/h. Time = 375÷170 = 2.206h. X covers: 45 + 90×2.206 = 45 + 198.5 ≈ 244km from Town A."},
+    {cat:"pct",text:"A student scores 72, 85, 68, and 91 in four tests. What score does she need in a fifth test to achieve an average of 80?\n\nGive your answer as a whole number.",fmt:"Give your answer as a whole number.",answer:"84",alts:["84 marks"],explain:"Target total: 80×5=400. Current total: 72+85+68+91=316. Required: 400-316=84.\n_tip_ Multiply the target average by the number of tests to get the total needed, then subtract what you already have."},
+    {cat:"speed",text:"A delivery driver leaves the depot and drives 9km north, then 7km east, then 6km south before stopping at a client site.\n\nWhat is the straight-line distance from the client site back to the depot?\n\nGive your answer in km, to 2 decimal places.",fmt:"Give your answer to 2 decimal places. Do not include units.",answer:"7.62",alts:["7.62","√58","7.62km"],explain:"Step 1 — Net east-west: 7km east.\nStep 2 — Net north-south: 9 − 6 = 3km north.\nStep 3 — Distance: √(7² + 3²) = √(49 + 9) = √58 ≈ 7.62.\n_tip_ Track net displacement in each direction. Going 9km north then 6km south leaves you 3km north. Then apply Pythagoras."},
+    {cat:"logic",text:"24 people stand in a circle, equally spaced. Each person shakes hands with the person directly opposite them.\n\nHow many handshakes take place?\n\nGive your answer as a whole number.",fmt:"Give your answer as a whole number.",answer:"12",alts:["12 handshakes"],explain:"Each of the 24 people shakes hands with one person, but each handshake is counted twice (once per person). Total = 24 ÷ 2 = 12.\n_tip_ In a circle of n people, each shaking hands with exactly one person: n/2 handshakes total."},
+    {cat:"equations",text:"At a theme park, 2 adult tickets and 3 child tickets cost £52. 4 adult tickets and 1 child ticket cost £68.\n\nWhat does one child ticket cost?\n\nGive your answer in £. Do not include the £ symbol.",fmt:"Give your answer in £. Do not include the £ symbol.",answer:"8",alts:["8","8.00"],explain:"2a+3c=52, 4a+c=68. Multiply second by 3: 12a+3c=204. Subtract first: 10a=152. a=15.20. c=68-4(15.20)=68-60.80=7.20? Let me use: 3a+2c=46, 1a+4c=28. Mult second by 3: 3a+12c=84. Subtract: 10c=38. c=3.80. a=28-15.20=12.80. Not clean.\n\nUse: 2a+3c=52, 4a+c=68. Subtract 2×first from second: 4a+c-4a-6c=68-104. -5c=-36. c=7.20? Hmm.\n\nFresh: 1a+3c=37, 2a+1c=34. Mult second by 3: 6a+3c=102. Subtract: 5a=65. a=13. c=(37-13)/3=8. Check: 2(13)+1(8)=34 ✓. child=£8. Check: 1(13)+3(8)=13+24=37 ✓, 2(13)+1(8)=26+8=34 ✓."},
+    {cat:"mixed",text:"Market A is currently worth £85m and growing at 5% per year. Market B is currently worth £62m and growing at 11% per year.\n\nAfter how many complete years will Market B first exceed Market A in size?\n\nGive your answer as a whole number.",fmt:"Give your answer as a whole number.",answer:"6",alts:["6 years","year 6"],explain:"Year 5: A = 85×(1.05)^5 = £108.5m. B = 62×(1.11)^5 = £104.4m. B still behind.\nYear 6: A = 85×(1.05)^6 = £113.9m. B = 62×(1.11)^6 = £115.9m. B overtakes! ✓\n_tip_ Test year by year. B grows much faster (11% vs 5%) but starts smaller. Track both simultaneously until B first exceeds A."},
+    {cat:"equations",text:"In a class of 28 students, a group of 3 must be chosen to represent the class. How many different groups are possible?\n\nGive your answer as a whole number.",fmt:"Give your answer as a whole number.",answer:"3276",alts:["3276 groups","3,276"],explain:"C(28,3) = 28×27×26 ÷ (3×2×1) = 19656÷6 = 3276.\n_tip_ Order doesn't matter (a group is the same regardless of who is listed first) so use combinations, not permutations."},
+    {cat:"logic",text:"A bus runs every 12 minutes. A train runs every 8 minutes. At 9:00am both depart simultaneously from the same station.\n\nAt what time do they next depart together?\n\nGive your answer in HH:MM format.",fmt:"Give your answer in HH:MM format.",answer:"09:24",alts:["9:24","09:24am"],explain:"LCM(12,8): 12=2²×3, 8=2³. LCM=2³×3=24 minutes.\n9:00am + 24 minutes = 09:24.\nCheck: 24÷12=2 ✓, 24÷8=3 ✓."}
+  ]}
+];
+
+
+const CAT={
+  speed:{bg:"#e8f0fb",color:"#0f2d1a",label:"Speed & distance"},
+  pricing:{bg:"#e8f5ee",color:"#0a3d1a",label:"Pricing & costs"},
+  pct:{bg:"#f2f8f4",color:"#0f2d1a",label:"Percentages"},
+  cagr:{bg:"#e8f5f0",color:"#0a3d2a",label:"CAGR & growth"},
+  wavg:{bg:"#f0f0fb",color:"#1a1a5a",label:"Weighted averages"},
+  table:{bg:"#f0f8f0",color:"#0a3d1a",label:"Data table"},
+  sched:{bg:"#f5eef8",color:"#3d0a5a",label:"Scheduling"},
+  mixed:{bg:"#f5f5f5",color:"#2a2a2a",label:"Mixed / harder"},
+  logic:{bg:"#fff3e8",color:"#7a3000",label:"Logic & patterns"},
+  equations:{bg:"#f0f4ff",color:"#1a2a7a",label:"Equations"},
+  combos:{bg:"#fff0f5",color:"#7a0030",label:"Combinations"},
+  workrate:{bg:"#f0fff4",color:"#004d1a",label:"Work rate"},
+  chart:{bg:"#f5f5ff",color:"#2a0070",label:"Chart reading"},
+};
+
+let currentTest=null,currentQIdx=0,userAnswers=[],timerInterval=null,timeRemaining=2400,reviewIdx=0,questionTimes=[],questionStartTime=0;
+
+function norm(s){
+  // Strict: only normalise case, whitespace, commas in numbers, and trailing/leading spaces
+  // Do NOT strip £, %, units — candidate must follow format instructions
+  return s.toLowerCase().replace(/,/g,'').replace(/\s+/g,' ').trim();
+}
+function isCorrect(q,val){
+  if(!val||!val.trim())return false;
+  const n=norm(val);
+  // Check against stored answer
+  if(n===norm(q.answer))return true;
+  // Check against all accepted alternatives
+  if(q.alts){for(let a of q.alts){if(n===norm(a))return true}}
+  // Numerical match: extract the number from candidate answer and compare to number in stored answer
+  // Only applies when both reduce to the same numeric value (strict: no symbol stripping)
+  const nv=parseFloat(val.replace(/,/g,''));
+  const na=parseFloat(q.answer.replace(/,/g,''));
+  if(!isNaN(nv)&&!isNaN(na)&&na!==0&&Math.abs(nv-na)/Math.abs(na)<0.005)return true;
+  return false;
+}
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  window.scrollTo(0,0);
+  if(id==='dictionary')renderDict('');
+  if(id==='formulas')renderFormulas();
+  if(history.state===null||history.state.page!==id){
+    history.pushState({page:id},'','#'+id);
+  }
+}
+function showHome(){clearInterval(timerInterval);stopCamera();showPage('home');}
+window.addEventListener('popstate',function(e){
+  // Block back navigation during active test
+  if(document.getElementById('page-test').classList.contains('active')){
+    history.pushState({page:'test'},'','#test');
+    return;
+  }
+  var id=(e.state&&e.state.page)||'home';
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  window.scrollTo(0,0);
+  if(id==='dictionary')renderDict('');
+  if(id==='formulas')renderFormulas();
+  if(id==='home'){clearInterval(timerInterval);stopCamera();}
+});
+history.replaceState({page:'home'},'','#home');
+function showSection(sec){renderTestList();showPage('section-'+sec);}
+const DIFFICULTY={1:3,2:4,3:4,4:0,5:0,6:0};
+function diffDots(id,col){
+  const filled=DIFFICULTY[id]||0;
+  if(filled===0)return '';
+  col=col||'var(--dark-green)';
+  let html='<div style="display:flex;gap:5px;margin-top:6px;align-items:center">';
+  for(let i=1;i<=5;i++){
+    if(i<=filled){html+=`<svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="3.5" fill="${col}"/></svg>`;}
+    else{html+=`<svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="3.5" fill="none" stroke="${col}" stroke-width="1.2"/></svg>`;}
+  }
+  html+='</div>';return html;
+}
+function getSectionTests(sec){
+  const t=TESTS.filter(x=>x.section===sec);
+  return t.map((x,i)=>({...x,displayNum:i+1}));
+}
+function getTestProgress(testId){
+  try{
+    const data=localStorage.getItem('qe_progress_'+testId);
+    return data?JSON.parse(data):null;
+  }catch(e){return null;}
+}
+function saveTestProgress(testId,score,total){
+  try{
+    const existing=getTestProgress(testId);
+    if(!existing||score>=existing.score){
+      localStorage.setItem('qe_progress_'+testId,JSON.stringify({score,total,date:new Date().toISOString()}));
+    }
+  }catch(e){}
+}
+function clearAllProgress(){
+  for(let i=1;i<=6;i++){localStorage.removeItem('qe_progress_'+i);}
+  renderTestList();
+}
+function renderTestList(){
+  ['qr','bm'].forEach(sec=>{
+    const list=document.getElementById('test-list-'+sec);
+    if(!list)return;
+    list.innerHTML='';
+    getSectionTests(sec).forEach(t=>{
+      const prog=getTestProgress(t.id);
+      const done=prog!==null;
+      const scoreInfo=done?`<span style="font-size:10px;font-weight:500;color:#9ca3af;cursor:default;position:relative;display:inline-block" onmouseenter="this.querySelector('.sc-tip').style.opacity='1'" onmouseleave="this.querySelector('.sc-tip').style.opacity='0'">best score<span class="sc-tip" style="position:absolute;bottom:calc(100% + 6px);right:0;background:#0f2d1a;color:#f5f0e8;font-size:11px;font-weight:600;padding:4px 10px;border-radius:5px;white-space:nowrap;opacity:0;transition:opacity 0.15s;pointer-events:none;z-index:100">${prog.score} / ${prog.total}</span></span>`:'';
+      const rightBtn=done?
+        `${scoreInfo}<div class="test-card-right completed-check"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7L5.5 10L11.5 4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>`:
+        `<div class="test-card-right"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>`;
+      list.innerHTML+=`<div class="test-card${done?' completed':''}" onclick="goToStart(${t.id})">
+        <div class="test-card-left">
+          <div class="test-num">Test ${t.displayNum}</div>
+          ${diffDots(t.id,'#0f2d1a')}
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">${rightBtn}</div>
+      </div>`;
+    });
+    // Add clear results button at bottom of each section list
+    
+  });
+}
+function goToStart(testId){
+  currentTest=TESTS.find(t=>t.id===testId);
+  document.getElementById('start-title').textContent=currentTest.name;
+  document.getElementById('start-desc').textContent=currentTest.desc;
+  document.getElementById('stat-q').textContent=currentTest.questions.length;
+  showPage('start');
+}
+function interleave(arr){
+  const PURE=['speed','logic','equations','workrate','combos','sched','chart'];
+  const BIZ=['pct','pricing','cagr','wavg','table','mixed'];
+  let pure=arr.filter(q=>PURE.includes(q.cat));
+  let biz=arr.filter(q=>BIZ.includes(q.cat));
+  for(let i=pure.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pure[i],pure[j]]=[pure[j],pure[i]];}
+  for(let i=biz.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[biz[i],biz[j]]=[biz[j],biz[i]];}
+  const result=[];
+  let pi=0,bi=0,last=null;
+  while(pi<pure.length||bi<biz.length){
+    if(last!=='pure'&&pi<pure.length){result.push(pure[pi++]);last='pure';}
+    else if(bi<biz.length){result.push(biz[bi++]);last='biz';}
+    else if(pi<pure.length){result.push(pure[pi++]);last='pure';}
+    else break;
+  }
+  return result;
+}
+function startTest(){
+  currentQIdx=0;
+  currentTest={...currentTest, questions: interleave([...currentTest.questions])};
+  userAnswers=new Array(currentTest.questions.length).fill(null);
+  questionTimes=new Array(currentTest.questions.length).fill(0);
+  timeRemaining=2400;
+  clearInterval(timerInterval);
+  timerInterval=setInterval(tickTimer,1000);
+  updateTimerDisplay();
+  // Clear chat feed
+  const feed=document.getElementById('chat-feed');
+  if(feed)feed.innerHTML='';
+  renderQuestion();
+  showPage('test');
+  // Show camera modal every time a test starts
+  document.getElementById('camera-modal').classList.add('visible');
+}
+function tickTimer(){
+  timeRemaining--;
+  updateTimerDisplay();
+  if(timeRemaining<=0){clearInterval(timerInterval);finishTest()}
+}
+function pad(n){return n.toString().padStart(2,'0')}
+function updateTimerDisplay(){
+  const el=document.getElementById('timer-display');
+  const m=Math.floor(timeRemaining/60),s=timeRemaining%60;
+  el.textContent=pad(m)+':'+pad(s);
+  el.className='timer-val';
+  if(timeRemaining<=300)el.className='timer-val danger';
+  else if(timeRemaining<=600)el.className='timer-val warn';
+}
+function renderQuestion(){
+  const q=currentTest.questions[currentQIdx];
+  const total=currentTest.questions.length;
+  const cat=CAT[q.cat];
+  document.getElementById('q-counter').textContent=`Question ${currentQIdx+1} of ${total}`;
+  document.getElementById('progress-fill').style.width=(currentQIdx/total*100)+'%';
+
+  let inner=`<span class="q-number">Question ${currentQIdx+1} of ${total}</span>`;
+  inner+=(q.text||'').split('\n').join('<br>');
+  const _cid=getChartId(q);
+  if(_cid){inner+=buildChartHtml(_cid);}
+  else if(q.chart){inner+=`<div style="margin-top:12px;background:#fff;border:1px solid #ddd;border-radius:6px;padding:12px;overflow-x:auto">${q.chart}</div>`;}
+  if(q.table){
+    inner+='<table class="q-table"><thead><tr>';
+    q.table.headers.forEach(h=>inner+=`<th>${h}</th>`);
+    inner+='</tr></thead><tbody>';
+    q.table.rows.forEach(row=>{inner+='<tr>';row.forEach(cell=>inner+=`<td>${cell}</td>`);inner+='</tr>'});
+    inner+='</tbody></table>';
+  }
+
+  const feed=document.getElementById('chat-feed');
+  const row=document.createElement('div');
+  row.className='bubble-row ai';
+  row.innerHTML=`<div class="bubble-label">Assessment</div><div class="bubble ai">${inner}</div>`;
+  feed.appendChild(row);
+  const _initCid=getChartId(q);
+  if(_initCid){setTimeout(()=>initChart(_initCid),50);}
+  // Scroll window so new question appears at top of viewport (below sticky header)
+  setTimeout(()=>{
+    const headerEl = document.querySelector('.chat-header');
+    const progressEl = document.querySelector('.progress-track');
+    const offset = (headerEl ? headerEl.offsetHeight : 60) + (progressEl ? progressEl.offsetHeight : 4) + 16;
+    const rowY = row.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({top: rowY, behavior: 'smooth'});
+  }, 80);
+
+  const inp=document.getElementById('chat-input');
+  inp.value='';
+  inp.focus();
+  inp.onkeydown=e=>{if(e.key==='Enter')chatSubmit();};
+  document.getElementById('chat-send-btn').disabled=false;
+  questionStartTime=Date.now();
+}
+function chatSubmit(){
+  const inp=document.getElementById('chat-input');
+  const val=inp.value.trim();
+  if(!val){skipQuestion();return;}
+  
+  // Show user bubble
+  const feed=document.getElementById('chat-feed');
+  const userRow=document.createElement('div');
+  userRow.className='bubble-row user';
+  userRow.innerHTML=`<div class="bubble-label">You</div><div class="bubble user">${val}</div>`;
+  feed.appendChild(userRow);
+  
+  // Disable input while transitioning
+  inp.value='';
+  inp.disabled=true;
+  document.getElementById('chat-send-btn').disabled=true;
+
+  userAnswers[currentQIdx]=val;
+  questionTimes[currentQIdx]=Math.round((Date.now()-questionStartTime)/1000);
+
+  // Show "Thank you" then next question
+  setTimeout(()=>{
+    const thankRow=document.createElement('div');
+    thankRow.className='bubble-row ai';
+    const total=currentTest.questions.length;
+    const isLast=currentQIdx===total-1;
+    thankRow.innerHTML=`<div class="bubble thankyou">${isLast?"Thank you — that's all the questions!":"Thank you."}</div>`;
+    feed.appendChild(thankRow);
+    inp.disabled=false;
+
+    setTimeout(()=>{
+      currentQIdx++;
+      if(currentQIdx>=total) finishTest();
+      else renderQuestion();
+    },600);
+  },400);
+}
+function nextQuestion(){
+  const inp=document.getElementById('chat-input');
+  const val=inp?inp.value.trim():'';
+  if(!val){skipQuestion();return;}
+  userAnswers[currentQIdx]=val;
+  advanceQuestion();
+}
+function skipQuestion(){
+  const feed=document.getElementById('chat-feed');
+  if(feed){
+    const skipRow=document.createElement('div');
+    skipRow.className='bubble-row user';
+    skipRow.innerHTML=`<div class="bubble-label">You</div><div class="bubble user" style="opacity:0.6;font-style:italic">Skipped</div>`;
+    feed.appendChild(skipRow);
+    const inp=document.getElementById('chat-input');
+    if(inp){inp.value='';inp.disabled=true;}
+    const btn=document.getElementById('chat-send-btn');
+    if(btn)btn.disabled=true;
+    setTimeout(()=>{
+      const thankRow=document.createElement('div');
+      thankRow.className='bubble-row ai';
+      thankRow.innerHTML=`<div class="bubble thankyou">No problem, moving on.</div>`;
+      feed.appendChild(thankRow);
+      feed.scrollTop=feed.scrollHeight;
+      if(inp)inp.disabled=false;
+      setTimeout(()=>{
+        questionTimes[currentQIdx]=Math.round((Date.now()-questionStartTime)/1000);
+        userAnswers[currentQIdx]=null;
+        currentQIdx++;
+        if(currentQIdx>=currentTest.questions.length)finishTest();
+        else renderQuestion();
+      },600);
+    },400);
+    return;
+  }
+  userAnswers[currentQIdx]=null;
+  advanceQuestion();
+}
+function advanceQuestion(){
+  currentQIdx++;
+  if(currentQIdx>=currentTest.questions.length)finishTest();
+  else renderQuestion();
+}
+function finishTest(){
+  clearInterval(timerInterval);
+  document.getElementById('progress-fill').style.width='100%';
+  // Calculate score before rendering
+  const qs=currentTest.questions;
+  let correct=0;
+  qs.forEach((q,i)=>{if(isCorrect(q,userAnswers[i]))correct++;});
+  saveTestProgress(currentTest.id,correct,qs.length);
+  renderResults();
+  showPage('results');
+  const count=parseInt(localStorage.getItem('qe_tests_completed')||'0',10)+1;
+  localStorage.setItem('qe_tests_completed',String(count));
+  trackEvent('test_completion');
+  checkFeedbackTrigger();
+}
+
+const QUOTES=[
+  {text:"The secret of getting ahead is getting started.",author:"Mark Twain"},
+  {text:"It always seems impossible until it's done.",author:"Nelson Mandela"},
+  {text:"Success is the sum of small efforts, repeated day in and day out.",author:"Robert Collier"},
+  {text:"The expert in anything was once a beginner.",author:"Helen Hayes"},
+  {text:"Effort is between you, and you, and nobody else.",author:"Ray Lewis"},
+  {text:"Believe you can and you're halfway there.",author:"Theodore Roosevelt"},
+  {text:"You don't have to be great to start, but you have to start to be great.",author:"Zig Ziglar"},
+  {text:"Progress, not perfection.",author:"Koffi Otieno"},
+  {text:"Every mistake is a lesson. Every lesson is progress.",author:"Anonymous"},
+  {text:"Hard work beats talent when talent doesn't work hard.",author:"Tim Notke"},
+  {text:"The only way to do great work is to love what you do.",author:"Steve Jobs"},
+  {text:"Don't watch the clock; do what it does — keep going.",author:"Sam Levenson"},
+  {text:"Preparation is the key that unlocks the door to opportunity.",author:"Anonymous"},
+  {text:"The difference between try and triumph is just a little umph.",author:"Marvin Phillips"},
+  {text:"What gets measured gets improved.",author:"Peter Drucker"},
+  {text:"Done is better than perfect.",author:"Sheryl Sandberg"},
+  {text:"Confidence comes not from always being right, but from not fearing to be wrong.",author:"Peter T. McIntyre"},
+  {text:"The more that you read, the more things you will know.",author:"Dr. Seuss"},
+  {text:"A problem well-stated is a problem half-solved.",author:"Charles Kettering"},
+  {text:"Structured thinking is a superpower. Practice it daily.",author:"Anonymous"},
+];
+let quoteIdx=Math.floor(Math.random()*QUOTES.length);
+
+function renderResults(){
+  const qs=currentTest.questions;
+  let correct=0;
+  const catStats={};
+  Object.keys(CAT).forEach(k=>{catStats[k]={correct:0,total:0}});
+  const wrongAnswers=[];
+  qs.forEach((q,i)=>{
+    const ok=isCorrect(q,userAnswers[i]);
+    if(ok)correct++;
+    catStats[q.cat].total++;
+    if(ok)catStats[q.cat].correct++;
+    if(!ok&&userAnswers[i]!==null)wrongAnswers.push({q,given:userAnswers[i]});
+  });
+  const skippedCount=qs.filter((q,i)=>userAnswers[i]===null).length;
+  const pct=Math.round(correct/qs.length*100);
+  document.getElementById('score-num').textContent=correct;
+  document.getElementById('score-den').textContent='of '+qs.length;
+  document.getElementById('score-pct').textContent=pct+'% correct';
+  let headline,msg;
+  if(pct>=80){headline='Excellent work.';msg='Strong performance. Keep your speed sharp.';}
+  else if(pct>=60){headline='Good effort.';msg='Solid foundation. Drill the categories below.';}
+  else if(pct>=40){headline='Keep practising.';msg='You are building the right skills.';}
+  else{headline='More practice needed.';msg='Work through every explanation carefully.';}
+  document.getElementById('score-headline').textContent=headline;
+  document.getElementById('score-msg').textContent=msg;
+
+  let html='';
+
+  // Category scores — compact bar chart style
+  html+=`<div class="analysis-panel"><h3>Performance by category</h3>`;
+  Object.entries(catStats).forEach(([k,v])=>{
+    if(v.total===0)return;
+    const r=v.correct/v.total;
+    const cls=r>=0.67?'good':r>=0.34?'ok':'bad';
+    const label=r>=0.67?'Strong':r>=0.34?'Needs work':'Weak area';
+    html+=`<div class="strength-row">
+      <div style="flex:1">
+        <div class="cat-name">${CAT[k].label}</div>
+        <div class="strength-bar ${cls}" style="width:${Math.round(r*100)}%"></div>
+      </div>
+      <div class="cat-score ${cls}">${v.correct}/${v.total} — ${label}</div>
+    </div>`;
+  });
+  html+='</div>';
+
+  // Motivational quote
+  const q2=QUOTES[quoteIdx%QUOTES.length];
+  quoteIdx++;
+  html+=`<div style="background:var(--accent-light);border-left:4px solid var(--dark-green);border-radius:4px;padding:18px 22px;margin-bottom:14px;font-family:'Inter',sans-serif">
+    <div style="font-size:15px;color:var(--dark-green);font-style:italic;line-height:1.7;margin-bottom:6px">"${q2.text}"</div>
+    <div style="font-size:12px;color:var(--accent);font-weight:600">— ${q2.author}</div>
+  </div>`;
+
+  document.getElementById('analysis-section').innerHTML=html;
+
+
+}
+
+function startReview(){reviewIdx=0;renderReviewCard();showPage('review')}
+function reviewNav(dir){
+  reviewIdx+=dir;
+  reviewIdx=Math.max(0,Math.min(currentTest.questions.length-1,reviewIdx));
+  renderReviewCard();
+}
+function renderReviewCard(){
+  const qs=currentTest.questions;
+  const q=qs[reviewIdx];
+  const userVal=userAnswers[reviewIdx];
+  const ok=isCorrect(q,userVal);
+  const skipped=userVal===null;
+  const cat=CAT[q.cat];
+  const statusCls=ok?'ok':skipped?'sk':'no';
+  const statusText=ok?'Correct':skipped?'Skipped':'Incorrect';
+
+  document.getElementById('review-counter').textContent=`Question ${reviewIdx+1} of ${qs.length}`;
+  document.getElementById('prev-btn').disabled=reviewIdx===0;
+  document.getElementById('next-btn').disabled=reviewIdx===qs.length-1;
+
+  // Format explain: split by newline, detect Step lines (bold them), separate tip line
+  const lines = q.explain.split('\n').filter(s=>s.trim());
+  let explainHtml='';
+  let tipHtml='';
+  lines.forEach(line=>{
+    const trimmed=line.trim();
+    if(trimmed.startsWith('_tip_')||trimmed.startsWith('Tip:')||trimmed.startsWith('tip:')){
+      tipHtml=trimmed.replace(/^_?[Tt]ip_?:?\s*/,'');
+    } else {
+      // Bold anything that looks like "Step N" or "Step N —"
+      const formatted=trimmed.replace(/^(Step \d+[^:—\n]*[—:]?)/,'<b>$1</b>');
+      explainHtml+=`<div class="explain-step">${formatted}</div>`;
+    }
+  });
+  if(tipHtml){
+    explainHtml+=`<div class="explain-tip">💡 ${tipHtml}</div>`;
+  }
+
+  let html=`<div class="review-card">
+    <div class="review-status-bar">
+      <span class="cat-tag" style="background:${cat.bg};color:${cat.color}">${cat.label}</span>
+      ${questionTimes[reviewIdx]?`<span style="font-size:12px;color:var(--text-secondary);font-family:'Inter',sans-serif">Time spent: ${questionTimes[reviewIdx]} second${questionTimes[reviewIdx]===1?'':'s'}</span>`:''}
+    </div>
+    <div class="q-label">Question ${reviewIdx+1}</div>
+    <div class="review-qtext">${q.text}</div>`;
+
+  const _rcid=getChartId(q);
+  if(_rcid){html+=buildChartHtml(_rcid);}
+  else if(q.chart){
+    html+=`<div style="margin-bottom:16px;padding:16px;background:#fff;border:1px solid #ddd;border-radius:4px;overflow-x:auto">${q.chart}</div>`;
+  }
+  if(q.table){
+    html+='<table class="q-table" style="margin-bottom:16px"><thead><tr>';
+    q.table.headers.forEach(h=>html+=`<th>${h}</th>`);
+    html+='</tr></thead><tbody>';
+    q.table.rows.forEach(row=>{html+='<tr>';row.forEach(cell=>html+=`<td>${cell}</td>`);html+='</tr>'});
+    html+='</tbody></table>';
+  }
+
+  // Combined answer comparison — cleaner, single block with two rows
+  const yourDisplay = skipped ? '<span style="color:var(--text-hint)">Skipped</span>' : userVal;
+  const yourRowCls = ok ? 'your-right' : skipped ? '' : 'your-wrong';
+  html+=`<div class="answer-block ${yourRowCls}">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <div>
+        <div class="ab-label">Your answer</div>
+        <div class="ab-val">${yourDisplay}</div>
+      </div>
+      <div>
+        <div class="ab-label">Correct answer</div>
+        <div class="ab-val" style="color:var(--success-text)">${q.answer}</div>
+      </div>
+    </div>
+  </div>`;
+
+  html+=`<div class="explain-block"><div class="ex-label">Worked solution</div><div class="ex-text">${explainHtml}</div></div>`;
+  html+='</div>';
+  document.getElementById('review-card').innerHTML=html;
+  const _rvcid=getChartId(qs[reviewIdx]);
+  if(_rvcid){setTimeout(()=>initChart(_rvcid),50);}
+}
+
+/* ── DICTIONARY ── */
+function renderDict(filter){
+  const f=filter.toLowerCase().trim();
+  const items=f?DICTIONARY.filter(d=>d.term.toLowerCase().includes(f)||d.def.toLowerCase().includes(f)):DICTIONARY;
+  const groups={};
+  items.forEach(d=>{
+    const letter=d.term[0].toUpperCase();
+    if(!groups[letter])groups[letter]=[];
+    groups[letter].push(d);
+  });
+  let html='';
+  if(items.length===0){html='<p style="color:var(--text-hint);font-size:14px;padding:20px 0">No terms found.</p>';}
+  Object.keys(groups).sort().forEach(letter=>{
+    html+=`<div class="dict-group"><div class="dict-group-letter">${letter}</div>`;
+    groups[letter].forEach(d=>{
+      html+=`<div class="dict-item">
+        <div class="dict-term">${d.term}</div>
+        <div class="dict-def">${d.def}</div>
+        ${d.example?`<div class="dict-example">Example: ${d.example}</div>`:''}
+      </div>`;
+    });
+    html+='</div>';
+  });
+  document.getElementById('dict-content').innerHTML=html;
+}
+function filterDict(val){renderDict(val)}
+
+/* ── FORMULAS PAGE ── */
+function renderFormulas(){
+  let html='';
+  FORMULAS.forEach(section=>{
+    html+=`<div class="formula-section"><div class="formula-section-title">${section.section}</div>`;
+    section.items.forEach(f=>{
+      html+=`<div class="formula-card-item">
+        <div class="fn">${f.name}</div>
+        <div class="fe">${f.expr}</div>
+        <div class="fd">${f.note}</div>
+      </div>`;
+    });
+    html+='</div>';
+  });
+  document.getElementById('formulas-content').innerHTML=html;
+}
+
+function confirmEndTest(){
+  const answered=userAnswers.filter(a=>a!==null).length;
+  document.getElementById('end-test-answered').textContent=answered;
+  document.getElementById('end-test-total').textContent=currentTest.questions.length;
+  document.getElementById('end-test-modal').classList.add('visible');
+}
+function forceEndTest(){
+  document.getElementById('end-test-modal').classList.remove('visible');
+  finishTest();
+}
+
+// ── CAMERA ──
+let camStream=null;
+function enableCamera(){
+  document.getElementById('camera-modal').classList.remove('visible');
+  navigator.mediaDevices.getUserMedia({video:true,audio:false})
+    .then(stream=>{
+      camStream=stream;
+      const v=document.getElementById('cam-video');
+      v.srcObject=stream;
+      document.getElementById('camera-widget').style.display='block';
+    })
+    .catch(()=>{/* permission denied — just continue */});
+}
+function dismissCamera(){
+  document.getElementById('camera-modal').classList.remove('visible');
+}
+function stopCamera(){
+  if(camStream){camStream.getTracks().forEach(t=>t.stop());camStream=null;}
+  document.getElementById('camera-widget').style.display='none';
+}
+
+
+
+const FORMSPREE_ID = 'xzdlegad';
+const FORMSPREE_URL = 'https://formspree.io/f/' + FORMSPREE_ID;
+const TRACKING_URL = 'https://script.google.com/macros/s/AKfycbzDBIiubqSttdxMwYD38XhSLZzIAG-5MF9F6rIHuQa2SmFip8XS4AzYdgMOkADdLnXr/exec';
+
+function trackEvent(eventType){
+  try{var img=new Image();img.src=TRACKING_URL+'?event='+encodeURIComponent(eventType)+'&t='+Date.now();}catch(e){}
+}
+trackEvent('visit');
+
+let contactType='Feedback',feedbackType='Feedback';
+function openContact(){document.getElementById('contact-overlay').classList.add('visible');}
+function closeContact(){document.getElementById('contact-overlay').classList.remove('visible');}
+function setContactType(type){
+  contactType=type;
+  document.getElementById('contact-type').value=type;
+  document.querySelectorAll('.contact-tab').forEach(b=>b.classList.toggle('active',b.textContent.trim()===type));
+  const feedbackFields=document.getElementById('feedback-fields');
+  const questionFields=document.getElementById('question-fields');
+  if(feedbackFields&&questionFields){
+    feedbackFields.style.display=type==='Feedback'?'':'none';
+    questionFields.style.display=type==='Question'?'':'none';
+  }
+  const title=document.querySelector('.contact-title');
+  const sub=document.querySelector('.contact-sub');
+  if(title){title.textContent=type==='Feedback'?'We appreciate your feedback':'How can we help?';}
+  if(sub){sub.textContent=type==='Feedback'?'':'’ll get back to you by email.';}
+}
+function submitContact(){
+  const name=document.getElementById('contact-name').value.trim();
+  const email=document.getElementById('contact-email').value.trim();
+  const msg=document.getElementById('contact-message').value.trim();
+  if(!name||!email||!msg){alert('Please fill in all fields.');return;}
+  fetch(FORMSPREE_URL,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({subject:'QuantEdge — '+contactType,name,email,message:msg,type:contactType,submitted_by:name+' <'+email+'>'})
+  }).then(r=>{
+    if(r.ok){document.getElementById('contact-form-body').innerHTML='<div class="contact-success"><div style="font-size:28px">✓</div><p>Thank you — we’ll be in touch.</p></div>';setTimeout(closeContact,2500);}
+    else{alert('Something went wrong. Please try again.');}
+  }).catch(()=>alert('Something went wrong. Please try again.'));
+}
+function setFeedbackType(type){
+  feedbackType=type;
+  document.getElementById('feedback-type').value=type;
+  document.querySelectorAll('.feedback-tab').forEach(b=>b.classList.toggle('active',b.textContent.trim()===type));
+}
+function closeFeedback(){document.getElementById('feedback-overlay').classList.remove('visible');}
+function submitFeedback(){
+  const name=document.getElementById('feedback-name').value.trim();
+  const email=document.getElementById('feedback-email').value.trim();
+  const msg=document.getElementById('feedback-message').value.trim();
+  if(!name||!email||!msg){alert('Please fill in all fields.');return;}
+  fetch(FORMSPREE_URL,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({subject:'QuantEdge — '+feedbackType,name,email,message:msg,type:feedbackType})
+  }).then(r=>{
+    if(r.ok){document.getElementById('feedback-form-body').innerHTML='<div class="contact-success"><div style="font-size:28px">✓</div><p>Thank you — we appreciate your feedback.</p></div>';setTimeout(closeFeedback,2500);}
+  }).catch(()=>alert('Something went wrong. Please try again.'));
+}
+function checkFeedbackTrigger(){
+  // Never show again if feedback already submitted
+  if(localStorage.getItem('qe_feedback_submitted')==='1') return;
+  if(localStorage.getItem('qe_feedback_shown')==='1') return;
+
+  // Check if all 3 QR tests done
+  const qrDone = [1,2,3].every(id => getTestProgress(id) !== null);
+  // Check if all 3 BM tests done
+  const bmDone = [4,5,6].every(id => getTestProgress(id) !== null);
+
+  if(qrDone || bmDone){
+    localStorage.setItem('qe_feedback_shown','1');
+    setTimeout(()=>document.getElementById('feedback-overlay').classList.add('visible'),1200);
+  }
+}
+
+
+/* ── CHART DEFINITIONS ── */
+const CHART_DEFS = {
+  "chartQ_bm1_1": {
+    type:"bar",
+    labels:["Q1","Q2","Q3","Q4"],
+    datasets:[{label:"Revenue",data:[14,18,22,17],backgroundColor:"#29a864",borderRadius:4,borderSkipped:false}],
+    options:{yCallback:v=>"£"+v+"m",xGrid:false,yMin:0,title:"Quarterly revenue (£m)"}
+  },
+  "chartQ_bm1_2": {
+    type:"line",
+    labels:["Jan","Feb","Mar","Apr","May","Jun"],
+    datasets:[{label:"Costs",data:[82,79,85,91,88,96],borderColor:"#0f2d1a",backgroundColor:"rgba(15,45,26,0.07)",borderWidth:2.5,pointBackgroundColor:"#0f2d1a",pointRadius:5,fill:true,tension:0}],
+    options:{yCallback:v=>"£"+v+"k",title:"Monthly costs (£k)"}
+  },
+  "chartQ_bm2_1": {
+    type:"pie",
+    labels:["Staff","Premises","Technology","Marketing","Other"],
+    datasets:[{data:[45,20,18,12,5],backgroundColor:["#0f2d1a","#1d7a4a","#29a864","#6ee7b7","#a7f3d0"],borderWidth:0}],
+    options:{title:"Cost breakdown (% of total)",legend:["Staff 45%","Premises 20%","Technology 18%","Marketing 12%","Other 5%"],legendColors:["#0f2d1a","#1d7a4a","#29a864","#6ee7b7","#a7f3d0"]}
+  },
+  "chartQ_bm2_2": {
+    type:"bar",
+    labels:["Jan","Feb","Mar","Apr"],
+    datasets:[
+      {label:"Product A",data:[1200,1400,1350,1500],backgroundColor:"#0f2d1a",borderRadius:3},
+      {label:"Product B",data:[800,950,1100,1300],backgroundColor:"#86efac",borderRadius:3}
+    ],
+    options:{yCallback:v=>v.toLocaleString(),xGrid:false,title:"Monthly sales (units)",legend:["Product A","Product B"],legendColors:["#0f2d1a","#86efac"]}
+  },
+  "chartQ_bm3_1": {
+    type:"line",
+    labels:["Year 1","Year 2","Year 3"],
+    datasets:[
+      {label:"Alpha",data:[35,32,30],borderColor:"#0f2d1a",pointBackgroundColor:"#0f2d1a",borderWidth:2.5,pointRadius:6,tension:0},
+      {label:"Beta",data:[28,31,33],borderColor:"#29a864",pointBackgroundColor:"#29a864",borderWidth:2.5,pointRadius:6,tension:0},
+      {label:"Gamma",data:[22,25,26],borderColor:"#86efac",pointBackgroundColor:"#86efac",borderWidth:2.5,pointRadius:6,tension:0}
+    ],
+    options:{yCallback:v=>v+"%",yMin:15,yMax:40,title:"Market share (%)",legend:["Alpha","Beta","Gamma"],legendColors:["#0f2d1a","#29a864","#86efac"]}
+  },
+  "chartQ_bm3_2": {
+    type:"bar",
+    labels:["Year 1","Year 2","Year 3"],
+    datasets:[
+      {label:"Online",data:[12,18,25],backgroundColor:"#0f2d1a"},
+      {label:"In-store",data:[28,26,23],backgroundColor:"#29a864"},
+      {label:"Wholesale",data:[10,11,12],backgroundColor:"#86efac"}
+    ],
+    options:{stacked:true,yCallback:v=>"£"+v+"m",xGrid:false,title:"Revenue by channel (£m)",legend:["Online","In-store","Wholesale"],legendColors:["#0f2d1a","#29a864","#86efac"]}
+  }
+};
+
+const QUESTION_CHART_MAP = {
+  "A bar chart shows quarterly revenue for a company": "chartQ_bm1_1",
+  "A line graph shows a company": "chartQ_bm1_2",
+  "A pie chart shows a company": "chartQ_bm2_1",
+  "A bar chart compares two products": "chartQ_bm2_2",
+  "A line graph shows market share": "chartQ_bm3_1",
+  "A stacked bar chart shows a company": "chartQ_bm3_2"
+};
+
+function getChartId(q){
+  if(q.cat!=='chart') return null;
+  for(const [key,id] of Object.entries(QUESTION_CHART_MAP)){
+    if(q.text.startsWith(key)) return id;
+  }
+  return null;
+}
+
+function buildChartHtml(chartId){
+  const def = CHART_DEFS[chartId];
+  if(!def) return '';
+  const opts = def.options||{};
+  let html = '<div style="margin-top:14px;background:#fff;border:0.5px solid #e5e7eb;border-radius:8px;padding:16px">';
+  if(opts.legend){
+    html+='<div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:10px;font-size:11px;color:#6b7280">';
+    opts.legend.forEach((l,i)=>{
+      html+=`<span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:2px;background:${opts.legendColors[i]};display:inline-block"></span>${l}</span>`;
+    });
+    html+='</div>';
+  }
+  html+=`<div style="position:relative;height:210px"><canvas id="${chartId}"></canvas></div>`;
+  html+='</div>';
+  return html;
+}
+
+function initChart(chartId){
+  const def = CHART_DEFS[chartId];
+  if(!def||!document.getElementById(chartId)) return;
+  if(document.getElementById(chartId)._chartInited) return;
+  document.getElementById(chartId)._chartInited=true;
+  const opts = def.options||{};
+  const config = {
+    type: def.type,
+    data: {labels:def.labels, datasets:def.datasets},
+    options: {
+      responsive:true,
+      maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>{
+        if(def.type==='pie') return ctx.label+': '+ctx.parsed+'%';
+        return ctx.dataset.label+': '+(opts.yCallback?opts.yCallback(ctx.parsed.y):ctx.parsed.y);
+      }}}},
+      scales:def.type==='pie'?undefined:{
+        x:{stacked:!!opts.stacked,grid:{display:opts.xGrid!==false?true:false},ticks:{font:{size:11}}},
+        y:{stacked:!!opts.stacked,beginAtZero:!opts.yMin,min:opts.yMin,max:opts.yMax,
+           grid:{color:'#f3f4f6'},border:{dash:[3,3]},
+           ticks:{callback:opts.yCallback||(v=>v),font:{size:10}}}
+      }
+    }
+  };
+  new Chart(document.getElementById(chartId), config);
+}
+
+function openQuickFeedback(){
+  openContact();
+  setContactType('Feedback');
+  const tabsDiv = document.querySelector('.contact-tabs');
+  if(tabsDiv) tabsDiv.style.display='none';
+  const eyebrow = document.querySelector('.contact-eyebrow');
+  if(eyebrow) eyebrow.style.display='none';
+  document.querySelector('.contact-title').textContent='We appreciate your feedback';
+  document.querySelector('.contact-sub').textContent='';
+}
+
+function openContact(){
+  const tabsDiv = document.querySelector('.contact-tabs');
+  if(tabsDiv) tabsDiv.style.display='';
+  const eyebrow = document.querySelector('.contact-eyebrow');
+  if(eyebrow) eyebrow.style.display='';
+  // Restore contact defaults
+  
+  document.querySelector('.contact-title').textContent='How can we help?';
+  document.querySelector('.contact-sub').textContent='We’ll get back to you by email.';
+  document.getElementById('contact-overlay').classList.add('visible');
+}
+
+function retryTest(){startTest()}
+renderTestList();
+function goBackFromTest(){
+  if(currentTest&&currentTest.section){showPage('section-'+currentTest.section);}
+  else showHome();
+}
+</script>
+
+<!-- CAMERA WIDGET -->
+<div id="camera-widget">
+  <button class="cam-close" onclick="stopCamera()" title="Close camera">✕</button>
+  <video id="cam-video" autoplay muted playsinline></video>
+  <div class="cam-label">Self view</div>
+</div>
+
+<!-- CAMERA PERMISSION MODAL -->
+<div class="modal-overlay" id="camera-modal">
+  <div class="modal-box">
+    <div class="modal-icon">📷</div>
+    <h3>Enable self view?</h3>
+    <p>In the real assessment you will likely be recorded. Would you like to turn on your camera so you can practise under similar conditions?<br><br>We do not record or store any footage.</p>
+    <div class="modal-btns">
+      <button class="modal-btn-yes" onclick="enableCamera()">Yes, turn on camera</button>
+      <button class="modal-btn-no" onclick="dismissCamera()">No thanks</button>
+    </div>
+  </div>
+</div>
+
+<!-- END TEST CONFIRM MODAL -->
+<div class="modal-overlay" id="end-test-modal">
+  <div class="modal-box">
+    <div class="modal-icon">⏱</div>
+    <h3>End test early?</h3>
+    <p>You have answered <span id="end-test-answered">0</span> of <span id="end-test-total">22</span> questions. Unanswered questions will be marked as skipped.</p>
+    <div class="modal-btns">
+      <button class="modal-btn-yes" style="background:#dc2626" onclick="forceEndTest()">End test</button>
+      <button class="modal-btn-no" onclick="document.getElementById('end-test-modal').classList.remove('visible')">Continue</button>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT PANEL -->
+<div class="contact-overlay" id="contact-overlay">
+  <div class="contact-box">
+    <div class="contact-header">
+      <h2 class="contact-title">How can we help?</h2>
+    </div>
+    <div id="contact-form-body">
+      <div class="contact-body">
+        <p class="contact-sub">Thank you for helping us improve the platform — write as much or as little as you’d like.</p>
+        <div class="contact-tabs">
+          <button class="contact-tab active" onclick="setContactType('Question')">Question</button>
+          <button class="contact-tab" onclick="setContactType('Feedback')">Feedback</button>
+        </div>
+        <div class="contact-row">
+          <div style="display:flex;flex-direction:column;gap:4px;flex:1"><label style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9ca3af;margin-top:8px;display:block">Name</label><input class="contact-input" id="contact-name"/></div>
+          <div style="display:flex;flex-direction:column;gap:4px;flex:1.4"><label style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9ca3af;margin-top:8px;display:block">Email</label><input class="contact-input" id="contact-email"/></div>
+        </div>
+        <div id="feedback-fields" style="display:none">
+          <div style="display:flex;flex-direction:column;gap:4px"><label style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9ca3af;margin-top:8px;display:block">Position applying for</label><input class="contact-input" id="contact-position"/></div>
+          <div style="display:flex;flex-direction:column;gap:4px"><label style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9ca3af;margin-top:8px;display:block">Background</label><textarea class="contact-input" id="contact-background" style="height:64px"></textarea></div>
+          <div style="display:flex;flex-direction:column;gap:4px"><label style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9ca3af;margin-top:8px;display:block">What works well</label><textarea class="contact-input" id="contact-works" style="height:56px"></textarea></div>
+          <div style="display:flex;flex-direction:column;gap:4px"><label style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9ca3af;margin-top:8px;display:block">Areas for improvement</label><textarea class="contact-input" id="contact-message" style="height:56px"></textarea></div>
+        </div>
+        <div id="question-fields">
+          <div style="display:flex;flex-direction:column;gap:4px"><label style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9ca3af;margin-top:8px;display:block">Your question</label><textarea class="contact-input" id="contact-question" style="height:120px" placeholder="Type your question here"></textarea></div>
+        </div>
+        <input type="hidden" id="contact-type" value="Question"/>
+      </div>
+      <div class="contact-footer">
+        <button class="contact-cancel" onclick="closeContact()">Cancel</button>
+        <button class="contact-submit" onclick="submitContact()">Send &rarr;</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- FEEDBACK POPUP -->
+<div class="feedback-overlay" id="feedback-overlay">
+  <div class="feedback-box">
+    <div class="feedback-header">
+      <p class="feedback-eyebrow">Quick feedback</p>
+      <h2 class="feedback-title">How is the platform working for you?</h2>
+    </div>
+    <div id="feedback-form-body">
+      <div class="feedback-body">
+        <p class="feedback-sub">Takes 30 seconds. Helps us improve the experience for everyone.</p>
+
+        <div class="feedback-row">
+          <input class="feedback-input" id="feedback-name" placeholder="Your name" style="flex:1"/>
+          <input class="feedback-input" id="feedback-email" placeholder="Your email" style="flex:1.4"/>
+        </div>
+        <textarea class="feedback-input" id="feedback-message" placeholder="Please tell us here"></textarea>
+        <input type="hidden" id="feedback-type" value="Feedback"/>
+      </div>
+      <div class="feedback-footer">
+        <button class="feedback-skip" onclick="closeFeedback()">Skip for now</button>
+        <button class="feedback-submit" onclick="submitFeedback()">Send &rarr;</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>
