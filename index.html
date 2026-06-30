@@ -13,30 +13,30 @@
   gtag('config', 'G-X312M8T3JZ');
 </script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@500;600;700&display=swap');
 
 :root {
   --bg: #ffffff;
   --surface: #ffffff;
-  --border: #d6e8de;
-  --text-primary: #1c2e22;
-  --text-secondary: #476655;
-  --text-hint: #89a898;
-  --accent: #0f2d1a;
-  --accent-mid: #0f2d1a;
-  --accent-light: #eaf4ee;
-  --accent-hover: #0a1f10;
-  --dark-green: #0f2d1a;
-  --green-mid: #47bb7a;
-  --green-light: #eaf4ee;
-  --green-pale: #f0f8f3;
+  --border: #e3ece6;
+  --text-primary: #1a2e22;
+  --text-secondary: #5b7567;
+  --text-hint: #9ab0a4;
+  --accent: #1a9e5c;
+  --accent-mid: #168a4f;
+  --accent-light: #eaf7f0;
+  --accent-hover: #138044;
+  --dark-green: #1a9e5c;
+  --green-mid: #1a9e5c;
+  --green-light: #eaf7f0;
+  --green-pale: #f4fbf7;
   --green-muted: #b8d9c6;
-  --success-bg: #eaf4ee;
-  --success-text: #1e5c30;
+  --success-bg: #eaf7f0;
+  --success-text: #0f6b38;
   --danger-bg: #fef2f2;
   --danger-text: #991b1b;
-  --warning-bg: #f0f8f3;
-  --warning-text: #0f2d1a;
+  --warning-bg: #f4fbf7;
+  --warning-text: #0f6b38;
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -44,62 +44,82 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
 .page{display:none}
 .page.active{display:block}
 
-/* ── GLOBAL HEADER BANNER ── */
-.site-header{background:#0f2d1a;width:100%;position:relative;display:flex;flex-direction:column;justify-content:center;padding:44px 0 40px}
-.site-header-inner{max-width:1200px;margin:0 auto;padding:0 52px;width:100%}
-.header-eyebrow{font-size:10px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#4a8c5c;margin-bottom:10px;display:block}
-.header-title{font-size:46px;font-weight:500;color:#f5f0e8;margin-bottom:10px;line-height:1.2;font-family:'Playfair Display',Georgia,serif}
-.header-tagline{font-size:14px;color:#bcd6c8;letter-spacing:0.02em;margin-bottom:4px;margin-top:0}
-.header-sub{font-size:14px;color:#bcd6c8;line-height:1.65;max-width:600px}
-.header-meta{display:flex;align-items:center;gap:0;margin-top:28px}
-.header-meta-item{display:flex;flex-direction:column;align-items:center;text-align:center;padding-right:36px;margin-right:36px;border-right:0.5px solid #2a4a32}
-.header-meta-item:last-child{border-right:none;padding-right:0;margin-right:0}
-.header-meta-item .val{font-size:30px;font-weight:500;color:#f5f0e8;font-family:'Playfair Display',Georgia,serif;line-height:1}
-.header-meta-item .lbl{font-size:11px;color:#e2f0e8;margin-top:5px;letter-spacing:0.06em}
+/* ── SITE NAV ── */
+.site-header{background:#fff;width:100%;border-bottom:1px solid var(--border);padding:0}
+.site-header-inner{max-width:1200px;margin:0 auto;padding:0 52px;width:100%;display:flex;align-items:center;justify-content:space-between;height:64px}
+.header-logo{font-family:'Playfair Display',Georgia,serif;font-size:22px;font-weight:600;color:#0f2d1a}
+.header-nav-links{display:flex;gap:32px}
+.header-nav-links button{background:none;border:none;font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:var(--text-secondary);cursor:pointer;padding:0}
+.header-nav-links button:hover{color:var(--accent)}
+.header-actions{display:flex;gap:10px;align-items:center}
+.header-contact-btn{background:none;border:none;font-family:'Inter',sans-serif;font-size:13.5px;font-weight:500;color:var(--text-secondary);cursor:pointer}
+.header-contact-btn:hover{color:var(--accent)}
+.header-feedback-btn{background:var(--accent);color:#fff;border:none;border-radius:7px;padding:9px 20px;font-size:13.5px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif}
+.header-feedback-btn:hover{background:var(--accent-hover)}
+
+/* ── PAGE HERO (section + resource pages) ── */
+.page-hero{background:#fff;border-bottom:1px solid var(--border);padding:44px 0 40px}
+.page-hero-inner{max-width:1200px;margin:0 auto;padding:0 52px}
+.page-hero-eyebrow{font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;display:block}
+.page-hero-title{font-size:32px;font-weight:800;color:var(--text-primary);line-height:1.2;letter-spacing:-0.3px}
+.page-hero-sub{font-size:15px;color:var(--text-secondary);margin-top:10px;max-width:600px;line-height:1.65}
+
+/* ── HOME HERO ── */
+.home-hero{background:#fff;padding:80px 52px 60px;max-width:1200px;margin:0 auto;text-align:center}
+.home-hero-eyebrow{font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
+.home-hero h1{font-size:48px;font-weight:800;line-height:1.15;letter-spacing:-0.5px;color:var(--text-primary)}
+.home-hero h1 .green{color:var(--accent);display:block}
+.home-hero-sub{font-size:16px;color:var(--text-secondary);margin:20px auto 0;max-width:560px;line-height:1.7}
+.home-hero-cta{margin-top:32px;display:flex;flex-direction:column;align-items:center;gap:12px}
+.home-hero-btn{background:var(--accent);color:#fff;border:none;border-radius:8px;padding:15px 28px;font-size:15px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:8px;font-family:'Inter',sans-serif}
+.home-hero-btn:hover{background:var(--accent-hover)}
+.home-hero-note{font-size:13px;color:var(--text-hint)}
+.home-hero-stats{display:flex;justify-content:center;gap:60px;margin-top:48px;flex-wrap:wrap}
+.home-hero-stat .v{font-size:28px;font-weight:800;color:var(--text-primary)}
+.home-hero-stat .l{font-size:12.5px;color:var(--text-secondary);margin-top:4px}
 
 /* ── HOME ── */
-.home-body{max-width:1200px;margin:0 auto;padding:32px 52px 60px;width:100%}
-.section-label{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:14px}
-.home-section{margin-bottom:32px}
-.test-list{display:flex;flex-direction:column;gap:10px}
+.home-body{max-width:1200px;margin:0 auto;padding:36px 52px 60px;width:100%}
+.section-label{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-hint);margin-bottom:14px}
+.home-section{margin-bottom:36px}
+.test-list{display:flex;flex-direction:column;gap:12px}
 
-.test-card{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--dark-green);border-radius:4px;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:box-shadow 0.15s, border-color 0.15s}
-.test-card:hover{box-shadow:0 2px 12px rgba(0,0,0,0.08);border-left-color:var(--dark-green)}
-.test-card-left .test-num{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:3px;font-family:'Inter',sans-serif}
-.test-card-left .test-name{font-size:15px;font-weight:500;color:var(--text-primary);font-family:'Inter',sans-serif}
+.test-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:box-shadow 0.15s,border-color 0.15s}
+.test-card:hover{box-shadow:0 4px 16px rgba(26,158,92,0.08);border-color:var(--accent)}
+.test-card-left .test-num{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:3px;font-family:'Inter',sans-serif}
+.test-card-left .test-name{font-size:15px;font-weight:600;color:var(--text-primary);font-family:'Inter',sans-serif}
 .test-card-left .test-desc{font-size:12px;color:var(--text-secondary);margin-top:2px;font-family:'Inter',sans-serif}
-.test-card-right{width:34px;height:34px;border-radius:50%;background:var(--dark-green);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-left:14px}
+.test-card-right{width:34px;height:34px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-left:14px}
 .test-card-right svg{width:15px;height:15px;stroke:#ffffff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
 
 /* resource cards (dictionary / formulas) */
-.resource-card{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--dark-green);border-radius:4px;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:box-shadow 0.15s, border-color 0.15s;margin-bottom:10px}
-.resource-card.formula-card{border-left-color:var(--dark-green)}
-.resource-card:hover{box-shadow:0 2px 12px rgba(0,0,0,0.08)}
-.resource-card-left .rc-label{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#0f2d1a;margin-bottom:3px;font-family:'Inter',sans-serif}
-.formula-card .rc-label{color:#0f2d1a}
-.resource-card-left .rc-name{font-size:15px;font-weight:500;color:var(--text-primary);font-family:'Inter',sans-serif}
+.resource-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:box-shadow 0.15s,border-color 0.15s;margin-bottom:12px}
+.resource-card:hover{box-shadow:0 4px 16px rgba(26,158,92,0.08);border-color:var(--accent)}
+.resource-card-left .rc-label{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:3px;font-family:'Inter',sans-serif}
+.formula-card .rc-label{color:var(--accent)}
+.resource-card-left .rc-name{font-size:15px;font-weight:600;color:var(--text-primary);font-family:'Inter',sans-serif}
 .resource-card-left .rc-desc{font-size:12px;color:var(--text-secondary);margin-top:2px;font-family:'Inter',sans-serif}
-.resource-card-right{width:34px;height:34px;border-radius:50%;background:var(--dark-green);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-left:14px}
-.formula-card .resource-card-right{background:var(--dark-green)}
+.resource-card-right{width:34px;height:34px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-left:14px}
+.formula-card .resource-card-right{background:var(--accent)}
 .resource-card-right svg{width:15px;height:15px;stroke:#ffffff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
 
 /* ── START ── */
-.start-wrap{max-width:1200px;margin:0 auto;padding:40px 52px 80px}
+.start-wrap{max-width:760px;margin:0 auto;padding:40px 36px 80px}
 .back-btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-secondary);cursor:pointer;margin-bottom:32px;background:none;border:none;padding:0;font-family:'Inter',sans-serif}
-.back-btn:hover{color:var(--text-primary)}
+.back-btn:hover{color:var(--accent)}
 .back-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.start-title{font-size:22px;font-weight:600;margin-bottom:6px;color:var(--text-primary);font-family:'Inter',sans-serif}
+.start-title{font-size:26px;font-weight:800;margin-bottom:6px;color:var(--text-primary);font-family:'Inter',sans-serif;letter-spacing:-0.3px}
 .start-sub{font-size:14px;color:var(--text-secondary);margin-bottom:28px;line-height:1.7}
-.start-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:24px}
-.stat-box{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--dark-green);border-radius:4px;padding:14px;text-align:center}
-.stat-box .sv{font-size:22px;font-weight:600;font-family:'Inter',sans-serif;color:var(--accent)}
-.stat-box .sl{font-size:11px;color:var(--text-secondary);margin-top:2px;font-family:'Inter',sans-serif}
-.rules{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--dark-green);border-radius:4px;padding:18px;margin-bottom:24px}
-.rules h3{font-size:11px;font-weight:600;margin-bottom:10px;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.08em}
-.rules ul{list-style:none;display:flex;flex-direction:column;gap:7px}
-.rules ul li{font-size:13px;color:var(--text-primary);display:flex;gap:10px;align-items:flex-start}
-.rules ul li::before{content:"→";color:var(--accent);font-weight:600;flex-shrink:0}
-.btn-primary{display:block;width:100%;background:var(--dark-green);color:#fff;border:none;border-radius:4px;padding:13px;font-size:15px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:background 0.15s}
+.start-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px}
+.stat-box{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px;text-align:center}
+.stat-box .sv{font-size:24px;font-weight:800;font-family:'Inter',sans-serif;color:var(--accent)}
+.stat-box .sl{font-size:11px;color:var(--text-secondary);margin-top:4px;font-family:'Inter',sans-serif}
+.rules{background:var(--green-pale);border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:24px}
+.rules h3{font-size:11px;font-weight:700;margin-bottom:12px;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.08em}
+.rules ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.rules ul li{font-size:13.5px;color:var(--text-primary);display:flex;gap:10px;align-items:flex-start}
+.rules ul li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.btn-primary{display:block;width:100%;background:var(--accent);color:#fff;border:none;border-radius:8px;padding:14px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:background 0.15s}
 .btn-primary:hover{background:var(--accent-hover)}
 
 /* ── TEST ── */
@@ -154,8 +174,8 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
 .strength-bar.ok{background:var(--green-mid)}
 .strength-bar.bad{background:#ef4444}
 
-.mistakes-panel{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--dark-green);border-radius:4px;padding:22px;margin-bottom:14px}
-.mistakes-panel h3{font-size:11px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:16px;font-family:'Inter',sans-serif}
+.mistakes-panel{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:22px;margin-bottom:14px}
+.mistakes-panel h3{font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:16px;font-family:'Inter',sans-serif}
 .mistake-item{display:grid;grid-template-columns:200px 1fr;gap:0;padding:14px 0;border-bottom:1px solid #f0f0f0;font-family:'Inter',sans-serif}
 .mistake-item:last-child{border-bottom:none}
 .mistake-col-label{font-size:13px;font-weight:600;color:var(--text-primary);padding-right:20px;line-height:1.6}
@@ -166,16 +186,16 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
 .mistake-item-wide strong{font-weight:600}
 
 /* formulas panel in results */
-.formulas-panel{background:var(--green-pale);border:1px solid var(--border);border-left:4px solid var(--dark-green);border-radius:4px;padding:22px;margin-bottom:14px}
-.formulas-panel h3{font-size:11px;font-weight:600;color:#0f2d1a;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:14px;font-family:'Inter',sans-serif}
-.formula-item{padding:10px 0;border-bottom:1px solid #c8ddd0}
+.formulas-panel{background:var(--green-pale);border:1px solid var(--border);border-radius:10px;padding:22px;margin-bottom:14px}
+.formulas-panel h3{font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:14px;font-family:'Inter',sans-serif}
+.formula-item{padding:10px 0;border-bottom:1px solid var(--border)}
 .formula-item:last-child{border-bottom:none}
-.formula-name{font-size:13px;font-weight:600;color:#0f2d1a;margin-bottom:3px;font-family:'Inter',sans-serif}
-.formula-expr{font-size:13px;font-family:'Inter',sans-serif;color:#2d2d2d;background:#f0f7f3;padding:4px 8px;border-radius:3px;display:inline-block;margin-bottom:3px}
+.formula-name{font-size:13px;font-weight:700;color:var(--text-primary);margin-bottom:3px;font-family:'Inter',sans-serif}
+.formula-expr{font-size:13px;font-family:'Inter',sans-serif;color:var(--text-primary);background:#fff;border:1px solid var(--border);padding:4px 8px;border-radius:6px;display:inline-block;margin-bottom:3px}
 .formula-note{font-size:12px;color:var(--text-secondary);font-family:'Inter',sans-serif}
 
 .results-actions{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
-.btn-secondary{display:block;width:100%;background:var(--surface);color:var(--text-primary);border:1px solid var(--border);border-radius:4px;padding:12px;font-size:14px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:border-color 0.15s;text-align:center}
+.btn-secondary{display:block;width:100%;background:var(--surface);color:var(--text-primary);border:1px solid var(--border);border-radius:8px;padding:12px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:border-color 0.15s;text-align:center}
 .btn-secondary:hover{border-color:var(--accent)}
 
 /* ── REVIEW ── */
@@ -183,17 +203,17 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
 .review-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:10px}
 .review-counter{font-size:13px;color:var(--accent);font-weight:600;font-family:'Inter',sans-serif}
 .nav-btns{display:flex;gap:8px}
-.nav-btn{background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:7px 14px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;color:var(--text-primary);transition:border-color 0.15s}
+.nav-btn{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:7px 14px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;color:var(--text-primary);transition:border-color 0.15s}
 .nav-btn:hover{border-color:var(--accent)}
 .nav-btn:disabled{opacity:0.4;cursor:not-allowed}
-.review-card{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--dark-green);border-radius:4px;padding:28px;margin-bottom:14px}
+.review-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:28px;margin-bottom:14px}
 .review-status-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
-.review-status{font-size:12px;font-weight:600;padding:3px 10px;border-radius:3px;font-family:'Inter',sans-serif}
+.review-status{font-size:12px;font-weight:600;padding:3px 10px;border-radius:6px;font-family:'Inter',sans-serif}
 .review-status.ok{background:var(--success-bg);color:var(--success-text)}
 .review-status.no{background:var(--danger-bg);color:var(--danger-text)}
 .review-status.sk{background:var(--warning-bg);color:var(--warning-text)}
 .review-qtext{font-size:15px;line-height:1.8;color:var(--text-primary);margin-bottom:18px;white-space:pre-line;font-family:'Inter',sans-serif}
-.answer-block{background:#f7f7f7;border-radius:4px;padding:14px 16px;margin-bottom:10px}
+.answer-block{background:#f7f7f7;border-radius:8px;padding:14px 16px;margin-bottom:10px}
 .answer-block .ab-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-hint);margin-bottom:4px;font-family:'Inter',sans-serif}
 .answer-block .ab-val{font-size:16px;font-weight:600;color:var(--text-primary);font-family:'Inter',sans-serif}
 .answer-block.your-wrong{background:#fff0f0}
@@ -202,40 +222,40 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
 .answer-block.your-right{background:#f0faf3}
 .answer-block.your-right .ab-label{color:var(--success-text)}
 .answer-block.your-right .ab-val{color:var(--success-text)}
-.explain-block{background:#f9fafb;border-radius:4px;padding:20px 22px;margin-top:4px}
+.explain-block{background:#f9fafb;border-radius:8px;padding:20px 22px;margin-top:4px}
 .explain-block .ex-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin-bottom:12px;font-family:'Inter',sans-serif}
 .explain-block .ex-text{font-size:14px;color:var(--text-primary);line-height:1.8;font-family:'Inter',sans-serif}
 .explain-step{margin-bottom:10px;line-height:1.75}
 .explain-step:last-child{margin-bottom:0}
 .explain-step b{font-weight:600;color:var(--text-primary)}
 .explain-tip{font-size:13px;color:#555;font-style:italic;margin-top:14px;padding-top:12px;border-top:1px solid #e4e4e4;line-height:1.7}
-.done-btn{display:block;width:100%;background:var(--dark-green);color:#fff;border:none;border-radius:4px;padding:13px;font-size:14px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:background 0.15s;margin-top:8px}
+.done-btn{display:block;width:100%;background:var(--accent);color:#fff;border:none;border-radius:8px;padding:13px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:background 0.15s;margin-top:8px}
 .done-btn:hover{background:var(--accent-hover)}
 
 /* ── DICTIONARY PAGE ── */
 .resource-wrap{max-width:800px;margin:0 auto;padding:40px 36px 80px}
 .resource-header{margin-bottom:28px}
-.resource-header h2{font-size:22px;font-weight:600;color:var(--text-primary);margin-bottom:6px;font-family:'Inter',sans-serif}
+.resource-header h2{font-size:26px;font-weight:800;color:var(--text-primary);margin-bottom:6px;font-family:'Inter',sans-serif;letter-spacing:-0.3px}
 .resource-header p{font-size:14px;color:var(--text-secondary);line-height:1.6}
 
-.dict-search{width:100%;border:2px solid var(--border);border-radius:4px;padding:10px 14px;font-size:14px;font-family:'Inter',sans-serif;color:var(--text-primary);background:#ffffff;outline:none;margin-bottom:16px;transition:border-color 0.15s}
-.dict-search:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(26,92,46,0.12)}
+.dict-search{width:100%;border:2px solid var(--border);border-radius:8px;padding:11px 16px;font-size:14px;font-family:'Inter',sans-serif;color:var(--text-primary);background:#ffffff;outline:none;margin-bottom:20px;transition:border-color 0.15s}
+.dict-search:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(26,158,92,0.1)}
 
-.dict-group{margin-bottom:20px}
-.dict-group-letter{font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);padding:6px 0;border-bottom:2px solid var(--green-muted);margin-bottom:10px;font-family:'Inter',sans-serif}
-.dict-item{padding:12px 0;border-bottom:1px solid #f0f0f0}
+.dict-group{margin-bottom:24px}
+.dict-group-letter{font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);padding:6px 0;border-bottom:2px solid var(--border);margin-bottom:12px;font-family:'Inter',sans-serif}
+.dict-item{padding:14px 0;border-bottom:1px solid var(--border)}
 .dict-item:last-child{border-bottom:none}
-.dict-term{font-size:14px;font-weight:600;color:var(--text-primary);margin-bottom:3px;font-family:'Inter',sans-serif}
-.dict-def{font-size:13px;color:var(--text-secondary);line-height:1.65;font-family:'Inter',sans-serif}
-.dict-example{font-size:12px;color:var(--accent);margin-top:3px;font-style:italic;font-family:'Inter',sans-serif}
+.dict-term{font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:4px;font-family:'Inter',sans-serif}
+.dict-def{font-size:13.5px;color:var(--text-secondary);line-height:1.65;font-family:'Inter',sans-serif}
+.dict-example{font-size:12.5px;color:var(--accent);margin-top:4px;font-style:italic;font-family:'Inter',sans-serif}
 
 /* ── FORMULAS PAGE ── */
-.formula-section{margin-bottom:24px}
-.formula-section-title{font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#0f2d1a;padding:6px 0;border-bottom:2px solid #c8ddd0;margin-bottom:12px;font-family:'Inter',sans-serif}
-.formula-card-item{background:var(--green-pale);border:1px solid var(--border);border-radius:4px;padding:14px;margin-bottom:8px}
-.formula-card-item .fn{font-size:14px;font-weight:600;color:#0f2d1a;margin-bottom:6px;font-family:'Inter',sans-serif}
-.formula-card-item .fe{font-size:14px;font-family:'Inter',sans-serif;color:#2d2d2d;background:#f0f7f3;padding:6px 10px;border-radius:3px;display:block;margin-bottom:6px;word-break:break-all}
-.formula-card-item .fd{font-size:12px;color:var(--text-secondary);line-height:1.6;font-family:'Inter',sans-serif}
+.formula-section{margin-bottom:28px}
+.formula-section-title{font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);padding:6px 0;border-bottom:2px solid var(--border);margin-bottom:14px;font-family:'Inter',sans-serif}
+.formula-card-item{background:var(--green-pale);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:10px}
+.formula-card-item .fn{font-size:14px;font-weight:700;color:var(--text-primary);margin-bottom:7px;font-family:'Inter',sans-serif}
+.formula-card-item .fe{font-size:14px;font-family:'Inter',sans-serif;color:var(--text-primary);background:#fff;border:1px solid var(--border);padding:8px 12px;border-radius:7px;display:block;margin-bottom:7px;word-break:break-all}
+.formula-card-item .fd{font-size:12.5px;color:var(--text-secondary);line-height:1.6;font-family:'Inter',sans-serif}
 
 @media(max-width:768px){
   /* ── QE WATERMARK — hide completely on mobile ── */
@@ -376,53 +396,53 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
 }
 
 /* ── SECTION CARDS ── */
-.section-card{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--dark-green);border-radius:4px;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;margin-bottom:10px;transition:box-shadow 0.15s,border-color 0.15s}
-.section-card:hover{box-shadow:0 2px 12px rgba(0,0,0,0.08);border-left-color:var(--dark-green)}
-.section-card-bm{border-left-color:var(--dark-green)}
+.section-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;margin-bottom:12px;transition:box-shadow 0.15s,border-color 0.15s}
+.section-card:hover{box-shadow:0 4px 16px rgba(26,158,92,0.08);border-color:var(--accent)}
+.section-card-bm{border-color:var(--border)}
 .section-card-inner{flex:1}
 .section-tag{display:none}
-.section-title{font-size:15px;font-weight:500;color:var(--text-primary);margin-bottom:3px;font-family:'Inter',sans-serif}
+.section-title{font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:3px;font-family:'Inter',sans-serif}
 .section-desc{font-size:12px;color:var(--text-secondary);line-height:1.55;margin-bottom:6px;font-family:'Inter',sans-serif}
 .section-meta{display:flex;gap:14px;flex-wrap:wrap}
 .section-meta span{font-size:11px;color:var(--text-hint);font-family:'Inter',sans-serif}
-.section-arrow{width:34px;height:34px;border-radius:50%;background:var(--dark-green);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-left:14px}
+.section-arrow{width:34px;height:34px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-left:14px}
 .section-arrow svg{width:15px;height:15px;stroke:#ffffff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
 
 /* ── CAMERA WIDGET ── */
 #camera-widget{position:fixed;bottom:20px;right:20px;z-index:1000;display:none}
-#camera-widget video{width:140px;height:105px;border-radius:8px;object-fit:cover;border:2px solid var(--dark-green);background:#111;display:block}
+#camera-widget video{width:140px;height:105px;border-radius:8px;object-fit:cover;border:2px solid var(--accent);background:#111;display:block}
 #camera-widget .cam-label{font-size:10px;text-align:center;color:var(--text-hint);margin-top:4px;font-family:'Inter',sans-serif}
 #camera-widget .cam-close{position:absolute;top:4px;right:4px;background:rgba(0,0,0,0.5);border:none;border-radius:50%;width:18px;height:18px;cursor:pointer;color:#fff;font-size:10px;display:flex;align-items:center;justify-content:center;line-height:1}
 
 /* ── CAMERA PERMISSION MODAL ── */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:2000;display:flex;align-items:center;justify-content:center;display:none}
 .modal-overlay.visible{display:flex}
-.modal-box{background:#fff;border-radius:8px;padding:32px;max-width:380px;width:90%;text-align:center}
-.modal-box h3{font-size:18px;font-weight:600;color:var(--text-primary);margin-bottom:10px;font-family:'Inter',sans-serif}
+.modal-box{background:#fff;border-radius:12px;padding:32px;max-width:380px;width:90%;text-align:center}
+.modal-box h3{font-size:18px;font-weight:700;color:var(--text-primary);margin-bottom:10px;font-family:'Inter',sans-serif}
 .modal-box p{font-size:14px;color:var(--text-secondary);line-height:1.65;margin-bottom:24px;font-family:'Inter',sans-serif}
 .modal-box .modal-icon{font-size:36px;margin-bottom:14px}
 .modal-btns{display:flex;gap:10px;justify-content:center}
-.modal-btn-yes{background:var(--dark-green);color:#fff;border:none;border-radius:4px;padding:10px 24px;font-size:14px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif}
-.modal-btn-no{background:none;color:var(--text-secondary);border:1px solid var(--border);border-radius:4px;padding:10px 24px;font-size:14px;cursor:pointer;font-family:'Inter',sans-serif}
+.modal-btn-yes{background:var(--accent);color:#fff;border:none;border-radius:8px;padding:10px 24px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif}
+.modal-btn-no{background:none;color:var(--text-secondary);border:1px solid var(--border);border-radius:8px;padding:10px 24px;font-size:14px;cursor:pointer;font-family:'Inter',sans-serif}
 
 /* ── END TEST BUTTON ── */
-.end-test-btn{background:none;color:var(--text-hint);border:1px solid var(--border);border-radius:4px;padding:6px 14px;font-size:12px;cursor:pointer;font-family:'Inter',sans-serif;transition:color 0.15s,border-color 0.15s}
+.end-test-btn{background:none;color:var(--text-hint);border:1px solid var(--border);border-radius:8px;padding:6px 14px;font-size:12px;cursor:pointer;font-family:'Inter',sans-serif;transition:color 0.15s,border-color 0.15s}
 .end-test-btn:hover{color:#dc2626;border-color:#dc2626}
 
 /* ── AI FEEDBACK PANEL ── */
-.ai-feedback-panel{background:linear-gradient(135deg,#f0f7f3 0%,#e8f5ee 100%);border:1px solid #c8e6d4;border-left:4px solid var(--dark-green);border-radius:4px;padding:22px;margin-bottom:14px}
-.ai-feedback-panel h3{font-size:11px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:14px;font-family:'Inter',sans-serif}
+.ai-feedback-panel{background:var(--green-pale);border:1px solid var(--border);border-radius:10px;padding:22px;margin-bottom:14px}
+.ai-feedback-panel h3{font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:14px;font-family:'Inter',sans-serif}
 .ai-feedback-loading{display:flex;align-items:center;gap:10px;color:var(--text-secondary);font-size:14px;font-family:'Inter',sans-serif}
 .ai-feedback-loading .spinner{width:16px;height:16px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin 0.8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .ai-feedback-text{font-size:14px;color:var(--text-primary);line-height:1.8;font-family:'Inter',sans-serif}
-.ai-feedback-text strong{font-weight:600;color:var(--dark-green)}
+.ai-feedback-text strong{font-weight:700;color:var(--accent)}
 
 /* ── FRACTION NOTATION ── */
 .frac{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;font-size:0.92em;line-height:1.2;margin:0 3px}
 .frac span:first-child{border-bottom:1.5px solid var(--text-primary);padding:1px 4px;text-align:center;font-family:'Inter',sans-serif}
 .frac span:last-child{padding:1px 4px;text-align:center;font-family:'Inter',sans-serif}
-.fe{font-size:15px;font-family:'Inter',sans-serif;color:var(--text-primary);background:var(--green-pale);padding:10px 14px;border-radius:4px;display:block;margin-bottom:6px;line-height:2.2}
+.fe{font-size:15px;font-family:'Inter',sans-serif;color:var(--text-primary);background:var(--green-pale);padding:10px 14px;border-radius:8px;display:block;margin-bottom:6px;line-height:2.2}
 
 /* ── SECTION PAGE ACCENT OVERRIDES ── */
 #page-section-qr .test-card,
@@ -430,7 +450,7 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
 #page-section-qr .test-card:hover,
 #page-section-bm .test-card:hover{border-left-color:#0f2d1a}
 #page-section-qr .test-card-right,
-#page-section-bm .test-card-right{background:#0f2d1a}
+/* removed - handled by accent */
 #page-section-qr .test-num,
 #page-section-bm .test-num{color:#666666}
 #page-section-qr .section-label,
@@ -477,21 +497,21 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
 .contact-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);z-index:3000;display:none;align-items:center;justify-content:center}
 .contact-overlay.visible{display:flex}
 .contact-box{background:#fff;border-radius:10px;width:90%;max-width:480px;overflow:hidden}
-.contact-header{background:#0f2d1a;padding:24px 28px 20px}
+.contact-header{background:var(--accent);padding:24px 28px 20px}
 .contact-eyebrow{font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#4a8c5c;margin-bottom:8px}
 .contact-title{font-family:'Playfair Display',Georgia,serif;font-size:22px;font-weight:500;color:#f5f0e8;line-height:1.25}
 .contact-body{padding:24px 28px}
 .contact-sub{font-size:13px;color:#476655;line-height:1.6;margin-bottom:18px}
 .contact-tabs{display:flex;gap:10px;margin-bottom:16px}
 .contact-tab{flex:1;padding:9px 0;border-radius:5px;border:1.5px solid #d6e8de;background:#fff;font-size:13px;font-weight:500;color:#1c2e22;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.15s}
-.contact-tab.active{border-color:#0f2d1a;background:#0f2d1a;color:#fff}
+.contact-tab.active{border-color:var(--accent);background:var(--accent);color:#fff}
 .contact-row{display:flex;gap:10px;margin-bottom:10px}
 .contact-input{width:100%;border:1.5px solid #d6e8de;border-radius:5px;padding:9px 13px;font-size:11px;font-family:'Inter',sans-serif;color:#1c2e22;outline:none;background:#fff;box-sizing:border-box}
 .contact-input::placeholder{color:#89a898}
-.contact-input:focus{border-color:#0f2d1a}
+.contact-input:focus{border-color:var(--accent)}
 textarea.contact-input{resize:none;height:90px;line-height:1.6}
 .contact-footer{display:flex;align-items:center;justify-content:space-between;padding:4px 28px 22px}
-.contact-submit{background:#0f2d1a;color:#fff;border:none;border-radius:5px;padding:10px 22px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif}
+.contact-submit{background:var(--accent);color:#fff;border:none;border-radius:5px;padding:10px 22px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif}
 .contact-cancel{font-size:12px;color:#89a898;cursor:pointer;border:none;background:none;font-family:'Inter',sans-serif}
 .contact-success{padding:32px;text-align:center;font-family:'Inter',sans-serif}
 .contact-success p{font-size:14px;color:#476655;line-height:1.6;margin-top:10px}
@@ -499,22 +519,126 @@ textarea.contact-input{resize:none;height:90px;line-height:1.6}
 .feedback-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.35);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:3000;display:none;align-items:center;justify-content:center}
 .feedback-overlay.visible{display:flex}
 .feedback-box{background:#fff;border-radius:10px;width:90%;max-width:480px;overflow:hidden}
-.feedback-header{background:#0f2d1a;padding:24px 28px 20px}
+.feedback-header{background:var(--accent);padding:24px 28px 20px}
 .feedback-eyebrow{font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#4a8c5c;margin-bottom:8px}
 .feedback-title{font-family:'Playfair Display',Georgia,serif;font-size:21px;font-weight:500;color:#f5f0e8;line-height:1.25}
 .feedback-body{padding:22px 28px}
 .feedback-sub{font-size:13px;color:#476655;line-height:1.6;margin-bottom:18px}
 .feedback-tabs{display:flex;gap:10px;margin-bottom:16px}
 .feedback-tab{flex:1;padding:9px 0;border-radius:5px;border:1.5px solid #d6e8de;background:#fff;font-size:13px;font-weight:500;color:#1c2e22;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.15s}
-.feedback-tab.active{border-color:#0f2d1a;background:#0f2d1a;color:#fff}
+.feedback-tab.active{border-color:var(--accent);background:var(--accent);color:#fff}
 .feedback-row{display:flex;gap:10px;margin-bottom:10px}
 .feedback-input{width:100%;border:1.5px solid #d6e8de;border-radius:5px;padding:9px 13px;font-size:13px;font-family:'Inter',sans-serif;color:#1c2e22;outline:none;background:#fff;box-sizing:border-box}
 .feedback-input::placeholder{color:#89a898}
-.feedback-input:focus{border-color:#0f2d1a}
+.feedback-input:focus{border-color:var(--accent)}
 textarea.feedback-input{resize:none;height:88px;line-height:1.6}
 .feedback-footer{display:flex;align-items:center;justify-content:space-between;padding:4px 28px 22px}
-.feedback-submit{background:#0f2d1a;color:#fff;border:none;border-radius:5px;padding:10px 22px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif}
-.feedback-skip{font-size:12px;color:#89a898;cursor:pointer;border:none;background:none;font-family:'Inter',sans-serif}
+.feedback-submit{background:var(--accent);color:#fff;border:none;border-radius:5px;padding:10px 22px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif}
+/* ══════════════════════════════════════
+   LANDING PAGE HOME STYLES (lp- prefix)
+══════════════════════════════════════ */
+.lp-nav{background:#fff;border-bottom:1px solid #e3ece6;padding:0;position:sticky;top:0;z-index:50}
+.lp-nav-inner{max-width:1180px;margin:0 auto;padding:0 52px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.lp-logo{font-family:'Playfair Display',Georgia,serif;font-size:22px;font-weight:600;color:#0f2d1a;cursor:pointer}
+.lp-nav-links{display:flex;gap:36px;font-size:14.5px;font-weight:500;color:#5b7567}
+.lp-nav-links a{text-decoration:none;color:#5b7567;cursor:pointer}
+.lp-nav-links a:hover{color:#1a9e5c}
+.lp-nav-cta{background:#1a9e5c;color:#fff;border:none;border-radius:7px;padding:10px 22px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif}
+.lp-nav-cta:hover{background:#138044}
+.lp-hero{max-width:840px;margin:0 auto;padding:76px 32px 50px;text-align:center;position:relative}
+.lp-logo-group{display:flex;align-items:baseline;gap:29px}
+.lp-nav-watermark{font-family:'Playfair Display',Georgia,serif;font-size:20px;font-weight:600;color:#0f2d1a;opacity:0.4;letter-spacing:1px;line-height:1;user-select:none;pointer-events:none}
+.lp-hero-eyebrow{font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#1a9e5c;margin-bottom:20px;display:block}
+.lp-hero-h1{font-size:46px;font-weight:800;line-height:1.18;color:#1a2e22;letter-spacing:-0.5px}
+.lp-hero-green{color:#1a9e5c;display:block}
+.lp-hero-sub{margin-top:22px;font-size:16px;color:#5b7567;max-width:590px;margin-left:auto;margin-right:auto;line-height:1.7}
+.lp-hero-cta-row{margin-top:32px;display:flex;flex-direction:column;align-items:center;gap:12px}
+.lp-btn-hero{background:#1a9e5c;color:#fff;padding:15px 28px;border-radius:8px;font-size:15px;font-weight:600;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;font-family:'Inter',sans-serif}
+.lp-btn-hero:hover{background:#138044}
+.lp-hero-note{font-size:13px;color:#9ab0a4}
+.lp-hero-stats{display:flex;justify-content:center;gap:60px;margin-top:46px;flex-wrap:wrap}
+.lp-stat-v{font-size:28px;font-weight:800;color:#1a2e22}
+.lp-stat-l{font-size:12.5px;color:#5b7567;margin-top:4px}
+.lp-divider{height:1px;background:#e3ece6;max-width:1180px;margin:0 auto}
+.lp-section{max-width:1130px;margin:0 auto;padding:80px 32px}
+.lp-section-head{text-align:center;max-width:660px;margin:0 auto 44px}
+.lp-section-head h2{font-size:30px;font-weight:800;letter-spacing:-0.3px;color:#1a2e22}
+.lp-section-head p{margin-top:12px;color:#5b7567;font-size:15.5px}
+.lp-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.lp-step-card{background:#fff;border:1px solid #e3ece6;border-radius:12px;padding:28px}
+.lp-step-num{width:30px;height:30px;border-radius:7px;background:#eaf7f0;color:#1a9e5c;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.lp-step-card h3{font-size:17px;font-weight:700;margin-bottom:8px;color:#1a2e22}
+.lp-step-card p{font-size:14px;color:#5b7567;line-height:1.65}
+.lp-res-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.lp-res-card{background:#fff;border:1px solid #e3ece6;border-radius:12px;padding:30px;cursor:pointer;transition:border-color 0.15s}
+.lp-res-card:hover{border-color:#1a9e5c}
+.lp-res-icon{width:38px;height:38px;border-radius:9px;background:#eaf7f0;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.lp-res-icon svg{width:18px;height:18px;stroke:#1a9e5c;fill:none;stroke-width:2}
+.lp-res-card h3{font-size:17px;font-weight:700;margin-bottom:8px;color:#1a2e22}
+.lp-res-card p{font-size:14px;color:#5b7567;line-height:1.65}
+.lp-res-hint{font-size:12.5px;color:#9ab0a4;font-style:italic;margin-top:8px}
+.lp-res-link{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:700;color:#1a9e5c;margin-top:16px}
+.lp-trust-row{display:flex;justify-content:center;gap:64px;text-align:center;margin-bottom:40px;flex-wrap:wrap}
+.lp-trust-v{font-size:24px;font-weight:800;color:#1a2e22}
+.lp-trust-l{font-size:12.5px;color:#5b7567;margin-top:4px}
+.lp-test-cats{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.lp-cat-card{background:#fff;border:1px solid #e3ece6;border-radius:12px;padding:30px;display:flex;flex-direction:column;cursor:pointer;transition:border-color 0.15s,box-shadow 0.15s}
+.lp-cat-card:hover{border-color:#1a9e5c;box-shadow:0 4px 16px rgba(26,158,92,0.08)}
+.lp-cat-icon{width:38px;height:38px;border-radius:9px;background:#eaf7f0;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.lp-cat-icon svg{width:18px;height:18px;stroke:#1a9e5c;fill:none;stroke-width:2}
+.lp-cat-card h3{font-size:18px;font-weight:700;color:#1a2e22}
+.lp-cat-tests{font-size:12.5px;color:#1a9e5c;font-weight:700;margin-top:4px;margin-bottom:12px}
+.lp-cat-card>p{font-size:14px;color:#5b7567;line-height:1.65;margin-bottom:14px}
+.lp-cat-list{list-style:none;font-size:13.5px;color:#5b7567;display:flex;flex-direction:column;gap:7px;margin-bottom:18px;padding:0}
+.lp-cat-list li{padding-left:16px;position:relative}
+.lp-cat-list li::before{content:'';position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:#1a9e5c}
+.lp-cat-foot{margin-top:auto;display:flex;gap:16px;font-size:12.5px;color:#9ab0a4;border-top:1px solid #e3ece6;padding-top:14px}
+.lp-view-all-wrap{text-align:center;margin-top:30px}
+.lp-btn-outline{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #e3ece6;color:#1a2e22;padding:12px 24px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif}
+.lp-btn-outline:hover{border-color:#1a9e5c;background:#eaf7f0}
+.lp-why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.lp-why-card{padding:26px;border-radius:12px}
+.lp-why-icon{width:36px;height:36px;border-radius:9px;background:#eaf7f0;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.lp-why-icon svg{width:17px;height:17px;stroke:#1a9e5c;fill:none;stroke-width:2}
+.lp-why-card h3{font-size:16px;font-weight:700;margin-bottom:7px;color:#1a2e22}
+.lp-why-card p{font-size:13.5px;color:#5b7567;line-height:1.65}
+.lp-about-section{max-width:830px}
+.lp-about-eyebrow{font-size:30px;font-weight:800;letter-spacing:-0.3px;color:#1a2e22;font-family:'Inter',sans-serif}
+.lp-about-body{display:flex;flex-direction:column;gap:14px;text-align:center}
+.lp-about-body p{font-family:'Inter',sans-serif;font-style:italic;font-size:16.5px;color:#5b7567;line-height:1.8;max-width:690px;margin:0 auto}
+.lp-about-greeting{font-size:17px!important;font-weight:600;color:#1a2e22!important;font-style:normal!important}
+.lp-about-signoff{font-size:16.5px!important}
+.lp-final-cta{background:#0f2d1a;color:#fff;text-align:center;padding:80px 32px}
+.lp-final-cta h2{font-size:30px;font-weight:800}
+.lp-final-cta p{margin-top:14px;color:#bcd9c8;font-size:15.5px;max-width:460px;margin-left:auto;margin-right:auto}
+.lp-btn-light{margin-top:30px;display:inline-flex;align-items:center;gap:8px;background:#fff;color:#0f2d1a;padding:15px 28px;border-radius:8px;font-size:15px;font-weight:700;border:none;cursor:pointer;font-family:'Inter',sans-serif}
+.lp-btn-light:hover{background:#eaf7f0}
+.lp-contact-wrap{max-width:560px;margin:0 auto;padding:80px 32px}
+.lp-field{margin-bottom:18px}
+.lp-field label{display:block;font-size:13px;font-weight:600;color:#1a2e22;margin-bottom:6px;font-family:'Inter',sans-serif}
+.lp-field input,.lp-field select,.lp-field textarea{width:100%;border:1px solid #e3ece6;border-radius:7px;padding:11px 14px;font-size:14.5px;font-family:'Inter',sans-serif;color:#1a2e22;background:#fff}
+.lp-field textarea{min-height:110px;resize:vertical}
+.lp-field input:focus,.lp-field select:focus,.lp-field textarea:focus{outline:none;border-color:#1a9e5c}
+.lp-btn-submit{width:100%;background:#1a9e5c;color:#fff;padding:14px;border-radius:8px;font-size:15px;font-weight:700;border:none;cursor:pointer;font-family:'Inter',sans-serif}
+.lp-btn-submit:hover{background:#138044}
+.lp-footer{padding:56px 32px 36px;border-top:1px solid #e3ece6}
+.lp-footer-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px}
+.lp-footer-brand p{font-size:13.5px;color:#5b7567;line-height:1.65;max-width:280px;margin-top:12px}
+.lp-footer-col h4{font-size:11.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#9ab0a4;margin-bottom:14px}
+.lp-footer-col a{display:block;font-size:14px;color:#5b7567;margin-bottom:10px;cursor:pointer;text-decoration:none}
+.lp-footer-col a:hover{color:#1a9e5c}
+.lp-footer-bottom{max-width:1080px;margin:36px auto 0;border-top:1px solid #e3ece6;padding-top:22px;font-size:12px;color:#9ab0a4;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+@media(max-width:768px){
+  .lp-nav-links{display:none}
+  .lp-nav-inner{padding:0 20px}
+  .lp-hero{padding:50px 20px 40px}
+  .lp-hero-h1{font-size:32px}
+  .lp-nav-watermark{display:none}
+  .lp-hero-stats{gap:28px}
+  .lp-steps,.lp-test-cats,.lp-res-grid,.lp-why-grid{grid-template-columns:1fr}
+  .lp-section{padding:52px 20px}
+  .lp-footer-inner{grid-template-columns:1fr 1fr}
+}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 </head>
@@ -522,117 +646,198 @@ textarea.feedback-input{resize:none;height:88px;line-height:1.6}
 
 <!-- HOME -->
 <div id="page-home" class="page active">
-  <div class="site-header">
-    <div class="site-header-inner" style="position:relative">
-      
-      
-      <div style="position:absolute;top:44px;right:65px;display:flex;flex-direction:column;align-items:center;gap:0">
-        <button onclick="openContact()" style="background:transparent;border:none;color:#e2f0e8;font-size:10.5px;font-weight:500;letter-spacing:0.08em;padding:0;cursor:pointer;font-family:'Inter',sans-serif" onmouseover="this.style.color='#f5fcf8'" onmouseout="this.style.color='#e2f0e8'">CONTACT US</button>
-        <button onclick="openQuickFeedback()" style="background:transparent;border:none;color:#d4e8dc;font-size:10.5px;font-weight:500;letter-spacing:0.08em;padding:0;cursor:pointer;font-family:'Inter',sans-serif;font-style:normal;margin-top:17px" onmouseover="this.style.color='#f0f8f3'" onmouseout="this.style.color='#d4e8dc'">FEEDBACK</button>
-        <div style="display:inline-block;position:relative;margin-top:12px">
-          <span class="qe-watermark" style="font-family:'Playfair Display',Georgia,serif;font-size:50px;font-weight:500;color:#f5f0e8;opacity:0.22;letter-spacing:4px;line-height:1;user-select:none;pointer-events:none">QE</span>
-          <div style="position:absolute;bottom:-5px;left:-5%;width:110%;height:5px;background:linear-gradient(to right, transparent, rgba(210,240,220,0.15) 20%, rgba(210,240,220,0.22) 50%, rgba(210,240,220,0.15) 80%, transparent);filter:blur(5px);border-radius:50%;pointer-events:none"></div>
-          <div style="position:absolute;bottom:-3px;left:0;width:100%;height:0.3px;background:linear-gradient(to right, transparent, rgba(210,240,220,0.30) 20%, rgba(210,240,220,0.38) 50%, rgba(210,240,220,0.30) 80%, transparent);pointer-events:none"></div>
-        </div>
-      </div>
-      <div style="display:flex;align-items:flex-start;justify-content:space-between">
-        <div>
-          <div style="display:inline-block;position:relative">
-          <h1 class="header-title">QuantEdge</h1>
-          <div style="position:absolute;bottom:-6px;left:-10%;width:120%;height:5px;background:linear-gradient(to right, transparent, rgba(210,240,220,0.175) 20%, rgba(210,240,220,0.252) 50%, rgba(210,240,220,0.175) 80%, transparent);filter:blur(5px);border-radius:50%;pointer-events:none"></div>
-          <div style="position:absolute;bottom:-4px;left:-5%;width:110%;height:0.3px;background:linear-gradient(to right, transparent, rgba(210,240,220,0.340) 20%, rgba(210,240,220,0.437) 50%, rgba(210,240,220,0.340) 80%, transparent);pointer-events:none"></div>
-        </div>
-          <div style="margin-top:22px">
-            <p class="header-tagline" style="margin-top:0">Built for the consulting quantitative assessment.</p>
-            <p class="header-sub">Develop your quant skills, grow your confidence, and walk into the assessment ready.</p>
-          </div>
-        </div>
-        
-      </div>
-      
-      <div class="header-meta">
-        <div class="header-meta-item"><div class="val">6</div><div class="lbl">Tests available</div></div>
-        <div class="header-meta-item"><div class="val">20</div><div class="lbl">Questions each</div></div>
-        <div class="header-meta-item"><div class="val">40</div><div class="lbl">Minutes each</div></div>
-      </div>
-      <!-- Mobile-only CONTACT US / FEEDBACK row -->
-      <div class="mobile-header-actions" style="display:none;gap:16px;margin-top:18px">
-        <button onclick="openContact()" style="background:transparent;border:none;color:#e2f0e8;font-size:10.5px;font-weight:500;letter-spacing:0.08em;padding:0;cursor:pointer;font-family:'Inter',sans-serif">CONTACT US</button>
-        <button onclick="openQuickFeedback()" style="background:transparent;border:none;color:#d4e8dc;font-size:10.5px;font-weight:500;letter-spacing:0.08em;padding:0;cursor:pointer;font-family:'Inter',sans-serif">FEEDBACK</button>
-      </div>
+
+<nav class="lp-nav">
+  <div class="lp-nav-inner">
+    <div class="lp-logo-group">
+      <div class="lp-nav-watermark">QE</div>
+      <div class="lp-logo">QuantEdge</div>
+    </div>
+    <div class="lp-nav-links">
+      <a href="#tests-anchor">Tests</a>
+      <a href="#resources-anchor">Resources</a>
+      <a href="#about-anchor">About</a>
+      <a href="#contact-anchor">Contact</a>
+    </div>
+    <button class="lp-nav-cta" onclick="showSection('qr')">Start Practicing</button>
+  </div>
+</nav>
+
+<section class="lp-hero">
+  <h1 class="lp-hero-h1">Walk into your assessment<span class="lp-hero-green">already confident</span></h1>
+  <p class="lp-hero-sub">Built for the consulting quantitative assessment. Develop your quant skills, grow your confidence, and walk into the assessment ready.</p>
+  <div class="lp-hero-stats" style="margin-top:36px">
+    <div class="lp-hero-stat"><div class="lp-stat-v">6</div><div class="lp-stat-l">Practice tests</div></div>
+    <div class="lp-hero-stat"><div class="lp-stat-v">120</div><div class="lp-stat-l">Questions available</div></div>
+    <div class="lp-hero-stat"><div class="lp-stat-v">&lt;1s</div><div class="lp-stat-l">To get started</div></div>
+  </div>
+</section>
+
+<div class="lp-divider" id="about-anchor"></div>
+
+<section class="lp-section lp-about-section">
+  <div class="lp-section-head"><h2 class="lp-about-eyebrow">About QuantEdge</h2></div>
+  <div class="lp-about-body">
+    <p class="lp-about-greeting">Hi there,</p>
+    <p>Thanks for stopping by. The platform was designed to support your learning progress, based on the premise that confidence comes from preparation. QuantEdge gives you a clear, structured way to engage with and sharpen your quantitative skillset.</p>
+    <p class="lp-about-signoff">Best of luck,<br>The QuantEdge Team</p>
+  </div>
+</section>
+
+<div class="lp-divider"></div>
+
+<section class="lp-section">
+  <div class="lp-section-head">
+    <h2>How it works</h2>
+    <p>Three steps from landing to mastering the quant assessment.</p>
+  </div>
+  <div class="lp-steps">
+    <div class="lp-step-card"><div class="lp-step-num">1</div><h3>Pick a test</h3><p>Choose from Numeric Foundations or Benchmark Tests. 40 min per test.</p></div>
+    <div class="lp-step-card"><div class="lp-step-num">2</div><h3>Answer, timed</h3><p>One question at a time in a focused, chat-style interface.</p></div>
+    <div class="lp-step-card"><div class="lp-step-num">3</div><h3>Review solutions</h3><p>After each test, see your score and walk through full worked solutions for every question. <strong>Learn the method, not just the answer.</strong></p></div>
+  </div>
+</section>
+
+<div class="lp-divider" id="resources-anchor"></div>
+
+<section class="lp-section">
+  <div class="lp-section-head">
+    <h2>Reference resources</h2>
+    <p>Tools to support your preparation.</p>
+  </div>
+  <div class="lp-res-grid">
+    <div class="lp-res-card" onclick="showPage('dictionary')">
+      <div class="lp-res-icon"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+      <h3>Business dictionary</h3>
+      <p>Glossary of business terms, concepts, and jargon commonly found in consulting quantitative assessments. Searchable and organized for quick lookup.</p>
+      <div class="lp-res-link">Browse dictionary <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+    </div>
+    <div class="lp-res-card" onclick="showPage('formulas')">
+      <div class="lp-res-icon"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+      <h3>Key formulas</h3>
+      <p>Reference sheet of key formulas. Organized by category with explanations.</p>
+      <div class="lp-res-hint">You don't need to memorize these — you can derive them during the test. Use this as a study companion.</div>
+      <div class="lp-res-link">View formulas <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
     </div>
   </div>
-  <div class="home-body">
+</section>
 
-    <!-- How to use -->
-    <div class="home-section">
-      <div class="section-label">How to use this platform</div>
-      <div style="display:grid;gap:14px;font-family:'Inter',sans-serif">
-        <div>
-          <div style="font-size:15px;font-weight:500;color:var(--text-primary);margin-bottom:3px">Business Dictionary</div>
-          <div style="font-size:15px;color:var(--text-secondary);line-height:1.6">A glossary of common business terms.</div>
-        </div>
-        <div>
-          <div style="font-size:15px;font-weight:500;color:var(--text-primary);margin-bottom:3px">Key Formulas</div>
-          <div style="font-size:15px;color:var(--text-secondary);line-height:1.6">No need to memorise these, feel free to derive them during a question if that's easier <span style='font-size:13px;vertical-align:1px'>😉</span></div>
-        </div>
-        <div>
-          <div style="font-size:15px;font-weight:500;color:var(--text-primary);margin-bottom:3px">Numeric Foundations</div>
-          <div style="font-size:15px;color:var(--text-secondary);line-height:1.6">The emphasis is on deduction, speed and accuracy with less business context.</div>
-        </div>
-        <div>
-          <div style="font-size:15px;font-weight:500;color:var(--text-primary);margin-bottom:3px">Benchmark Tests</div>
-          <div style="font-size:15px;color:var(--text-secondary);line-height:1.6">Calibrated to the difficulty and style of the real assessment. A mix of numerical reasoning and business context.</div>
-        </div>
-      </div>
-    </div>
+<div class="lp-divider" id="tests-anchor"></div>
 
-    <!-- Resources -->
-    <div class="home-section">
-      <div class="section-label">Resources</div>
-      <div class="resource-card" onclick="showPage('dictionary')">
-        <div class="resource-card-left">
-          <div class="rc-name">Business Dictionary</div>
-        </div>
-        <div class="resource-card-right"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
-      </div>
-      <div class="resource-card formula-card" onclick="showPage('formulas')">
-        <div class="resource-card-left">
-          <div class="rc-name">Key Formulas</div>
-        </div>
-        <div class="resource-card-right"><svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></div>
-      </div>
-    </div>
-
-    <!-- Section cards -->
-    <div class="home-section">
-      <div class="section-label">Choose a section</div>
-      <div class="section-card" onclick="showSection('qr')">
-        <div class="section-card-inner">
-          <div class="section-title">Numeric Foundations</div>
-          <div class="section-meta"><span>3 tests</span><span>20 questions each</span><span>40 minutes per test</span></div>
-        </div>
-        <div class="section-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
-      </div>
-      <div class="section-card section-card-bm" onclick="showSection('bm')">
-        <div class="section-card-inner">
-          <div class="section-title">Benchmark Tests</div>
-          <div class="section-meta"><span>3 tests</span><span>20 questions each</span><span>40 minutes per test</span></div>
-        </div>
-        <div class="section-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
-      </div>
-    </div>
-
+<section class="lp-section">
+  <div class="lp-section-head">
+    <h2>The tests</h2>
+    <p>Six tests across two categories, built around the core skills the real assessment tests.</p>
   </div>
+  <div class="lp-test-cats">
+    <div class="lp-cat-card" onclick="showSection('qr')">
+      <div class="lp-cat-icon"><svg viewBox="0 0 24 24"><path d="M3 3v18h18M7 16l4-5 3 3 5-7"/></svg></div>
+      <h3>Numeric Foundations</h3>
+      <div class="lp-cat-tests">3 tests</div>
+      <p>Emphasis on logic, deduction, calculations, and accuracy under time pressure — the foundations before layering on business context.</p>
+      <ul class="lp-cat-list">
+        <li>Mental math &amp; estimation drills</li>
+        <li>Logic puzzles &amp; deduction chains</li>
+        <li>Builds foundational speed</li>
+      </ul>
+      <div class="lp-cat-foot"><span>40 min each</span><span>20 questions</span></div>
+    </div>
+    <div class="lp-cat-card" onclick="showSection('bm')">
+      <div class="lp-cat-icon"><svg viewBox="0 0 24 24"><path d="M3 3v18h18M7 12l3 3 7-9"/></svg></div>
+      <h3>Benchmark Tests</h3>
+      <div class="lp-cat-tests">3 tests</div>
+      <p>Calibrated to real assessment difficulty. Blends quant with business context and includes chart-based data interpretation.</p>
+      <ul class="lp-cat-list">
+        <li>Business-context word problems</li>
+        <li>Chart &amp; data interpretation</li>
+        <li>Mirrors real assessment difficulty</li>
+      </ul>
+      <div class="lp-cat-foot"><span>40 min each</span><span>20 questions</span></div>
+    </div>
+  </div>
+  <div class="lp-view-all-wrap">
+    <button class="lp-btn-outline" onclick="showSection('qr')">
+      View all tests
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </button>
+  </div>
+</section>
+
+<div class="lp-divider"></div>
+
+<section class="lp-section" id="why-anchor">
+  <div class="lp-section-head">
+    <h2>Why it works</h2>
+    <p>Built to mirror the real experience. Every feature is designed around how the actual assessment works.</p>
+  </div>
+  <div class="lp-why-grid">
+    <div class="lp-why-card"><div class="lp-why-icon"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div><h3>Chat-style format</h3><p>One question at a time, just like the real consulting assessment. No scrolling through a wall of text — stay focused.</p></div>
+    <div class="lp-why-card"><div class="lp-why-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div><h3>Timed sessions</h3><p>40-minute countdown per test. Practice managing time under pressure — the same constraint you will face on test day.</p></div>
+    <div class="lp-why-card"><div class="lp-why-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg></div><h3>Full worked solutions</h3><p>Every question comes with a step-by-step explanation after the test. Learn the method — don't just memorize answers.</p></div>
+    <div class="lp-why-card"><div class="lp-why-icon"><svg viewBox="0 0 24 24"><path d="M3 3v18h18M7 16l4-5 3 3 5-7"/></svg></div><h3>Best-score tracking</h3><p>Your top score per test is saved automatically in your browser. Hover to check your progress over time.</p></div>
+    <div class="lp-why-card"><div class="lp-why-icon"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></div><h3>No login required</h3><p>No accounts, no passwords, no email. Land on the site, pick a test, and start practicing in seconds.</p></div>
+    <div class="lp-why-card"><div class="lp-why-icon"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div><h3>Fully mobile</h3><p>Practice on your phone, tablet, or desktop. The interface adapts perfectly — during your commute or at your desk.</p></div>
+  </div>
+</section>
+
+<section class="lp-final-cta">
+  <h2>Ready to walk in confident?</h2>
+  <p>Pick a test and start practicing. Free, no login — you'll be answering your first question in under a minute.</p>
+  <button class="lp-btn-light" onclick="showSection('qr')">
+    Start practice test
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+  </button>
+</section>
+
+<section class="lp-contact-wrap" id="contact-anchor">
+  <div class="lp-section-head">
+    <h2>Get in touch</h2>
+    <p>Questions, feedback, or just want to say hi? Drop us a message.</p>
+  </div>
+  <form action="https://formspree.io/f/xzdlegad" method="POST">
+    <div class="lp-field"><label>Name</label><input type="text" name="name" placeholder="Your name" required></div>
+    <div class="lp-field"><label>Email</label><input type="email" name="email" placeholder="you@example.com" required></div>
+    <div class="lp-field"><label>Subject</label><select name="subject"><option value="">Select a topic</option><option value="question">General question</option><option value="feedback">Feedback</option><option value="bug">Report an issue</option><option value="other">Other</option></select></div>
+    <div class="lp-field"><label>Message</label><textarea name="message" placeholder="Tell us what's on your mind..." required></textarea></div>
+    <button type="submit" class="lp-btn-submit">Send message</button>
+  </form>
+</section>
+
+<footer class="lp-footer">
+  <div class="lp-footer-inner">
+    <div class="lp-footer-brand">
+      <div class="lp-logo" style="margin-bottom:12px">QuantEdge</div>
+      <p>Free, browser-based practice for consulting quantitative assessments. No login, no fees — just focused preparation.</p>
+    </div>
+    <div class="lp-footer-col"><h4>Tests</h4><a onclick="showSection('qr')">All tests</a><a onclick="showSection('qr')">Numeric Foundations</a><a onclick="showSection('bm')">Benchmark Tests</a></div>
+    <div class="lp-footer-col"><h4>Resources</h4><a onclick="showPage('dictionary')">Business Dictionary</a><a onclick="showPage('formulas')">Key Formulas</a></div>
+    <div class="lp-footer-col"><h4>Company</h4><a href="#about-anchor">About</a><a href="#contact-anchor">Contact</a></div>
+  </div>
+  <div class="lp-footer-bottom">
+    <div>QuantEdge is an independent practice resource and is not affiliated with, endorsed by, or connected to any consulting firm. All trademarks belong to their respective owners.</div>
+    <div>© 2026 QuantEdge</div>
+  </div>
+</footer>
+
 </div>
+
 
 <!-- SECTION PAGE: QR -->
 <div id="page-section-qr" class="page">
-  <div class="site-header" style="background:#0f2d1a">
-    <div class="site-header-inner" style="position:relative">
-      
-      <div class="header-eyebrow">Section</div>
-      <h1 class="header-title">Numeric Foundations</h1>
+  <nav class="site-header">
+    <div class="site-header-inner">
+      <div class="header-logo" onclick="showHome()" style="cursor:pointer">QuantEdge</div>
+      <div class="header-actions">
+        <button class="header-contact-btn" onclick="openContact()">Contact</button>
+        <button class="header-feedback-btn" onclick="openQuickFeedback()">Feedback</button>
+      </div>
+    </div>
+  </nav>
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <span class="page-hero-eyebrow">Section</span>
+      <h1 class="page-hero-title">Numeric Foundations</h1>
+      <p class="page-hero-sub">Pure quantitative reasoning — logic, deduction, and calculation. Build speed and accuracy before layering on business context.</p>
     </div>
   </div>
   <div class="home-body">
@@ -644,15 +849,15 @@ textarea.feedback-input{resize:none;height:88px;line-height:1.6}
       <div class="section-label">Information</div>
       <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:12px;font-family:'Inter',sans-serif">
         <div>
-          <div style="font-size:14px;font-weight:600;color:#0f2d1a;margin-bottom:3px">Tests 1 – 3</div>
+          <div style="font-size:14px;font-weight:700;color:var(--accent);margin-bottom:3px">Tests 1 – 3</div>
           <div style="font-size:15px;color:var(--text-secondary);line-height:1.6">Topics include sequential tracking, probability, ratios, simultaneous equations, Pythagoras, combinations, work-rate, sequences and more.</div>
         </div>
         <div>
-          <div style="font-size:14px;font-weight:600;color:#0f2d1a;margin-bottom:2px">Difficulty</div>
+          <div style="font-size:14px;font-weight:700;color:var(--accent);margin-bottom:2px">Difficulty</div>
           <div style="font-size:15px;color:var(--text-secondary);line-height:1.6">The dots indicate relative difficulty. Five would match the level of the Benchmark Tests.</div>
         </div>
         <div>
-          <div style="font-size:14px;font-weight:600;color:#0f2d1a;margin-bottom:2px">Score Tracking</div>
+          <div style="font-size:14px;font-weight:700;color:var(--accent);margin-bottom:2px">Score Tracking</div>
           <div style="font-size:15px;color:var(--text-secondary);line-height:1.6">Your best score is saved and visible on hover. Stored on this device only — <span onclick="if(confirm('This will erase all saved results from this device. Continue?'))clearAllProgress()" style="text-decoration:underline;cursor:pointer;color:inherit">clear results</span> anytime.</div>
         </div>
       </div>
@@ -666,12 +871,20 @@ textarea.feedback-input{resize:none;height:88px;line-height:1.6}
 
 <!-- SECTION PAGE: BM -->
 <div id="page-section-bm" class="page">
-  <div class="site-header" style="background:#0f2d1a">
-    <div class="site-header-inner" style="position:relative">
-      
-      <div class="header-eyebrow">Section</div>
-      <h1 class="header-title">Benchmark Tests</h1>
-      <p class="header-sub">Calibrated to the difficulty and style of the real assessment. Mix of numerical reasoning and business context.</p>
+  <nav class="site-header">
+    <div class="site-header-inner">
+      <div class="header-logo" onclick="showHome()" style="cursor:pointer">QuantEdge</div>
+      <div class="header-actions">
+        <button class="header-contact-btn" onclick="openContact()">Contact</button>
+        <button class="header-feedback-btn" onclick="openQuickFeedback()">Feedback</button>
+      </div>
+    </div>
+  </nav>
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <span class="page-hero-eyebrow">Section</span>
+      <h1 class="page-hero-title">Benchmark Tests</h1>
+      <p class="page-hero-sub">Calibrated to the difficulty and style of the real assessment. A mix of numerical reasoning and business context.</p>
     </div>
   </div>
   <div class="home-body">
@@ -683,11 +896,11 @@ textarea.feedback-input{resize:none;height:88px;line-height:1.6}
       <div class="section-label">Information</div>
       <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:12px;font-family:'Inter',sans-serif">
         <div>
-          <div style="font-size:14px;font-weight:600;color:#0f2d1a;margin-bottom:2px">Difficulty</div>
+          <div style="font-size:14px;font-weight:700;color:var(--accent);margin-bottom:2px">Difficulty</div>
           <div style="font-size:15px;color:var(--text-secondary);line-height:1.6">All comparable with the official assessment.</div>
         </div>
         <div>
-          <div style="font-size:14px;font-weight:600;color:#0f2d1a;margin-bottom:2px">Score Tracking</div>
+          <div style="font-size:14px;font-weight:700;color:var(--accent);margin-bottom:2px">Score Tracking</div>
           <div style="font-size:15px;color:var(--text-secondary);line-height:1.6">Your best score is saved and visible on hover. Stored on this device only — <span onclick="if(confirm('This will erase all saved results from this device. Continue?'))clearAllProgress()" style="text-decoration:underline;cursor:pointer;color:inherit">clear results</span> anytime.</div>
         </div>
       </div>
@@ -786,14 +999,23 @@ textarea.feedback-input{resize:none;height:88px;line-height:1.6}
 
 <!-- DICTIONARY PAGE -->
 <div id="page-dictionary" class="page">
-  <div class="site-header" style="background:#0f2d1a">
-    <div class="site-header-inner" style="position:relative">
-      
-      <h1 class="header-title">Business Dictionary</h1>
-      <p class="header-sub">Key terms and definitions for consulting quantitative assessments. Read before your test.</p>
+  <nav class="site-header">
+    <div class="site-header-inner">
+      <div class="header-logo" onclick="showHome()" style="cursor:pointer">QuantEdge</div>
+      <div class="header-actions">
+        <button class="header-contact-btn" onclick="openContact()">Contact</button>
+        <button class="header-feedback-btn" onclick="openQuickFeedback()">Feedback</button>
+      </div>
+    </div>
+  </nav>
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <span class="page-hero-eyebrow">Section</span>
+      <h1 class="page-hero-title">Business Dictionary</h1>
+      <p class="page-hero-sub">Key terms and definitions for consulting quantitative assessments.</p>
     </div>
   </div>
-  <div class="resource-wrap">
+  <div class="resource-wrap" style="margin:0 auto;max-width:1200px;padding-left:52px;padding-right:52px;box-sizing:border-box">
     <button class="back-btn" onclick="showHome()">
       <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
       Back to home
@@ -805,15 +1027,23 @@ textarea.feedback-input{resize:none;height:88px;line-height:1.6}
 
 <!-- FORMULAS PAGE -->
 <div id="page-formulas" class="page">
-  <div class="site-header" style="background:#0f2d1a">
-    <div class="site-header-inner" style="position:relative">
-      
-      <div class="header-eyebrow" style="color:#0f2d1a">Reference</div>
-      <h1 class="header-title">Key Formulas</h1>
-      <p class="header-sub">The most important formulas for consulting quantitative assessments. Study these before your test.</p>
+  <nav class="site-header">
+    <div class="site-header-inner">
+      <div class="header-logo" onclick="showHome()" style="cursor:pointer">QuantEdge</div>
+      <div class="header-actions">
+        <button class="header-contact-btn" onclick="openContact()">Contact</button>
+        <button class="header-feedback-btn" onclick="openQuickFeedback()">Feedback</button>
+      </div>
+    </div>
+  </nav>
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <span class="page-hero-eyebrow">Section</span>
+      <h1 class="page-hero-title">Key Formulas</h1>
+      <p class="page-hero-sub" style="max-width:none;white-space:nowrap">The most important formulas for consulting quantitative assessments. Study these before your test.</p>
     </div>
   </div>
-  <div class="resource-wrap">
+  <div class="resource-wrap" style="margin:0 auto;max-width:1200px;padding-left:52px;padding-right:52px;box-sizing:border-box">
     <button class="back-btn" onclick="showHome()">
       <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
       Back to home
@@ -1155,7 +1385,7 @@ function renderTestList(){
     getSectionTests(sec).forEach(t=>{
       const prog=getTestProgress(t.id);
       const done=prog!==null;
-      const scoreInfo=done?`<span style="font-size:10px;font-weight:500;color:#9ca3af;cursor:default;position:relative;display:inline-block" onmouseenter="this.querySelector('.sc-tip').style.opacity='1'" onmouseleave="this.querySelector('.sc-tip').style.opacity='0'">best score<span class="sc-tip" style="position:absolute;bottom:calc(100% + 6px);right:0;background:#0f2d1a;color:#f5f0e8;font-size:11px;font-weight:600;padding:4px 10px;border-radius:5px;white-space:nowrap;opacity:0;transition:opacity 0.15s;pointer-events:none;z-index:100">${prog.score} / ${prog.total}</span></span>`:'';
+      const scoreInfo=done?`<span style="font-size:10px;font-weight:500;color:#9ca3af;cursor:default;position:relative;display:inline-block" onmouseenter="this.querySelector('.sc-tip').style.opacity='1'" onmouseleave="this.querySelector('.sc-tip').style.opacity='0'">best score<span class="sc-tip" style="position:absolute;bottom:calc(100% + 6px);right:0;background:var(--accent);color:#fff;font-size:11px;font-weight:600;padding:4px 10px;border-radius:5px;white-space:nowrap;opacity:0;transition:opacity 0.15s;pointer-events:none;z-index:100">${prog.score} / ${prog.total}</span></span>`:'';
       const rightBtn=done?
         `${scoreInfo}<div class="test-card-right completed-check"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7L5.5 10L11.5 4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>`:
         `<div class="test-card-right"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>`;
@@ -1668,12 +1898,10 @@ function checkFeedbackTrigger(){
   if(localStorage.getItem('qe_feedback_submitted')==='1') return;
   if(localStorage.getItem('qe_feedback_shown')==='1') return;
 
-  // Check if all 3 QR tests done
-  const qrDone = [1,2,3].every(id => getTestProgress(id) !== null);
-  // Check if all 3 BM tests done
-  const bmDone = [4,5,6].every(id => getTestProgress(id) !== null);
+  // Check how many of the 6 tests (across both sections) have been completed at least once
+  const completedCount = [1,2,3,4,5,6].filter(id => getTestProgress(id) !== null).length;
 
-  if(qrDone || bmDone){
+  if(completedCount >= 3){
     localStorage.setItem('qe_feedback_shown','1');
     setTimeout(()=>document.getElementById('feedback-overlay').classList.add('visible'),1200);
   }
