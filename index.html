@@ -257,6 +257,28 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
 .formula-card-item .fe{font-size:14px;font-family:'Inter',sans-serif;color:var(--text-primary);background:#fff;border:1px solid var(--border);padding:8px 12px;border-radius:7px;display:block;margin-bottom:7px;word-break:break-all}
 .formula-card-item .fd{font-size:12.5px;color:var(--text-secondary);line-height:1.6;font-family:'Inter',sans-serif}
 
+/* ── COMBINED RESOURCES ACCORDION ── */
+.res-chips{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap}
+.res-chip{background:var(--green-light);color:var(--accent);font-size:12.5px;font-weight:600;padding:7px 16px;border-radius:20px;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:background 0.15s,color 0.15s}
+.res-chip:hover{background:#d8efe2}
+.res-chip.active{background:var(--accent);color:#fff}
+.res-list{border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.res-row{border-bottom:1px solid var(--border)}
+.res-row:last-child{border-bottom:none}
+.res-row-head{padding:14px 18px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;transition:background 0.12s}
+.res-row-head:hover{background:var(--green-pale)}
+.res-row.open .res-row-head{background:var(--green-pale)}
+.res-row-name{font-size:14.5px;font-weight:600;color:var(--text-primary);font-family:'Inter',sans-serif}
+.res-row.open .res-row-name{font-weight:700}
+.res-row-toggle{width:22px;height:22px;border-radius:50%;background:var(--green-light);color:var(--accent);font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-left:12px;font-family:'Inter',sans-serif}
+.res-row.open .res-row-toggle{background:var(--accent);color:#fff}
+.res-row-body{padding:0 18px 18px;background:var(--green-pale)}
+.res-def{font-size:13.5px;color:var(--text-secondary);line-height:1.65;font-family:'Inter',sans-serif;margin-bottom:14px}
+.res-formula-label{font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;font-family:'Inter',sans-serif}
+.res-row-body .fe{background:#fff;border:1px solid var(--border);border-radius:7px;padding:10px 14px;font-size:14px;font-family:'Inter',sans-serif;color:var(--text-primary);display:block;margin-bottom:8px;word-break:break-word}
+.res-note{font-size:12.5px;color:var(--text-secondary);line-height:1.6;font-family:'Inter',sans-serif;margin-bottom:8px}
+.res-example{font-size:12px;color:var(--text-hint);font-style:italic;font-family:'Inter',sans-serif}
+
 @media(max-width:768px){
   /* ── QE WATERMARK — hide completely on mobile ── */
   .qe-watermark{display:none!important}
@@ -353,6 +375,13 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
   .dict-term{font-size:13px!important}
   .dict-def{font-size:12px!important}
   .formula-card-item{padding:12px!important}
+  .res-chips{gap:6px!important}
+  .res-chip{padding:6px 12px!important;font-size:12px!important}
+  .res-row-head{padding:12px 14px!important}
+  .res-row-name{font-size:13.5px!important}
+  .res-row-body{padding:0 14px 14px!important}
+  .res-def{font-size:13px!important}
+  .res-row-body .fe{font-size:13px!important;padding:9px 12px!important}
 
   /* ── MODALS — fit within viewport ── */
   .modal-overlay{align-items:center!important;padding:16px!important}
@@ -560,7 +589,7 @@ textarea.feedback-input{resize:none;height:88px;line-height:1.6}
 .lp-stat-v{font-size:28px;font-weight:800;color:#1a2e22}
 .lp-stat-l{font-size:12.5px;color:#5b7567;margin-top:4px}
 .lp-divider{height:1px;background:#e3ece6;max-width:1180px;margin:0 auto}
-.lp-section{max-width:1130px;margin:0 auto;padding:80px 32px}
+.lp-section{max-width:1130px;margin:0 auto;padding:31px 32px 80px}
 .lp-section-head{text-align:center;max-width:660px;margin:0 auto 44px}
 .lp-section-head h2{font-size:30px;font-weight:800;letter-spacing:-0.3px;color:#1a2e22}
 .lp-section-head p{margin-top:12px;color:#5b7567;font-size:15.5px}
@@ -570,6 +599,7 @@ textarea.feedback-input{resize:none;height:88px;line-height:1.6}
 .lp-step-card h3{font-size:17px;font-weight:700;margin-bottom:8px;color:#1a2e22}
 .lp-step-card p{font-size:14px;color:#5b7567;line-height:1.65}
 .lp-res-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.lp-res-grid-single{grid-template-columns:1fr;max-width:560px;margin:0 auto}
 .lp-res-card{background:#fff;border:1px solid #e3ece6;border-radius:12px;padding:30px;cursor:pointer;transition:border-color 0.15s}
 .lp-res-card:hover{border-color:#1a9e5c}
 .lp-res-icon{width:38px;height:38px;border-radius:9px;background:#eaf7f0;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
@@ -684,7 +714,7 @@ textarea.feedback-input{resize:none;height:88px;line-height:1.6}
 </nav>
 
 <section class="lp-hero">
-  <h1 class="lp-hero-h1">Walk into your assessment<span class="lp-hero-green">already confident</span></h1>
+  <h1 class="lp-hero-h1">Walk into your assessment<span class="lp-hero-green">prepared and confident</span></h1>
   <p class="lp-hero-sub">Built for the consulting quantitative assessment. Develop your quant skills, grow your confidence, and walk into the assessment ready.</p>
   <div class="lp-hero-stats" style="margin-top:36px">
     <div class="lp-hero-stat"><div class="lp-stat-v">6</div><div class="lp-stat-l">Practice tests</div></div>
@@ -725,19 +755,13 @@ textarea.feedback-input{resize:none;height:88px;line-height:1.6}
     <h2>Reference resources</h2>
     <p>Tools to support your preparation.</p>
   </div>
-  <div class="lp-res-grid">
-    <div class="lp-res-card" onclick="showPage('dictionary')">
+  <div class="lp-res-grid lp-res-grid-single">
+    <div class="lp-res-card" onclick="showPage('resources')">
       <div class="lp-res-icon"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
-      <h3>Business dictionary</h3>
-      <p>Glossary of business terms, concepts, and jargon commonly found in consulting quantitative assessments. Searchable and organized for quick lookup.</p>
-      <div class="lp-res-link">Browse dictionary <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-    </div>
-    <div class="lp-res-card" onclick="showPage('formulas')">
-      <div class="lp-res-icon"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
-      <h3>Key formulas</h3>
-      <p>Reference sheet of key formulas. Organized by category with explanations.</p>
+      <h3>Glossary &amp; Formulas</h3>
+      <p>Business terms and the formulas behind them, in one searchable reference. Tap any term to see its definition and how it's calculated.</p>
       <div class="lp-res-hint">You don't need to memorize these — you can derive them during the test. Use this as a study companion.</div>
-      <div class="lp-res-link">View formulas <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      <div class="lp-res-link">Browse glossary <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
     </div>
   </div>
 </section>
@@ -791,18 +815,18 @@ textarea.feedback-input{resize:none;height:88px;line-height:1.6}
     <p>Built to mirror the real experience. Every feature is designed around how the actual assessment works.</p>
   </div>
   <div class="lp-why-grid">
-    <div class="lp-why-card"><div class="lp-why-icon"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div><h3>Chat-style format</h3><p>One question at a time, just like the real consulting assessment. No scrolling through a wall of text — stay focused.</p></div>
-    <div class="lp-why-card"><div class="lp-why-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div><h3>Timed sessions</h3><p>40-minute countdown per test. Practice managing time under pressure — the same constraint you will face on test day.</p></div>
-    <div class="lp-why-card"><div class="lp-why-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg></div><h3>Full worked solutions</h3><p>Every question comes with a step-by-step explanation after the test. Learn the method — don't just memorize answers.</p></div>
+    <div class="lp-why-card"><div class="lp-why-icon"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div><h3>Chat-style format</h3><p>One question at a time, just like the real consulting assessment.</p></div>
+    <div class="lp-why-card"><div class="lp-why-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div><h3>Timed sessions</h3><p>40-minute countdown per test. Practice managing time under pressure.</p></div>
+    <div class="lp-why-card"><div class="lp-why-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg></div><h3>Full worked solutions</h3><p>Every question comes with a step-by-step explanation after the test. Learn the method, don't just memorize answers.</p></div>
     <div class="lp-why-card"><div class="lp-why-icon"><svg viewBox="0 0 24 24"><path d="M3 3v18h18M7 16l4-5 3 3 5-7"/></svg></div><h3>Best-score tracking</h3><p>Your top score per test is saved automatically in your browser. Hover to check your progress over time.</p></div>
-    <div class="lp-why-card"><div class="lp-why-icon"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></div><h3>No login required</h3><p>No accounts, no passwords, no email. Land on the site, pick a test, and start practicing in seconds.</p></div>
-    <div class="lp-why-card"><div class="lp-why-icon"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div><h3>Fully mobile</h3><p>Practice on your phone, tablet, or desktop. The interface adapts perfectly — during your commute or at your desk.</p></div>
+    <div class="lp-why-card"><div class="lp-why-icon"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></div><h3>No login required</h3><p>No accounts, no passwords, no email. Land on the site and pick a test.</p></div>
+    <div class="lp-why-card"><div class="lp-why-icon"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div><h3>Fully mobile</h3><p>Practice on your phone, tablet, or desktop.</p></div>
   </div>
 </section>
 
 <section class="lp-final-cta">
   <h2>Ready to walk in confident?</h2>
-  <p>Pick a test and start practicing. Free, no login — you'll be answering your first question in under a minute.</p>
+  <p>Pick a test and start practicing.</p>
   <button class="lp-btn-light" onclick="showSection('qr')">
     Start practice test
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -830,7 +854,7 @@ textarea.feedback-input{resize:none;height:88px;line-height:1.6}
       <p>Free, browser-based practice for consulting quantitative assessments. No login, no fees — just focused preparation.</p>
     </div>
     <div class="lp-footer-col"><h4>Tests</h4><a onclick="showSection('qr')">All tests</a><a onclick="showSection('qr')">Numeric Foundations</a><a onclick="showSection('bm')">Benchmark Tests</a></div>
-    <div class="lp-footer-col"><h4>Resources</h4><a onclick="showPage('dictionary')">Business Dictionary</a><a onclick="showPage('formulas')">Key Formulas</a></div>
+    <div class="lp-footer-col"><h4>Resources</h4><a onclick="showPage('resources')">Glossary &amp; Formulas</a></div>
     <div class="lp-footer-col"><h4>Company</h4><a href="#about-anchor">About</a><a href="#contact-anchor">Contact</a></div>
   </div>
   <div class="lp-footer-bottom">
@@ -857,7 +881,7 @@ textarea.feedback-input{resize:none;height:88px;line-height:1.6}
     <div class="page-hero-inner">
       <span class="page-hero-eyebrow">Section</span>
       <h1 class="page-hero-title">Numeric Foundations</h1>
-      <p class="page-hero-sub">Pure quantitative reasoning — logic, deduction, and calculation. Build speed and accuracy before layering on business context.</p>
+      <p class="page-hero-sub">Emphasis on logic, deduction, and calculation. Build speed and accuracy before layering on business context.</p>
     </div>
   </div>
   <div class="home-body">
@@ -1017,8 +1041,8 @@ textarea.feedback-input{resize:none;height:88px;line-height:1.6}
   </div>
 </div>
 
-<!-- DICTIONARY PAGE -->
-<div id="page-dictionary" class="page">
+<!-- RESOURCES PAGE (combined dictionary + formulas) -->
+<div id="page-resources" class="page">
   <nav class="site-header">
     <div class="site-header-inner">
       <div class="header-logo" onclick="showHome()" style="cursor:pointer">QuantEdge</div>
@@ -1031,8 +1055,8 @@ textarea.feedback-input{resize:none;height:88px;line-height:1.6}
   <div class="page-hero">
     <div class="page-hero-inner">
       <span class="page-hero-eyebrow">Section</span>
-      <h1 class="page-hero-title">Business Dictionary</h1>
-      <p class="page-hero-sub">Key terms and definitions for consulting quantitative assessments.</p>
+      <h1 class="page-hero-title">Business Dictionary &amp; Key Formulas</h1>
+      <p class="page-hero-sub">Key terms, definitions, and the formulas behind them — in one place. Tap any term to expand it.</p>
     </div>
   </div>
   <div class="resource-wrap" style="margin:0 auto;max-width:1200px;padding-left:52px;padding-right:52px;box-sizing:border-box">
@@ -1040,124 +1064,74 @@ textarea.feedback-input{resize:none;height:88px;line-height:1.6}
       <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
       Back to home
     </button>
-    <input class="dict-search" id="dict-search" type="text" placeholder="Search terms…" oninput="filterDict(this.value)"/>
-    <div id="dict-content"></div>
-  </div>
-</div>
-
-<!-- FORMULAS PAGE -->
-<div id="page-formulas" class="page">
-  <nav class="site-header">
-    <div class="site-header-inner">
-      <div class="header-logo" onclick="showHome()" style="cursor:pointer">QuantEdge</div>
-      <div class="header-actions">
-        <button class="header-contact-btn" onclick="openContact()">Contact</button>
-        <button class="header-feedback-btn" onclick="openQuickFeedback()">Feedback</button>
-      </div>
+    <div class="res-chips">
+      <button class="res-chip active" data-cat="all" onclick="setResourcesCat('all')">All terms</button>
+      <button class="res-chip" data-cat="business" onclick="setResourcesCat('business')">Business</button>
+      <button class="res-chip" data-cat="math" onclick="setResourcesCat('math')">Pure math</button>
     </div>
-  </nav>
-  <div class="page-hero">
-    <div class="page-hero-inner">
-      <span class="page-hero-eyebrow">Section</span>
-      <h1 class="page-hero-title">Key Formulas</h1>
-      <p class="page-hero-sub" style="max-width:none;white-space:nowrap">The most important formulas for consulting quantitative assessments. Study these before your test.</p>
-    </div>
-  </div>
-  <div class="resource-wrap" style="margin:0 auto;max-width:1200px;padding-left:52px;padding-right:52px;box-sizing:border-box">
-    <button class="back-btn" onclick="showHome()">
-      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-      Back to home
-    </button>
-    <div id="formulas-content"></div>
+    <input class="dict-search" id="dict-search" type="text" placeholder="Search terms…" oninput="filterResources(this.value)"/>
+    <div id="resources-content"></div>
   </div>
 </div>
 
 <script>
 /* ═══════════════════════════════════════════════════
-   BUSINESS DICTIONARY
+   RESOURCES — combined dictionary + formulas
 ═══════════════════════════════════════════════════ */
-const DICTIONARY = [
-  {term:"Absolute Profit",def:"The actual monetary value of profit earned — i.e. Revenue minus all Costs. Not a percentage, just a £ amount.",example:"If revenue is £500k and costs are £380k, absolute profit = £120k."},
-  {term:"ARPU",def:"Average Revenue Per User. Total revenue divided by total number of users. Used to measure how much value each customer generates.",example:"£1.2m revenue / 4,000 users = £300 ARPU."},
-  {term:"Break-Even Point",def:"The level of sales at which total revenue exactly equals total costs — profit is zero. Break-even units = Fixed Costs ÷ Contribution per unit.",example:"Fixed costs = £200k, contribution = £40/unit → break-even = 5,000 units."},
-  {term:"CAGR",def:"Compound Annual Growth Rate. The steady annual growth rate that would take you from a starting value to an ending value over a given number of years. Formula: (End/Start)^(1/n) − 1.",example:"£100m growing to £161m over 5 years = CAGR of 10%."},
-  {term:"Contribution Margin",def:"Revenue minus variable costs. What each unit sold 'contributes' towards covering fixed costs and making profit. Can be expressed per unit (£) or as a % of revenue.",example:"Selling price £60, variable cost £24 → contribution = £36 per unit."},
-  {term:"EBITDA",def:"Earnings Before Interest, Tax, Depreciation and Amortisation. A measure of a company's core operating profitability — what the business earns before financing and accounting adjustments.",example:"Revenue £10m, operating costs £7m → EBITDA = £3m."},
-  {term:"EV/EBITDA",def:"Enterprise Value divided by EBITDA. A valuation multiple that shows how much an investor pays per £1 of operating profit. Lower = cheaper.",example:"EV £60m, EBITDA £5m → EV/EBITDA = 12x."},
-  {term:"Fixed Costs",def:"Costs that do not change with the level of output. They must be paid whether you sell 0 or 1,000,000 units.",example:"Rent, salaries of permanent staff, insurance — all fixed regardless of sales."},
-  {term:"Gross Margin",def:"(Revenue − Cost of Goods Sold) ÷ Revenue, expressed as a %. Shows how much of each £ of revenue is left after paying direct production costs.",example:"Revenue £100, COGS £60 → Gross margin = 40%."},
-  {term:"IRR",def:"Internal Rate of Return. The discount rate at which the net present value (NPV) of an investment equals zero. Used to compare investment options — higher IRR = better return.",example:"A project that returns exactly your investment at 15% discount rate has an IRR of 15%."},
-  {term:"Market Share",def:"A company's sales as a percentage of the total market's sales. Shows competitive position.",example:"Company sells £30m in a £120m market → 25% market share."},
-  {term:"MRR",def:"Monthly Recurring Revenue. The predictable revenue a business earns each month, typically from subscriptions.",example:"500 subscribers at £40/month = £20,000 MRR."},
-  {term:"Net Profit Margin",def:"Net Profit ÷ Revenue, expressed as %. The percentage of revenue that becomes profit after all costs (including fixed costs, interest, tax).",example:"Revenue £50m, net profit £4m → net profit margin = 8%."},
-  {term:"NPV",def:"Net Present Value. The value today of future cash flows, after discounting them for the time value of money. Positive NPV = the investment creates value.",example:"£1,000 received in 1 year, discounted at 10% → NPV = £909 today."},
-  {term:"Operating Leverage",def:"The degree to which a company relies on fixed versus variable costs. High operating leverage means profits grow fast once fixed costs are covered — but losses also grow fast if volume drops.",example:"A company with 80% fixed costs has high operating leverage."},
-  {term:"Payback Period",def:"The time it takes for the cumulative cash inflows from an investment to equal the initial investment. Shorter payback = lower risk.",example:"£500k investment returning £150k/year → payback period ≈ 3.3 years."},
-  {term:"Price Elasticity",def:"How sensitive demand is to a change in price. Elastic demand = big volume change for small price change. Inelastic = small volume change.",example:"A 10% price rise causes a 20% volume drop → price elasticity = −2 (elastic)."},
-  {term:"Profit",def:"Revenue minus all costs. Can be expressed at different levels: gross profit (after COGS), EBITDA (before interest/tax/D&A), net profit (after everything).",example:"Revenue £1m, total costs £0.8m → profit = £200k."},
-  {term:"Profit Margin",def:"Profit ÷ Revenue, expressed as a %. The proportion of each £ of revenue that becomes profit.",example:"Profit £300k on revenue £1.5m → profit margin = 20%."},
-  {term:"ROI",def:"Return on Investment. (Profit from investment ÷ Cost of investment) × 100. Measures the efficiency of an investment.",example:"Invested £50k, returned £65k → ROI = 30%."},
-  {term:"Revenue",def:"The total money received from selling goods or services. Also called 'sales' or 'turnover'. Revenue = Price × Units sold.",example:"Selling 10,000 units at £20 each = £200,000 revenue."},
-  {term:"Run Rate",def:"An annualised estimate of financial performance based on current figures. If a company earns £3m in Q1, the run rate is £12m/year.",example:"Q3 revenue £4.5m → annual run rate = £18m."},
-  {term:"SaaS",def:"Software as a Service. A software delivery model where customers pay a recurring subscription. Key metrics: MRR, ARR, churn rate, LTV.",example:"Salesforce, Slack, and HubSpot are SaaS businesses."},
-  {term:"Unit Economics",def:"The revenue and costs associated with a single unit of a product or a single customer. Helps assess whether a business model is fundamentally profitable.",example:"Selling price £50, variable cost £20, contribution = £30 per unit."},
-  {term:"Variable Costs",def:"Costs that change directly with the level of output. Every extra unit produced adds more variable cost.",example:"Raw materials, packaging, delivery costs — they increase as you produce more."},
-  {term:"Working Capital",def:"Current assets minus current liabilities. The money available to run day-to-day operations. Negative working capital can signal cash flow problems.",example:"Stock £200k + receivables £100k − payables £150k = £150k working capital."},
-  {term:"Yield",def:"The income return on an investment, expressed as a percentage of the investment's cost or current value.",example:"£1,000 investment generating £50/year income → yield = 5%."},
-];
-
-/* ═══════════════════════════════════════════════════
-   FORMULAS
-═══════════════════════════════════════════════════ */
-const FORMULAS=[
-  {section:"Profit & Margin",items:[
-    {name:"Profit",expr:'Profit = (Price &minus; Variable Cost) &times; Units &minus; Fixed Costs',note:"Contribution per unit × volume, then subtract fixed costs."},
-    {name:"Profit Margin",expr:'<span class="frac"><span>Profit</span><span>Revenue</span></span> &times; 100',note:"Always on selling price. £20k profit on £100k revenue = 20%."},
-    {name:"Gross Margin",expr:'<span class="frac"><span>Revenue &minus; COGS</span><span>Revenue</span></span> &times; 100',note:"COGS = Cost of Goods Sold."},
-    {name:"Break-Even Units",expr:'<span class="frac"><span>Fixed Costs</span><span>Contribution per Unit</span></span>',note:"Contribution = Selling price &minus; Variable cost."},
-    {name:"Selling Price from Margin",expr:'<span class="frac"><span>Cost</span><span>1 &minus; Margin</span></span>',note:"E.g. cost £14, margin 35%: 14 &divide; 0.65 = £21.54."},
-  ]},
-  {section:"Growth & Returns",items:[
-    {name:"CAGR",expr:'<span class="frac"><span>End</span><span>Start</span></span><sup>1/n</sup> &minus; 1',note:"n = years. £100m &rarr; £161m over 5 years: (161/100)^(1/5) &minus; 1 = 10%."},
-    {name:"Future Value",expr:'FV = PV &times; (1 + r)<sup>n</sup>',note:"PV = starting value, r = rate (decimal), n = years."},
-    {name:"Rule of 72",expr:'Years to double &asymp; <span class="frac"><span>72</span><span>Rate %</span></span>',note:"At 9%, money doubles in ~8 years."},
-    {name:"ROI",expr:'<span class="frac"><span>Profit</span><span>Investment</span></span> &times; 100',note:"E.g. invest £50k, gain £65k &rarr; ROI = 30%."},
-  ]},
-  {section:"Speed, Distance & Time",items:[
-    {name:"Speed",expr:'Speed = <span class="frac"><span>Distance</span><span>Time</span></span>',note:"Distance = Speed &times; Time. Time = Distance &divide; Speed."},
-    {name:"Average Speed",expr:'Average Speed = <span class="frac"><span>Total Distance</span><span>Total Time</span></span>',note:"Never average speeds directly."},
-    {name:"Toward each other",expr:'Time = <span class="frac"><span>Total Distance</span><span>Speed<sub>A</sub> + Speed<sub>B</sub></span></span>',note:"Add speeds when moving toward each other."},
-    {name:"Same direction",expr:'Time = <span class="frac"><span>Gap</span><span>Speed<sub>A</sub> &minus; Speed<sub>B</sub></span></span>',note:"Subtract speeds when moving the same direction."},
-  ]},
-  {section:"Percentages & Change",items:[
-    {name:"Percentage Change",expr:'<span class="frac"><span>New &minus; Old</span><span>Old</span></span> &times; 100',note:"Positive = increase, negative = decrease."},
-    {name:"Reverse Percentage",expr:'Original = <span class="frac"><span>Final Value</span><span>1 + Change</span></span>',note:"£120 after +20% &rarr; original = 120 &divide; 1.20 = £100."},
-    {name:"Compound Change",expr:'Final = Start &times; (1 + r<sub>1</sub>) &times; (1 + r<sub>2</sub>) &times; &hellip;',note:"+20% then &minus;15%: 1.20 &times; 0.85 = 1.02 &rarr; net +2%."},
-  ]},
-  {section:"Work Rate",items:[
-    {name:"Individual Rate",expr:'Rate = <span class="frac"><span>1</span><span>Time to complete alone</span></span>',note:"If A finishes in 4 days, rate = &frac14; per day."},
-    {name:"Combined Rate",expr:'Rate<sub>total</sub> = Rate<sub>A</sub> + Rate<sub>B</sub> + &hellip;',note:"Add rates together, then Time = 1 &divide; combined rate."},
-    {name:"Total Work",expr:'Total Work = Workers &times; Days',note:"Keep total work constant, rearrange for the unknown."},
-  ]},
-  {section:"Combinatorics & Probability",items:[
-    {name:"Counting Principle",expr:'Total = n<sub>1</sub> &times; n<sub>2</sub> &times; n<sub>3</sub> &times; &hellip;',note:"Independent choices multiply. 3 starters &times; 4 mains &times; 2 desserts = 24."},
-    {name:"Permutations (order matters)",expr:'P(n,r) = <span class="frac"><span>n!</span><span>(n &minus; r)!</span></span>',note:"1st/2nd/3rd from 5 people: 5&times;4&times;3 = 60."},
-    {name:"Combinations (order doesn't matter)",expr:'C(n,r) = <span class="frac"><span>n!</span><span>r! &times; (n &minus; r)!</span></span>',note:"Choose 3 from 7: (7&times;6&times;5) &divide; (3&times;2&times;1) = 35."},
-    {name:"Probability",expr:'P(event) = <span class="frac"><span>Favourable outcomes</span><span>Total outcomes</span></span>',note:"Rolling a 3 on a die = &frac16;."},
-    {name:"Complementary",expr:'P(not A) = 1 &minus; P(A)',note:"P(rain) = 0.3 &rarr; P(no rain) = 0.7."},
-    {name:"Independent Events",expr:'P(A and B) = P(A) &times; P(B)',note:"Heads twice: 0.5 &times; 0.5 = 0.25."},
-  ]},
-  {section:"Sequences",items:[
-    {name:"Arithmetic — nth term",expr:'a<sub>n</sub> = a + (n &minus; 1)d',note:"a = first term, d = common difference. 3, 7, 11 &hellip; &rarr; 10th term = 3 + 9&times;4 = 39."},
-    {name:"Arithmetic — sum",expr:'S<sub>n</sub> = <span class="frac"><span>n</span><span>2</span></span>(a + l)',note:"l = last term. Or: &frac12;n(2a + (n&minus;1)d)."},
-    {name:"Geometric — nth term",expr:'a<sub>n</sub> = a &times; r<sup>n&minus;1</sup>',note:"a = first term, r = ratio. 2, 6, 18 &hellip; r=3 &rarr; 5th term = 2&times;3&sup4; = 162."},
-    {name:"Geometric — sum",expr:'S<sub>n</sub> = <span class="frac"><span>a(1 &minus; r<sup>n</sup>)</span><span>1 &minus; r</span></span>',note:"For r &ne; 1."},
-    {name:"LCM — when cycles meet",expr:'LCM(a, b) = <span class="frac"><span>a &times; b</span><span>HCF(a, b)</span></span>',note:"Lights every 4s and 6s &rarr; LCM = 12s."},
-  ]},
-  {section:"Weighted Averages",items:[
-    {name:"Weighted Average",expr:'<span class="frac"><span>&Sigma;(Value &times; Weight)</span><span>&Sigma; Weights</span></span>',note:"Multiply each value by its weight, sum, divide by total weight."},
-    {name:"Blended Rate",expr:'<span class="frac"><span>&Sigma;(Rate &times; Amount)</span><span>Total Amount</span></span>',note:"E.g. blended margin = sum of (margin &times; revenue) &divide; total revenue."},
-  ]},
+const RESOURCES = [
+  {term:"Absolute Profit",cat:"business",def:"The actual monetary value of profit earned — i.e. Revenue minus all Costs. Not a percentage, just a £ amount.",expr:'Absolute Profit = Revenue &minus; Total Costs',note:"A £ amount, not a percentage.",example:"If revenue is £500k and costs are £380k, absolute profit = £120k."},
+  {term:"Arithmetic Sequence — nth Term",cat:"math",expr:'a<sub>n</sub> = a + (n &minus; 1)d',note:"a = first term, d = common difference. 3, 7, 11 … → 10th term = 3 + 9×4 = 39."},
+  {term:"Arithmetic Sequence — Sum",cat:"math",expr:'S<sub>n</sub> = <span class="frac"><span>n</span><span>2</span></span>(a + l)',note:"l = last term. Or: ½n(2a + (n−1)d)."},
+  {term:"ARPU",cat:"business",def:"Average Revenue Per User. Total revenue divided by total number of users. Used to measure how much value each customer generates.",expr:'<span class="frac"><span>Total Revenue</span><span>Total Users</span></span>',note:"Measures value generated per customer.",example:"£1.2m revenue / 4,000 users = £300 ARPU."},
+  {term:"Average Speed",cat:"math",expr:'Average Speed = <span class="frac"><span>Total Distance</span><span>Total Time</span></span>',note:"Never average speeds directly."},
+  {term:"Blended Rate",cat:"math",expr:'<span class="frac"><span>&Sigma;(Rate &times; Amount)</span><span>Total Amount</span></span>',note:"E.g. blended margin = sum of (margin × revenue) ÷ total revenue."},
+  {term:"Break-Even Point",cat:"business",def:"The level of sales at which total revenue exactly equals total costs — profit is zero.",expr:'Break-Even Units = <span class="frac"><span>Fixed Costs</span><span>Contribution per Unit</span></span>',note:"Contribution = Selling price − Variable cost.",example:"Fixed costs = £200k, contribution = £40/unit → break-even = 5,000 units."},
+  {term:"CAGR",cat:"business",def:"Compound Annual Growth Rate. The steady annual growth rate that would take you from a starting value to an ending value over a given number of years.",expr:'<span class="frac"><span>End</span><span>Start</span></span><sup>1/n</sup> &minus; 1',note:"n = years.",example:"£100m growing to £161m over 5 years = CAGR of 10%."},
+  {term:"Combinations",cat:"math",expr:'C(n,r) = <span class="frac"><span>n!</span><span>r! &times; (n &minus; r)!</span></span>',note:"Order doesn't matter. Choose 3 from 7: (7×6×5) ÷ (3×2×1) = 35."},
+  {term:"Combined Work Rate",cat:"math",expr:'Rate<sub>total</sub> = Rate<sub>A</sub> + Rate<sub>B</sub> + &hellip;',note:"Add rates together, then Time = 1 ÷ combined rate."},
+  {term:"Complementary Probability",cat:"math",expr:'P(not A) = 1 &minus; P(A)',note:"P(rain) = 0.3 → P(no rain) = 0.7."},
+  {term:"Compound Percentage Change",cat:"math",expr:'Final = Start &times; (1 + r<sub>1</sub>) &times; (1 + r<sub>2</sub>) &times; &hellip;',note:"+20% then −15%: 1.20 × 0.85 = 1.02 → net +2%."},
+  {term:"Contribution Margin",cat:"business",def:"Revenue minus variable costs. What each unit sold 'contributes' towards covering fixed costs and making profit.",expr:'Contribution = Selling Price &minus; Variable Cost',note:"Can be expressed per unit (£) or as a % of revenue.",example:"Selling price £60, variable cost £24 → contribution = £36 per unit."},
+  {term:"Counting Principle",cat:"math",expr:'Total = n<sub>1</sub> &times; n<sub>2</sub> &times; n<sub>3</sub> &times; &hellip;',note:"Independent choices multiply. 3 starters × 4 mains × 2 desserts = 24."},
+  {term:"EBITDA",cat:"business",def:"Earnings Before Interest, Tax, Depreciation and Amortisation. A measure of a company's core operating profitability.",expr:'EBITDA = Revenue &minus; Operating Costs <span style="font-size:0.85em">(excl. interest, tax, D&amp;A)</span>',note:"What the business earns before financing and accounting adjustments.",example:"Revenue £10m, operating costs £7m → EBITDA = £3m."},
+  {term:"EV/EBITDA",cat:"business",def:"Enterprise Value divided by EBITDA. A valuation multiple that shows how much an investor pays per £1 of operating profit. Lower = cheaper.",expr:'<span class="frac"><span>Enterprise Value</span><span>EBITDA</span></span>',note:"Lower multiple = cheaper valuation.",example:"EV £60m, EBITDA £5m → EV/EBITDA = 12x."},
+  {term:"Fixed Costs",cat:"business",def:"Costs that do not change with the level of output. They must be paid whether you sell 0 or 1,000,000 units.",example:"Rent, salaries of permanent staff, insurance — all fixed regardless of sales."},
+  {term:"Future Value",cat:"math",expr:'FV = PV &times; (1 + r)<sup>n</sup>',note:"PV = starting value, r = rate (decimal), n = years."},
+  {term:"Geometric Sequence — nth Term",cat:"math",expr:'a<sub>n</sub> = a &times; r<sup>n&minus;1</sup>',note:"a = first term, r = ratio. 2, 6, 18 … r=3 → 5th term = 2×3⁴ = 162."},
+  {term:"Geometric Sequence — Sum",cat:"math",expr:'S<sub>n</sub> = <span class="frac"><span>a(1 &minus; r<sup>n</sup>)</span><span>1 &minus; r</span></span>',note:"For r ≠ 1."},
+  {term:"Gross Margin",cat:"business",def:"(Revenue − Cost of Goods Sold) ÷ Revenue, expressed as a %. Shows how much of each £ of revenue is left after paying direct production costs.",expr:'<span class="frac"><span>Revenue &minus; COGS</span><span>Revenue</span></span> &times; 100',note:"COGS = Cost of Goods Sold.",example:"Revenue £100, COGS £60 → Gross margin = 40%."},
+  {term:"Independent Events",cat:"math",expr:'P(A and B) = P(A) &times; P(B)',note:"Heads twice: 0.5 × 0.5 = 0.25."},
+  {term:"Individual Work Rate",cat:"math",expr:'Rate = <span class="frac"><span>1</span><span>Time to complete alone</span></span>',note:"If A finishes in 4 days, rate = ¼ per day."},
+  {term:"IRR",cat:"business",def:"Internal Rate of Return. The discount rate at which the net present value (NPV) of an investment equals zero.",expr:'NPV at rate r = 0',note:"Solve for r. Higher IRR = better return.",example:"A project that returns exactly your investment at 15% discount rate has an IRR of 15%."},
+  {term:"LCM — When Cycles Meet",cat:"math",expr:'LCM(a, b) = <span class="frac"><span>a &times; b</span><span>HCF(a, b)</span></span>',note:"Lights every 4s and 6s → LCM = 12s."},
+  {term:"Market Share",cat:"business",def:"A company's sales as a percentage of the total market's sales. Shows competitive position.",expr:'<span class="frac"><span>Company Sales</span><span>Total Market Sales</span></span> &times; 100',note:"Shows competitive position.",example:"Company sells £30m in a £120m market → 25% market share."},
+  {term:"MRR",cat:"business",def:"Monthly Recurring Revenue. The predictable revenue a business earns each month, typically from subscriptions.",expr:'MRR = Subscribers &times; Avg. Monthly Price',note:"Typically from subscriptions.",example:"500 subscribers at £40/month = £20,000 MRR."},
+  {term:"Net Profit Margin",cat:"business",def:"Net Profit ÷ Revenue, expressed as %. The percentage of revenue that becomes profit after all costs.",expr:'<span class="frac"><span>Net Profit</span><span>Revenue</span></span> &times; 100',note:"Includes fixed costs, interest, and tax.",example:"Revenue £50m, net profit £4m → net profit margin = 8%."},
+  {term:"NPV",cat:"business",def:"Net Present Value. The value today of future cash flows, after discounting them for the time value of money.",expr:'NPV = <span class="frac"><span>Future Cash Flow</span><span>(1 + r)<sup>n</sup></span></span> &minus; Initial Investment',note:"Positive NPV = investment creates value.",example:"£1,000 received in 1 year, discounted at 10% → NPV = £909 today."},
+  {term:"Operating Leverage",cat:"business",def:"The degree to which a company relies on fixed versus variable costs.",example:"A company with 80% fixed costs has high operating leverage."},
+  {term:"Payback Period",cat:"business",def:"The time it takes for the cumulative cash inflows from an investment to equal the initial investment.",expr:'<span class="frac"><span>Initial Investment</span><span>Annual Cash Inflow</span></span>',note:"Shorter payback = lower risk.",example:"£500k investment returning £150k/year → payback period ≈ 3.3 years."},
+  {term:"Percentage Change",cat:"math",expr:'<span class="frac"><span>New &minus; Old</span><span>Old</span></span> &times; 100',note:"Positive = increase, negative = decrease."},
+  {term:"Permutations",cat:"math",expr:'P(n,r) = <span class="frac"><span>n!</span><span>(n &minus; r)!</span></span>',note:"Order matters. 1st/2nd/3rd from 5 people: 5×4×3 = 60."},
+  {term:"Price Elasticity",cat:"business",def:"How sensitive demand is to a change in price.",expr:'<span class="frac"><span>% Change in Quantity</span><span>% Change in Price</span></span>',note:"Elastic demand = big volume change for small price change.",example:"A 10% price rise causes a 20% volume drop → price elasticity = −2 (elastic)."},
+  {term:"Probability",cat:"math",expr:'P(event) = <span class="frac"><span>Favourable outcomes</span><span>Total outcomes</span></span>',note:"Rolling a 3 on a die = ⅙."},
+  {term:"Profit",cat:"business",def:"Revenue minus all costs. Can be expressed at different levels: gross profit, EBITDA, net profit.",expr:'Profit = (Price &minus; Variable Cost) &times; Units &minus; Fixed Costs',note:"Contribution per unit × volume, then subtract fixed costs.",example:"Revenue £1m, total costs £0.8m → profit = £200k."},
+  {term:"Profit Margin",cat:"business",def:"Profit ÷ Revenue, expressed as a %. The proportion of each £ of revenue that becomes profit.",expr:'<span class="frac"><span>Profit</span><span>Revenue</span></span> &times; 100',note:"Always on selling price.",example:"Profit £300k on revenue £1.5m → profit margin = 20%."},
+  {term:"Reverse Percentage",cat:"math",expr:'Original = <span class="frac"><span>Final Value</span><span>1 + Change</span></span>',note:"£120 after +20% → original = 120 ÷ 1.20 = £100."},
+  {term:"Revenue",cat:"business",def:"The total money received from selling goods or services. Also called 'sales' or 'turnover'.",expr:'Revenue = Price &times; Units Sold',note:"Also called 'sales' or 'turnover'.",example:"Selling 10,000 units at £20 each = £200,000 revenue."},
+  {term:"ROI",cat:"business",def:"Return on Investment. Measures the efficiency of an investment.",expr:'<span class="frac"><span>Profit</span><span>Investment</span></span> &times; 100',note:"E.g. invest £50k, gain £65k → ROI = 30%.",example:"Invested £50k, returned £65k → ROI = 30%."},
+  {term:"Rule of 72",cat:"math",expr:'Years to double &asymp; <span class="frac"><span>72</span><span>Rate %</span></span>',note:"At 9%, money doubles in ~8 years."},
+  {term:"Run Rate",cat:"business",def:"An annualised estimate of financial performance based on current figures.",expr:'Annual Run Rate = Latest Period Revenue &times; Periods per Year',note:"E.g. quarterly revenue × 4.",example:"Q3 revenue £4.5m → annual run rate = £18m."},
+  {term:"SaaS",cat:"business",def:"Software as a Service. A software delivery model where customers pay a recurring subscription.",example:"Salesforce, Slack, and HubSpot are SaaS businesses."},
+  {term:"Same Direction (Speed)",cat:"math",expr:'Time = <span class="frac"><span>Gap</span><span>Speed<sub>A</sub> &minus; Speed<sub>B</sub></span></span>',note:"Subtract speeds when moving the same direction."},
+  {term:"Selling Price from Margin",cat:"math",expr:'<span class="frac"><span>Cost</span><span>1 &minus; Margin</span></span>',note:"E.g. cost £14, margin 35%: 14 ÷ 0.65 = £21.54."},
+  {term:"Speed",cat:"math",expr:'Speed = <span class="frac"><span>Distance</span><span>Time</span></span>',note:"Distance = Speed × Time. Time = Distance ÷ Speed."},
+  {term:"Total Work",cat:"math",expr:'Total Work = Workers &times; Days',note:"Keep total work constant, rearrange for the unknown."},
+  {term:"Toward Each Other (Speed)",cat:"math",expr:'Time = <span class="frac"><span>Total Distance</span><span>Speed<sub>A</sub> + Speed<sub>B</sub></span></span>',note:"Add speeds when moving toward each other."},
+  {term:"Unit Economics",cat:"business",def:"The revenue and costs associated with a single unit of a product or a single customer.",example:"Selling price £50, variable cost £20, contribution = £30 per unit."},
+  {term:"Variable Costs",cat:"business",def:"Costs that change directly with the level of output.",example:"Raw materials, packaging, delivery costs — they increase as you produce more."},
+  {term:"Weighted Average",cat:"math",expr:'<span class="frac"><span>&Sigma;(Value &times; Weight)</span><span>&Sigma; Weights</span></span>',note:"Multiply each value by its weight, sum, divide by total weight."},
+  {term:"Working Capital",cat:"business",def:"Current assets minus current liabilities. The money available to run day-to-day operations.",expr:'Working Capital = Current Assets &minus; Current Liabilities',note:"Negative working capital can signal cash flow problems.",example:"Stock £200k + receivables £100k − payables £150k = £150k working capital."},
+  {term:"Yield",cat:"business",def:"The income return on an investment, expressed as a percentage of the investment's cost or current value.",expr:'<span class="frac"><span>Annual Income</span><span>Investment Value</span></span> &times; 100',note:"Expressed as a % of cost or current value.",example:"£1,000 investment generating £50/year income → yield = 5%."},
 ];
 
 /* ═══════════════════════════════════════════════════
@@ -1337,11 +1311,11 @@ function isCorrect(q,val){
   return false;
 }
 function showPage(id){
+  if(id==='dictionary'||id==='formulas')id='resources';
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById('page-'+id).classList.add('active');
   window.scrollTo(0,0);
-  if(id==='dictionary')renderDict('');
-  if(id==='formulas')renderFormulas();
+  if(id==='resources')renderResources();
   if(history.state===null||history.state.page!==id){
     history.pushState({page:id},'','#'+id);
   }
@@ -1354,11 +1328,11 @@ window.addEventListener('popstate',function(e){
     return;
   }
   var id=(e.state&&e.state.page)||'home';
+  if(id==='dictionary'||id==='formulas')id='resources';
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById('page-'+id).classList.add('active');
   window.scrollTo(0,0);
-  if(id==='dictionary')renderDict('');
-  if(id==='formulas')renderFormulas();
+  if(id==='resources')renderResources();
   if(id==='home'){clearInterval(timerInterval);stopCamera();}
 });
 history.replaceState({page:'home'},'','#home');
@@ -1454,6 +1428,7 @@ function startTest(){
   clearInterval(timerInterval);
   timerInterval=setInterval(tickTimer,1000);
   updateTimerDisplay();
+  trackEvent('test_start',{testId:currentTest.id,testName:currentTest.name});
   // Clear chat feed
   const feed=document.getElementById('chat-feed');
   if(feed)feed.innerHTML='';
@@ -1611,7 +1586,14 @@ function finishTest(){
   showPage('results');
   const count=parseInt(localStorage.getItem('qe_tests_completed')||'0',10)+1;
   localStorage.setItem('qe_tests_completed',String(count));
-  trackEvent('test_completion');
+  const activeSeconds=2400-Math.max(timeRemaining,0);
+  trackEvent('test_completion',{
+    testId:currentTest.id,
+    testName:currentTest.name,
+    activeSeconds:activeSeconds,
+    score:correct,
+    total:qs.length
+  });
   checkFeedbackTrigger();
 }
 
@@ -1779,48 +1761,55 @@ function renderReviewCard(){
   if(_rvcid){setTimeout(()=>initChart(_rvcid),50);}
 }
 
-/* ── DICTIONARY ── */
-function renderDict(filter){
-  const f=filter.toLowerCase().trim();
-  const items=f?DICTIONARY.filter(d=>d.term.toLowerCase().includes(f)||d.def.toLowerCase().includes(f)):DICTIONARY;
-  const groups={};
-  items.forEach(d=>{
-    const letter=d.term[0].toUpperCase();
-    if(!groups[letter])groups[letter]=[];
-    groups[letter].push(d);
-  });
-  let html='';
-  if(items.length===0){html='<p style="color:var(--text-hint);font-size:14px;padding:20px 0">No terms found.</p>';}
-  Object.keys(groups).sort().forEach(letter=>{
-    html+=`<div class="dict-group"><div class="dict-group-letter">${letter}</div>`;
-    groups[letter].forEach(d=>{
-      html+=`<div class="dict-item">
-        <div class="dict-term">${d.term}</div>
-        <div class="dict-def">${d.def}</div>
-        ${d.example?`<div class="dict-example">Example: ${d.example}</div>`:''}
-      </div>`;
-    });
-    html+='</div>';
-  });
-  document.getElementById('dict-content').innerHTML=html;
-}
-function filterDict(val){renderDict(val)}
+/* ── RESOURCES (combined dictionary + formulas) ── */
+let resourcesFilter='all';
+let resourcesSearch='';
+let resourcesOpenTerm=null;
 
-/* ── FORMULAS PAGE ── */
-function renderFormulas(){
+function renderResources(){
+  const f=resourcesSearch.toLowerCase().trim();
+  let items=RESOURCES;
+  if(resourcesFilter!=='all'){items=items.filter(r=>r.cat===resourcesFilter);}
+  if(f){items=items.filter(r=>r.term.toLowerCase().includes(f)||(r.def&&r.def.toLowerCase().includes(f)));}
+
   let html='';
-  FORMULAS.forEach(section=>{
-    html+=`<div class="formula-section"><div class="formula-section-title">${section.section}</div>`;
-    section.items.forEach(f=>{
-      html+=`<div class="formula-card-item">
-        <div class="fn">${f.name}</div>
-        <div class="fe">${f.expr}</div>
-        <div class="fd">${f.note}</div>
-      </div>`;
+  if(items.length===0){
+    html='<p style="color:var(--text-hint);font-size:14px;padding:20px 0">No terms found.</p>';
+  } else {
+    html+='<div class="res-list">';
+    items.forEach((r,i)=>{
+      const isOpen=resourcesOpenTerm===r.term;
+      html+=`<div class="res-row ${isOpen?'open':''}">
+        <div class="res-row-head" onclick="toggleResource('${r.term.replace(/'/g,"\\'")}')">
+          <div class="res-row-name">${r.term}</div>
+          <div class="res-row-toggle">${isOpen?'&minus;':'+'}</div>
+        </div>`;
+      if(isOpen){
+        html+='<div class="res-row-body">';
+        if(r.def){html+=`<div class="res-def">${r.def}</div>`;}
+        if(r.expr){
+          html+=`<div class="res-formula-label">Formula</div>
+          <div class="fe">${r.expr}</div>`;
+          if(r.note){html+=`<div class="res-note">${r.note}</div>`;}
+        }
+        if(r.example){html+=`<div class="res-example">Example: ${r.example}</div>`;}
+        html+='</div>';
+      }
+      html+='</div>';
     });
     html+='</div>';
-  });
-  document.getElementById('formulas-content').innerHTML=html;
+  }
+  document.getElementById('resources-content').innerHTML=html;
+}
+function toggleResource(term){
+  resourcesOpenTerm = (resourcesOpenTerm===term) ? null : term;
+  renderResources();
+}
+function filterResources(val){resourcesSearch=val;renderResources();}
+function setResourcesCat(cat){
+  resourcesFilter=cat;
+  document.querySelectorAll('.res-chip').forEach(c=>c.classList.toggle('active',c.dataset.cat===cat));
+  renderResources();
 }
 
 function confirmEndTest(){
@@ -1861,10 +1850,50 @@ const FORMSPREE_ID = 'xzdlegad';
 const FORMSPREE_URL = 'https://formspree.io/f/' + FORMSPREE_ID;
 const TRACKING_URL = 'https://script.google.com/macros/s/AKfycbzDBIiubqSttdxMwYD38XhSLZzIAG-5MF9F6rIHuQa2SmFip8XS4AzYdgMOkADdLnXr/exec';
 
-function trackEvent(eventType){
-  try{var img=new Image();img.src=TRACKING_URL+'?event='+encodeURIComponent(eventType)+'&t='+Date.now();}catch(e){}
+/* ── ANONYMOUS VISITOR ID (no personal data, just a random browser ID) ── */
+function getAnonId(){
+  try{
+    let id=localStorage.getItem('qe_anon_id');
+    if(!id){
+      id='anon_'+Math.random().toString(36).slice(2,10)+Date.now().toString(36);
+      localStorage.setItem('qe_anon_id',id);
+    }
+    return id;
+  }catch(e){return 'anon_unknown';}
+}
+
+function trackEvent(eventType,extra){
+  try{
+    var img=new Image();
+    var params='?event='+encodeURIComponent(eventType)+'&t='+Date.now()+'&anonId='+encodeURIComponent(getAnonId());
+    if(extra){
+      Object.keys(extra).forEach(function(k){
+        if(extra[k]!==undefined&&extra[k]!==null)params+='&'+encodeURIComponent(k)+'='+encodeURIComponent(extra[k]);
+      });
+    }
+    img.src=TRACKING_URL+params;
+  }catch(e){}
 }
 trackEvent('visit');
+
+/* ── TOTAL SITE TIME TRACKING (anonymous) ── */
+var qeSiteStart=Date.now();
+function sendSiteTime(){
+  var seconds=Math.round((Date.now()-qeSiteStart)/1000);
+  if(seconds<2)return;
+  trackEvent('site_time',{seconds:seconds});
+}
+window.addEventListener('visibilitychange',function(){
+  if(document.visibilityState==='hidden')sendSiteTime();
+  else qeSiteStart=Date.now();
+});
+window.addEventListener('beforeunload',function(){
+  sendSiteTime();
+  if(timerInterval&&currentTest){
+    const activeSeconds=2400-Math.max(timeRemaining,0);
+    trackEvent('test_abandoned',{testId:currentTest.id,testName:currentTest.name,activeSeconds:activeSeconds});
+  }
+});
 
 let contactType='Feedback',feedbackType='Feedback';
 function openContact(){document.getElementById('contact-overlay').classList.add('visible');}
