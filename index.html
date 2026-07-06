@@ -2925,14 +2925,6 @@ window.addEventListener('popstate',function(e){
 // Capture deep-link hash BEFORE replaceState overwrites it
 const _deepLinkHash = window.location.hash.replace('#','');
 history.replaceState({page:'home'},'','#home');
-// Navigate to deep-link page if one was provided (via sessionStorage from modal)
-(function(){
-  const target = sessionStorage.getItem('qtip_target');
-  if(target){
-    sessionStorage.removeItem('qtip_target');
-    setTimeout(()=> showPage(target), 50);
-  }
-})();
 let mmReturnPage = "section-mm"; // tracks which route MM was accessed from
 
 function showSection(sec, fromPage){
@@ -3919,6 +3911,11 @@ function openContact(){
 
 function retryTest(){startTest()}
 renderTestList();
+// Navigate to target page if opened via Quick Tip modal "Read more" link
+(function(){
+  const _qt = sessionStorage.getItem('qtip_target');
+  if(_qt){ sessionStorage.removeItem('qtip_target'); showPage(_qt); }
+})();
 function goBackFromTest(){
   if(currentDrill){showPage('drill-levels');return;}
   if(currentTest&&currentTest.section){
