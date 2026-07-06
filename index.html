@@ -325,9 +325,9 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
 .done-btn:hover{background:var(--accent-hover)}
 
 /* ── QUICK TIP CHIPS (inline in explanations) ── */
-.qtip-chip{display:inline-flex;align-items:center;gap:4px;background:rgba(26,158,92,0.08);color:#1a9e5c;border:1px solid rgba(26,158,92,0.22);border-radius:20px;padding:2px 9px 2px 7px;font-size:11.5px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;vertical-align:middle;margin:0 2px;transition:background 0.15s;white-space:nowrap;text-decoration:none}
-.qtip-chip:hover{background:rgba(26,158,92,0.15)}
-.qtip-chip-icon{font-size:10px;opacity:0.7}
+.qtip-chip{display:inline;color:#1a9e5c;font-weight:500;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:2px;cursor:pointer;font-family:inherit;font-size:inherit;background:none;border:none;padding:0;margin:0 1px}
+.qtip-chip:hover{text-decoration-style:solid}
+.qtip-chip-icon{display:none}
 
 /* ── QUICK TIP MODAL ── */
 .qtip-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.35);z-index:9000;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.2s}
@@ -3380,11 +3380,26 @@ function renderReviewCard(){
 
   // Parse explanation
   function injectChips(text){
+    const SHORT_LABELS={
+      'multiply-by-11':'×11 trick',
+      'square-ending-5':'square ×5',
+      'round-and-adjust':'round & adjust',
+      'percentage-flip':'% flip',
+      'add-left-to-right':'left to right',
+      'subtract-by-gap':'subtract by gap',
+      'guesstimation':'guesstimation',
+      'square-two-digit':'square shortcut',
+      'noise-principle':'noise principle',
+      'read-last-line':'read last line',
+      'sanity-check':'sanity check',
+      'check-format':'check format',
+      'when-to-skip':'when to skip'
+    };
     return text.replace(/\[\[([^\]]+)\]\]/g,(match,key)=>{
       const tip=QUICK_TIPS[key];
       if(!tip) return match;
-      const label=tip.title.length>28?tip.title.slice(0,26)+'…':tip.title;
-      return `<span class="qtip-chip" onclick="openQTip('${key}')"><span class="qtip-chip-icon">💡</span>${label}</span>`;
+      const label=SHORT_LABELS[key]||key;
+      return `<span class="qtip-chip" onclick="openQTip('${key}')">${label}</span>`;
     });
   }
   const lines=q.explain.split('\n').filter(s=>s.trim());
@@ -3405,7 +3420,7 @@ function renderReviewCard(){
     }
   });
   if(tipHtml){
-    explainHtml+=`<div class="review-solution-tip">💡 ${injectChips(tipHtml)}</div>`;
+    explainHtml+=`<div class="review-solution-tip">${injectChips(tipHtml)}</div>`;
   }
 
   const partial=!ok&&!skipped&&isPartialCredit(q,userVal);
