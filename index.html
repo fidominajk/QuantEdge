@@ -2777,15 +2777,18 @@ function openQTip(key) {
   document.getElementById('qtip-body').textContent = tip.body;
   const linkEl = document.getElementById('qtip-link');
   linkEl.textContent = tip.linkLabel + ' ↗';
-  const hashMap2 = {
-    'page-mentalmaths': '#mentalmaths',
-    'page-tips': '#tips'
+  const pageMap = {
+    'page-mentalmaths': 'mentalmaths',
+    'page-tips': 'tips'
   };
   linkEl.onclick = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    const hash = hashMap2[tip.link] || '';
-    window.open(window.location.origin + window.location.pathname + hash, '_blank', 'noopener');
+    const target = pageMap[tip.link];
+    if(target){
+      sessionStorage.setItem('qtip_target', target);
+      window.open(window.location.origin + window.location.pathname, '_blank', 'noopener');
+    }
   };
   document.getElementById('qtip-overlay').classList.add('visible');
 }
@@ -2922,16 +2925,12 @@ window.addEventListener('popstate',function(e){
 // Capture deep-link hash BEFORE replaceState overwrites it
 const _deepLinkHash = window.location.hash.replace('#','');
 history.replaceState({page:'home'},'','#home');
-// Navigate to deep-link page if one was provided
+// Navigate to deep-link page if one was provided (via sessionStorage from modal)
 (function(){
-  const _deepPages = {
-    'mentalmaths': 'mentalmaths',
-    'tips': 'tips',
-    'resources': 'resources',
-    'section-tests': 'section-tests'
-  };
-  if(_deepLinkHash && _deepPages[_deepLinkHash]){
-    setTimeout(()=> showPage(_deepPages[_deepLinkHash]), 50);
+  const target = sessionStorage.getItem('qtip_target');
+  if(target){
+    sessionStorage.removeItem('qtip_target');
+    setTimeout(()=> showPage(target), 50);
   }
 })();
 let mmReturnPage = "section-mm"; // tracks which route MM was accessed from
@@ -4077,19 +4076,12 @@ function startDrill(catId, levelIdx){
   document.getElementById('camera-modal').classList.add('visible');
 }
 
-/* ── HASH-BASED DEEP LINKING (for "Read more" new tab links) ── */
-(function(){
-  const hashMap = {
-    'mentalmaths': 'mentalmaths',
-    'tips': 'tips',
-    'resources': 'resources',
-    'section-tests': 'section-tests'
-  };
-  window.addEventListener('hashchange', function(){
-    const h = window.location.hash.replace('#','');
-    if(hashMap[h]) showPage(hashMap[h]);
-  });
-})();
+/* ── HASH-BASED DEEP LINKING ── */
+window.addEventListener('hashchange', function(){
+  const h = window.location.hash.replace('#','');
+  const hashMap = {'mentalmaths':'mentalmaths','tips':'tips','resources':'resources'};
+  if(hashMap[h]) showPage(hashMap[h]);
+});
 </script>
 
 <!-- CAMERA WIDGET -->
