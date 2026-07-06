@@ -324,6 +324,24 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
 .done-btn{display:block;width:100%;background:rgba(232,168,48,0.06);color:#92620a;border:1.5px solid #e8c878;border-radius:8px;padding:13px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:background 0.15s;margin-top:8px}
 .done-btn:hover{background:var(--accent-hover)}
 
+/* ── QUICK TIP CHIPS (inline in explanations) ── */
+.qtip-chip{display:inline-flex;align-items:center;gap:4px;background:rgba(26,158,92,0.08);color:#1a9e5c;border:1px solid rgba(26,158,92,0.22);border-radius:20px;padding:2px 9px 2px 7px;font-size:11.5px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;vertical-align:middle;margin:0 2px;transition:background 0.15s;white-space:nowrap;text-decoration:none}
+.qtip-chip:hover{background:rgba(26,158,92,0.15)}
+.qtip-chip-icon{font-size:10px;opacity:0.7}
+
+/* ── QUICK TIP MODAL ── */
+.qtip-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.35);z-index:9000;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.2s}
+.qtip-overlay.visible{opacity:1;pointer-events:all}
+.qtip-modal{background:#fff;border-radius:18px 18px 0 0;padding:28px 28px 32px;width:100%;max-width:560px;transform:translateY(24px);transition:transform 0.25s;box-shadow:0 -4px 32px rgba(0,0,0,0.12)}
+.qtip-overlay.visible .qtip-modal{transform:translateY(0)}
+.qtip-modal-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px}
+.qtip-modal-title{font-size:16px;font-weight:700;color:#1a2e22;font-family:'Inter',sans-serif;line-height:1.3}
+.qtip-modal-tag{font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:#1a9e5c;background:rgba(26,158,92,0.08);border-radius:20px;padding:3px 9px;margin-top:2px}
+.qtip-close{background:none;border:none;cursor:pointer;font-size:20px;color:#9ab0a4;padding:0;line-height:1;flex-shrink:0;margin-left:12px;margin-top:-2px}
+.qtip-modal-body{font-size:14px;color:#3d5a4a;line-height:1.75;font-family:'Inter',sans-serif;margin-bottom:20px}
+.qtip-modal-link{display:flex;align-items:center;gap:6px;background:#1a9e5c;color:#fff;border:none;border-radius:8px;padding:11px 18px;font-size:13.5px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;text-decoration:none;width:100%;justify-content:center}
+.qtip-modal-link:hover{background:#17885e}
+
 /* ── DICTIONARY PAGE ── */
 .resource-wrap{max-width:1200px;margin:0 auto;padding:40px 52px 80px}
 .resource-header{margin-bottom:28px}
@@ -2651,6 +2669,128 @@ const DRILLS = {
   }
 };
 
+/* ══════════════════════════════════════════════════════
+   QUICK TIP MODAL — technique reference cards
+   Keys are embedded in explanations as [[key]]
+   ══════════════════════════════════════════════════════ */
+const QUICK_TIPS = {
+  // Mental Maths Tricks
+  'multiply-by-11': {
+    tag: 'Mental maths trick',
+    title: 'Multiply any two-digit number by 11',
+    body: 'Add the two digits together and place the result between them. If the middle sum is 10 or more, carry 1 into the left digit. For example: 47 × 11 — 4+7=11, carry the 1 — answer: 517. Once you see it, you can never unsee it.',
+    link: 'page-mentalmaths',
+    linkLabel: 'Read more in Mental Maths Tricks'
+  },
+  'square-ending-5': {
+    tag: 'Mental maths trick',
+    title: 'Squaring numbers ending in 5',
+    body: 'Take the tens digit, multiply it by the next number up, then attach 25. The answer always ends in 25. For example: 35² → 3×4=12, attach 25 → 1,225. Works for any number ending in 5.',
+    link: 'page-mentalmaths',
+    linkLabel: 'Read more in Mental Maths Tricks'
+  },
+  'round-and-adjust': {
+    tag: 'Mental maths trick',
+    title: 'Multiply by rounding and adjusting',
+    body: 'When a number is close to a round figure, multiply by the round number and correct for the difference. For example: 29 × 7 → treat as 30×7=210, subtract 7 → 203. Much faster than working with the original.',
+    link: 'page-mentalmaths',
+    linkLabel: 'Read more in Mental Maths Tricks'
+  },
+  'percentage-flip': {
+    tag: 'Mental maths trick',
+    title: 'The percentage flip',
+    body: 'X% of Y is always the same as Y% of X — pick whichever direction is easier. For example: 8% of 25 is hard, but flip it: 25% of 8 = 2. This surprises most people the first time they see it.',
+    link: 'page-mentalmaths',
+    linkLabel: 'Read more in Mental Maths Tricks'
+  },
+  'add-left-to-right': {
+    tag: 'Mental maths trick',
+    title: 'Add left to right',
+    body: 'Start from the left — biggest part first, then refine. For example: 58 + 36 → 50+30=80, then 8+6=14 → 94. You hold a running total much more easily this way than working right to left.',
+    link: 'page-mentalmaths',
+    linkLabel: 'Read more in Mental Maths Tricks'
+  },
+  'subtract-by-gap': {
+    tag: 'Mental maths trick',
+    title: 'Subtract by finding the gap',
+    body: 'Instead of borrowing digits, ask what you need to add to reach the next round number. For example: 100 − 63 → what does 63 need to reach 100? → 37. Turns subtraction into addition, which the brain handles more naturally.',
+    link: 'page-mentalmaths',
+    linkLabel: 'Read more in Mental Maths Tricks'
+  },
+  'guesstimation': {
+    tag: 'Mental maths trick',
+    title: 'Guesstimation',
+    body: 'Round each number to its leading digit before operating. Gets you a ballpark in seconds — useful for checking whether your exact answer is in the right range. For example: 4,867 × 32 → round to 5,000×30=150,000. Exact answer: 155,744. Within 4%.',
+    link: 'page-mentalmaths',
+    linkLabel: 'Read more in Mental Maths Tricks'
+  },
+  'square-two-digit': {
+    tag: 'Mental maths trick',
+    title: 'Squaring any two-digit number',
+    body: 'Find the nearest round number, use the identity n² = (n+d)(n−d) + d². For example: 43² → nearest round is 40, d=3. So 46×40+9 = 1,840+9 = 1,849. Choose d to land on a round number.',
+    link: 'page-mentalmaths',
+    linkLabel: 'Read more in Mental Maths Tricks'
+  },
+  // Strategic Approach
+  'noise-principle': {
+    tag: 'Strategic approach',
+    title: 'The noise principle',
+    body: 'Every question contains details that are there to distract you — deliberately. The moment you spot noise, mentally cross it out. Do not try to incorporate it. Do not wonder if it becomes relevant later. It does not. The more intimidating a question looks, the more noise it usually contains.',
+    link: 'page-tips',
+    linkLabel: 'Read more in Strategic Approach'
+  },
+  'read-last-line': {
+    tag: 'Strategic approach',
+    title: 'Read the last line first',
+    body: 'Know exactly what you are solving for — the actual number, the unit, the format — before you read a single piece of context. This completely changes how you absorb the question. You will read the preamble with a filter already in place, and the noise becomes much easier to spot.',
+    link: 'page-tips',
+    linkLabel: 'Read more in Strategic Approach'
+  },
+  'sanity-check': {
+    tag: 'Strategic approach',
+    title: 'The 5-second sanity check',
+    body: 'After you answer, ask: does this make sense in the real world? A profit margin of 340%? A car travelling at 3 km/h? A company with 0.6 employees? These are signals worth pausing on. Five seconds of common sense is often all it takes to catch an error before it is submitted.',
+    link: 'page-tips',
+    linkLabel: 'Read more in Strategic Approach'
+  },
+  'check-format': {
+    tag: 'Strategic approach',
+    title: 'Check the format — not just the number',
+    body: 'A significant number of marks are lost not because the calculation is wrong, but because the answer is in the wrong form. "Give your answer in £k, to 2 decimal places" — not £m, not pence, not rounded to a whole number. "State increase or decrease" — a number alone will not do it.',
+    link: 'page-tips',
+    linkLabel: 'Read more in Strategic Approach'
+  },
+  'when-to-skip': {
+    tag: 'Strategic approach',
+    title: 'Know when to skip',
+    body: 'If you have read a question twice and still do not see a clear path, move on. A question you cannot crack in 30 seconds is costing you a question you could answer in 20. Unanswered questions and wrong answers score the same — so if time is running short, a considered guess beats leaving it blank.',
+    link: 'page-tips',
+    linkLabel: 'Read more in Strategic Approach'
+  }
+};
+
+function openQTip(key) {
+  const tip = QUICK_TIPS[key];
+  if (!tip) return;
+  document.getElementById('qtip-tag').textContent = tip.tag;
+  document.getElementById('qtip-title').textContent = tip.title;
+  document.getElementById('qtip-body').textContent = tip.body;
+  const linkEl = document.getElementById('qtip-link');
+  linkEl.textContent = tip.linkLabel + ' ↗';
+  linkEl.onclick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    showPage(tip.link);
+    closeQTip();
+  };
+  document.getElementById('qtip-overlay').classList.add('visible');
+}
+
+function closeQTip(e) {
+  if (e && e.target !== document.getElementById('qtip-overlay')) return;
+  document.getElementById('qtip-overlay').classList.remove('visible');
+}
+
 const DRILL_CATEGORIES = [
   {id:"arith", label:"Basic Arithmetic", desc:"Mental arithmetic, addition, subtraction, multiplication and division under time pressure."},
   {id:"pct",   label:"Percentages & Averages", desc:"Percentage changes, reverse percentages, simple and weighted averages."},
@@ -3230,20 +3370,33 @@ function renderReviewCard(){
   document.getElementById('next-btn').disabled=reviewIdx===qs.length-1;
 
   // Parse explanation
+  function injectChips(text){
+    return text.replace(/\[\[([^\]]+)\]\]/g,(match,key)=>{
+      const tip=QUICK_TIPS[key];
+      if(!tip) return match;
+      const label=tip.title.length>28?tip.title.slice(0,26)+'…':tip.title;
+      return `<span class="qtip-chip" onclick="openQTip('${key}')"><span class="qtip-chip-icon">💡</span>${label}</span>`;
+    });
+  }
   const lines=q.explain.split('\n').filter(s=>s.trim());
   let explainHtml='';
   let tipHtml='';
+  // Section headers for rich explanations
+  const sectionHeaders=['STEP BY STEP','WHY DOES THIS WORK?','THE METAPHOR','THE TRICKY PART','MENTAL MATHS TIP','VARIATIONS TO WATCH FOR'];
   lines.forEach(line=>{
     const trimmed=line.trim();
     if(trimmed.startsWith('_tip_')||trimmed.startsWith('Tip:')||trimmed.startsWith('tip:')){
       tipHtml=trimmed.replace(/^_?[Tt]ip_?:?\s*/,'');
+    } else if(sectionHeaders.includes(trimmed)){
+      explainHtml+=`<div style="font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:#1a9e5c;margin-top:14px;margin-bottom:4px;font-family:'Inter',sans-serif">${trimmed}</div>`;
     } else {
-      const formatted=trimmed.replace(/^(Step \d+[^:–\n]*[–:]?)/,'<b>$1</b>');
-      explainHtml+=`<div>${formatted}</div>`;
+      const withChips=injectChips(trimmed);
+      const formatted=withChips.replace(/^(Step \d+[^:–\n]*[–:]?)/,'<b>$1</b>');
+      explainHtml+=`<div style="margin-bottom:4px">${formatted}</div>`;
     }
   });
   if(tipHtml){
-    explainHtml+=`<div class="review-solution-tip">💡 ${tipHtml}</div>`;
+    explainHtml+=`<div class="review-solution-tip">💡 ${injectChips(tipHtml)}</div>`;
   }
 
   const partial=!ok&&!skipped&&isPartialCredit(q,userVal);
@@ -4002,6 +4155,23 @@ function startDrill(catId, levelIdx){
 </div>
 
 
+
+<!-- QUICK TIP MODAL -->
+<div class="qtip-overlay" id="qtip-overlay" onclick="closeQTip(event)">
+  <div class="qtip-modal" id="qtip-modal">
+    <div class="qtip-modal-header">
+      <div>
+        <div class="qtip-modal-tag" id="qtip-tag">Mental maths trick</div>
+        <div class="qtip-modal-title" id="qtip-title">Technique name</div>
+      </div>
+      <button class="qtip-close" onclick="closeQTip()">✕</button>
+    </div>
+    <div class="qtip-modal-body" id="qtip-body">Technique description goes here.</div>
+    <a class="qtip-modal-link" id="qtip-link" href="#" target="_blank" rel="noopener">
+      Read more ↗
+    </a>
+  </div>
+</div>
 
 </body>
 </html>
