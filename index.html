@@ -2777,11 +2777,15 @@ function openQTip(key) {
   document.getElementById('qtip-body').textContent = tip.body;
   const linkEl = document.getElementById('qtip-link');
   linkEl.textContent = tip.linkLabel + ' ↗';
+  const hashMap2 = {
+    'page-mentalmaths': '#mentalmaths',
+    'page-tips': '#tips'
+  };
   linkEl.onclick = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    showPage(tip.link);
-    closeQTip();
+    const hash = hashMap2[tip.link] || '';
+    window.open(window.location.origin + window.location.pathname + hash, '_blank', 'noopener');
   };
   document.getElementById('qtip-overlay').classList.add('visible');
 }
@@ -4058,6 +4062,22 @@ function startDrill(catId, levelIdx){
   showPage('test');
   document.getElementById('camera-modal').classList.add('visible');
 }
+
+/* ── HASH-BASED DEEP LINKING (for "Read more" new tab links) ── */
+(function(){
+  const hashMap = {
+    'mentalmaths': ()=> showPage('page-mentalmaths'),
+    'tips':        ()=> showPage('page-tips'),
+    'resources':   ()=>{ renderResources(); showPage('resources'); },
+    'tests':       ()=> showPage('section-tests')
+  };
+  function handleHash(){
+    const hash = window.location.hash.replace('#','');
+    if(hashMap[hash]) hashMap[hash]();
+  }
+  window.addEventListener('hashchange', handleHash);
+  handleHash();
+})();
 </script>
 
 <!-- CAMERA WIDGET -->
@@ -4167,9 +4187,9 @@ function startDrill(catId, levelIdx){
       <button class="qtip-close" onclick="closeQTip()">✕</button>
     </div>
     <div class="qtip-modal-body" id="qtip-body">Technique description goes here.</div>
-    <a class="qtip-modal-link" id="qtip-link" href="#" target="_blank" rel="noopener">
-      Read more ↗
-    </a>
+    <button class="qtip-modal-link" id="qtip-link">
+      Read more →
+    </button>
   </div>
 </div>
 
