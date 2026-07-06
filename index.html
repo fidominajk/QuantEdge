@@ -2778,8 +2778,8 @@ function openQTip(key) {
   const linkEl = document.getElementById('qtip-link');
   linkEl.textContent = tip.linkLabel + ' ↗';
   const hashMap2 = {
-    'page-mentalmaths': '#mentalmaths',
-    'page-tips': '#tips'
+    'page-mentalmaths': '#page-mentalmaths',
+    'page-tips': '#page-tips'
   };
   linkEl.onclick = (e) => {
     e.preventDefault();
@@ -4066,17 +4066,23 @@ function startDrill(catId, levelIdx){
 /* ── HASH-BASED DEEP LINKING (for "Read more" new tab links) ── */
 (function(){
   const hashMap = {
-    'mentalmaths': ()=> showPage('page-mentalmaths'),
-    'tips':        ()=> showPage('page-tips'),
-    'resources':   ()=>{ renderResources(); showPage('resources'); },
-    'tests':       ()=> showPage('section-tests')
+    'page-mentalmaths': ()=> showPage('page-mentalmaths'),
+    'mentalmaths':      ()=> showPage('page-mentalmaths'),
+    'page-tips':        ()=> showPage('page-tips'),
+    'tips':             ()=> showPage('page-tips'),
+    'resources':        ()=> showPage('resources'),
+    'section-tests':    ()=> showPage('section-tests')
   };
   function handleHash(){
     const hash = window.location.hash.replace('#','');
     if(hashMap[hash]) hashMap[hash]();
   }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', handleHash);
+  } else {
+    setTimeout(handleHash, 100);
+  }
   window.addEventListener('hashchange', handleHash);
-  handleHash();
 })();
 </script>
 
