@@ -2787,7 +2787,7 @@ function openQTip(key) {
     const target = pageMap[tip.link];
     if(target){
       sessionStorage.setItem('qtip_target', target);
-      window.open(window.location.origin + window.location.pathname, '_blank', 'noopener');
+      window.open(window.location.origin + window.location.pathname, '_blank');
     }
   };
   document.getElementById('qtip-overlay').classList.add('visible');
