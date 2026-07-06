@@ -2778,8 +2778,8 @@ function openQTip(key) {
   const linkEl = document.getElementById('qtip-link');
   linkEl.textContent = tip.linkLabel + ' ↗';
   const hashMap2 = {
-    'page-mentalmaths': '#page-mentalmaths',
-    'page-tips': '#page-tips'
+    'page-mentalmaths': '#mentalmaths',
+    'page-tips': '#tips'
   };
   linkEl.onclick = (e) => {
     e.preventDefault();
@@ -2919,7 +2919,21 @@ window.addEventListener('popstate',function(e){
   if(id==='section-mm')renderMMSection();
   if(id==='home'){clearInterval(timerInterval);stopCamera();currentDrill=null;}
 });
+// Capture deep-link hash BEFORE replaceState overwrites it
+const _deepLinkHash = window.location.hash.replace('#','');
 history.replaceState({page:'home'},'','#home');
+// Navigate to deep-link page if one was provided
+(function(){
+  const _deepPages = {
+    'mentalmaths': 'mentalmaths',
+    'tips': 'tips',
+    'resources': 'resources',
+    'section-tests': 'section-tests'
+  };
+  if(_deepLinkHash && _deepPages[_deepLinkHash]){
+    setTimeout(()=> showPage(_deepPages[_deepLinkHash]), 50);
+  }
+})();
 let mmReturnPage = "section-mm"; // tracks which route MM was accessed from
 
 function showSection(sec, fromPage){
@@ -4066,23 +4080,15 @@ function startDrill(catId, levelIdx){
 /* ── HASH-BASED DEEP LINKING (for "Read more" new tab links) ── */
 (function(){
   const hashMap = {
-    'page-mentalmaths': ()=> showPage('page-mentalmaths'),
-    'mentalmaths':      ()=> showPage('page-mentalmaths'),
-    'page-tips':        ()=> showPage('page-tips'),
-    'tips':             ()=> showPage('page-tips'),
-    'resources':        ()=> showPage('resources'),
-    'section-tests':    ()=> showPage('section-tests')
+    'mentalmaths': 'mentalmaths',
+    'tips': 'tips',
+    'resources': 'resources',
+    'section-tests': 'section-tests'
   };
-  function handleHash(){
-    const hash = window.location.hash.replace('#','');
-    if(hashMap[hash]) hashMap[hash]();
-  }
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', handleHash);
-  } else {
-    setTimeout(handleHash, 100);
-  }
-  window.addEventListener('hashchange', handleHash);
+  window.addEventListener('hashchange', function(){
+    const h = window.location.hash.replace('#','');
+    if(hashMap[h]) showPage(hashMap[h]);
+  });
 })();
 </script>
 
