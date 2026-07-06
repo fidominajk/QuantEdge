@@ -2776,7 +2776,7 @@ function openQTip(key) {
   document.getElementById('qtip-title').textContent = tip.title;
   document.getElementById('qtip-body').textContent = tip.body;
   const linkEl = document.getElementById('qtip-link');
-  linkEl.textContent = tip.linkLabel + ' ↗';
+  linkEl.textContent = tip.linkLabel + ' →';
   const pageMap = {
     'page-mentalmaths': 'mentalmaths',
     'page-tips': 'tips'
@@ -2786,8 +2786,8 @@ function openQTip(key) {
     e.stopPropagation();
     const target = pageMap[tip.link];
     if(target){
-      sessionStorage.setItem('qtip_target', target);
-      window.open(window.location.origin + window.location.pathname, '_blank');
+      document.getElementById('qtip-overlay').classList.remove('visible');
+      setTimeout(()=> showPage(target), 200);
     }
   };
   document.getElementById('qtip-overlay').classList.add('visible');
@@ -3911,11 +3911,6 @@ function openContact(){
 
 function retryTest(){startTest()}
 renderTestList();
-// Navigate to target page if opened via Quick Tip modal "Read more" link
-(function(){
-  const _qt = sessionStorage.getItem('qtip_target');
-  if(_qt){ sessionStorage.removeItem('qtip_target'); showPage(_qt); }
-})();
 function goBackFromTest(){
   if(currentDrill){showPage('drill-levels');return;}
   if(currentTest&&currentTest.section){
